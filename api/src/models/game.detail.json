@@ -1,0 +1,553 @@
+{
+  "id": 3498,
+  "slug": "grand-theft-auto-v",
+  "name": "Grand Theft Auto V",
+  "name_original": "Grand Theft Auto V",
+  "description": "<strong>Вместе с легендарным Тони Принсом вы сможете открыть ночной клуб и пригласить туда диджеев с мировым именем: Solomun, Tale Of Us, Dixon и The Black Madonna. Клуб послужит прикрытием для вашего бизнеса, и из него вы будете проворачивать невероятные сделки.</strong><br/><br/>Когда молодой уличный жулик, отставной грабитель банков и опасный для общества психопат оказываются втянуты в разборки с самыми пугающими и сумасшедшими представителями криминального мира, правительства США и индустрии развлечений, им приходится выполнить серию рискованных налетов, чтобы выжить в безжалостном городе, где они не могут доверять никому – и в первую очередь друг другу.<br/> <br/>Grand Theft Auto V для PC позволяет игрокам исследовать знаменитый мир Лос-Сантоса и округа Блэйн в разрешении до 4k и выше с частотой 60 кадров в секунду.<br/> <br/>Игра предлагает множество уникальных для компьютера настроек, в том числе более 25 отдельных параметров для настройки качества текстур, шейдеров, тесселяции, сглаживания и не только, а также поддержку и настройку управления с помощью клавиатуры и мыши. Из дополнительных возможностей можно отметить ползунок населенности города, управляющий плотностью потока машин и пешеходов, поддержку двух и трех мониторов, поддержку 3D и функцию «plug-and-play» для геймпадов.<br/> <br/>А еще Grand Theft Auto V для PC включает Grand Theft Auto Online с поддержкой 30 игроков и двух зрителей. В состав Grand Theft Auto Online для PC входят все ранее выпущенные улучшения игрового процесса и созданные Rockstar материалы, в том числе недавно вышедшее обновление «Ограбления» и режим «Противоборство», которые доступны с первого дня.<br/> <br/>В PC-версии Grand Theft Auto V и Grand Theft Auto Online представлен режим от первого лица, позволяющий еще ближе рассмотреть невероятно достоверный мир Лос-Сантоса и округа Блэйн.<br/> <br/>В Grand Theft Auto V для PC впервые появляется редактор Rockstar – набор мощных творческих инструментов для быстрой и удобной записи, монтажа и публикации видеороликов, снятых в Grand Theft Auto V и Grand Theft Auto Online. Доступный в редакторе Rockstar режим режиссера позволяет игрокам создавать свои сцены с участием известных персонажей из сюжетного режима, пешеходов и даже животных. Помимо развитой системы управления камерой, режимов монтажа, в том числе ускоренного и замедленного воспроизведения, и ряда фильтров камеры, игроки могут добавлять музыку из фонотеки радиостанций GTA V и динамически изменять интенсивность музыкального воспроизведения игры. Готовые видеоролики можно легко загрузить прямо из редактора Rockstar в YouTube или Rockstar Games Social Club.<br/> <br/>Авторы саундтрека игры, The Alchemist и Oh No, вернулись в качестве ведущих новой радиостанции, которая называется The Lab FM и транслирует новую и эксклюзивную музыку этих авторов, созданную по мотивам оригинального саундтрека игры. Гостями станции бывают Earl Sweatshirt, Freddie Gibbs, Little Dragon, Killer Mike, Sam Herring из Future Islands и другие музыканты. Кроме того, игроки могут исследовать Лос-Сантос и округ Блэйн под выбранную ими музыку – это возможно благодаря новой радиостанции Self Radio, проигрывающей собранные игроком саундтреки.<br/> <br/><br/>Для доступа к этим эксклюзивным материалам необходимо зарегистрироваться в Social Club. Подробности можно прочитать на сайте http://rockstargames.com/V/bonuscontent.",
+  "metacritic": 92,
+  "metacritic_platforms": [
+    {
+      "metascore": 97,
+      "url": "https://www.metacritic.com/game/playstation-3/grand-theft-auto-v",
+      "platform": {
+        "platform": 16,
+        "name": "PlayStation 3",
+        "slug": "playstation3"
+      }
+    },
+    {
+      "metascore": 96,
+      "url": "https://www.metacritic.com/game/pc/grand-theft-auto-v",
+      "platform": {
+        "platform": 4,
+        "name": "PC",
+        "slug": "pc"
+      }
+    },
+    {
+      "metascore": 97,
+      "url": "https://www.metacritic.com/game/playstation-4/grand-theft-auto-v",
+      "platform": {
+        "platform": 18,
+        "name": "PlayStation 4",
+        "slug": "playstation4"
+      }
+    },
+    {
+      "metascore": 81,
+      "url": "https://www.metacritic.com/game/playstation-5/grand-theft-auto-v",
+      "platform": {
+        "platform": 187,
+        "name": "PlayStation 5",
+        "slug": "playstation5"
+      }
+    },
+    {
+      "metascore": 97,
+      "url": "https://www.metacritic.com/game/xbox-360/grand-theft-auto-v",
+      "platform": {
+        "platform": 14,
+        "name": "Xbox 360",
+        "slug": "xbox360"
+      }
+    },
+    {
+      "metascore": 97,
+      "url": "https://www.metacritic.com/game/xbox-one/grand-theft-auto-v",
+      "platform": {
+        "platform": 1,
+        "name": "Xbox One",
+        "slug": "xbox-one"
+      }
+    },
+    {
+      "metascore": 79,
+      "url": "https://www.metacritic.com/game/xbox-series-x/grand-theft-auto-v",
+      "platform": {
+        "platform": 186,
+        "name": "Xbox Series S/X",
+        "slug": "xbox-series-x"
+      }
+    }
+  ],
+  "released": "2013-09-17",
+  "tba": false,
+  "updated": "2022-05-11T12:26:10",
+  "background_image": "https://cdn.ag.ru/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
+  "background_image_additional": "https://cdn.ag.ru/media/screenshots/5f5/5f5a38a222252d996b18962806eed707.jpg",
+  "website": "http://www.rockstargames.com/V/",
+  "rating": 4.47,
+  "rating_top": 5,
+  "ratings": [
+    {
+      "id": 5,
+      "title": "exceptional",
+      "count": 3469,
+      "percent": 59.28
+    },
+    {
+      "id": 4,
+      "title": "recommended",
+      "count": 1904,
+      "percent": 32.54
+    },
+    {
+      "id": 3,
+      "title": "meh",
+      "count": 373,
+      "percent": 6.37
+    },
+    {
+      "id": 1,
+      "title": "skip",
+      "count": 106,
+      "percent": 1.81
+    }
+  ],
+  "reactions": {
+    "1": 25,
+    "2": 7,
+    "3": 32,
+    "4": 15,
+    "5": 11,
+    "6": 7,
+    "7": 14,
+    "8": 19,
+    "9": 1,
+    "10": 8,
+    "11": 14,
+    "12": 11,
+    "14": 3,
+    "15": 2,
+    "16": 6,
+    "18": 4,
+    "20": 1,
+    "21": 2
+  },
+  "added": 17662,
+  "added_by_status": {
+    "yet": 446,
+    "owned": 10342,
+    "beaten": 4838,
+    "toplay": 518,
+    "dropped": 880,
+    "playing": 638
+  },
+  "playtime": 72,
+  "screenshots_count": 57,
+  "movies_count": 8,
+  "creators_count": 11,
+  "achievements_count": 539,
+  "parent_achievements_count": 75,
+  "reddit_url": "https://www.reddit.com/r/GrandTheftAutoV/",
+  "reddit_name": "/r/GrandTheftAutoV",
+  "reddit_description": "/r/GrandTheftAutoV - the subreddit for all GTA V related news, content, and discussions revolving around Rockstar's critically acclaimed single player release and the ongoing multiplayer expansion of Grand Theft Auto Online.",
+  "reddit_logo": "",
+  "reddit_count": 0,
+  "twitch_count": 102,
+  "youtube_count": 1000000,
+  "reviews_text_count": 74,
+  "ratings_count": 5778,
+  "suggestions_count": 409,
+  "alternative_names": [
+    "GTA 5",
+    "GTA V",
+    "GTA5",
+    "GTAV"
+  ],
+  "metacritic_url": "https://www.metacritic.com/game/pc/grand-theft-auto-v",
+  "parents_count": 0,
+  "additions_count": 3,
+  "game_series_count": 10,
+  "user_game": null,
+  "reviews_count": 5852,
+  "saturated_color": "0f0f0f",
+  "dominant_color": "0f0f0f",
+  "parent_platforms": [
+    {
+      "platform": {
+        "id": 1,
+        "name": "PC",
+        "slug": "pc"
+      }
+    },
+    {
+      "platform": {
+        "id": 2,
+        "name": "PlayStation",
+        "slug": "playstation"
+      }
+    },
+    {
+      "platform": {
+        "id": 3,
+        "name": "Xbox",
+        "slug": "xbox"
+      }
+    }
+  ],
+  "platforms": [
+    {
+      "platform": {
+        "id": 4,
+        "name": "PC",
+        "slug": "pc",
+        "image": null,
+        "year_end": null,
+        "year_start": null,
+        "games_count": 455668,
+        "image_background": "https://cdn.ag.ru/media/games/490/49016e06ae2103881ff6373248843069.jpg"
+      },
+      "released_at": "2013-09-17",
+      "requirements": {}
+    },
+    {
+      "platform": {
+        "id": 16,
+        "name": "PlayStation 3",
+        "slug": "playstation3",
+        "image": null,
+        "year_end": null,
+        "year_start": null,
+        "games_count": 3615,
+        "image_background": "https://cdn.ag.ru/media/games/490/49016e06ae2103881ff6373248843069.jpg"
+      },
+      "released_at": "2013-09-17",
+      "requirements": {}
+    },
+    {
+      "platform": {
+        "id": 18,
+        "name": "PlayStation 4",
+        "slug": "playstation4",
+        "image": null,
+        "year_end": null,
+        "year_start": null,
+        "games_count": 6406,
+        "image_background": "https://cdn.ag.ru/media/games/16b/16b1b7b36e2042d1128d5a3e852b3b2f.jpg"
+      },
+      "released_at": "2013-09-17",
+      "requirements": {}
+    },
+    {
+      "platform": {
+        "id": 1,
+        "name": "Xbox One",
+        "slug": "xbox-one",
+        "image": null,
+        "year_end": null,
+        "year_start": null,
+        "games_count": 5328,
+        "image_background": "https://cdn.ag.ru/media/games/942/9424d6bb763dc38d9378b488603c87fa.jpg"
+      },
+      "released_at": "2013-09-17",
+      "requirements": {}
+    },
+    {
+      "platform": {
+        "id": 14,
+        "name": "Xbox 360",
+        "slug": "xbox360",
+        "image": null,
+        "year_end": null,
+        "year_start": null,
+        "games_count": 2768,
+        "image_background": "https://cdn.ag.ru/media/games/7a2/7a2500ee8b2c0e1ff268bb4479463dea.jpg"
+      },
+      "released_at": "2013-09-17",
+      "requirements": {}
+    },
+    {
+      "platform": {
+        "id": 186,
+        "name": "Xbox Series S/X",
+        "slug": "xbox-series-x",
+        "image": null,
+        "year_end": null,
+        "year_start": 2020,
+        "games_count": 547,
+        "image_background": "https://cdn.ag.ru/media/games/5ec/5ecac5cb026ec26a56efcc546364e348.jpg"
+      },
+      "released_at": "2013-09-17",
+      "requirements": {}
+    },
+    {
+      "platform": {
+        "id": 187,
+        "name": "PlayStation 5",
+        "slug": "playstation5",
+        "image": null,
+        "year_end": null,
+        "year_start": 2020,
+        "games_count": 611,
+        "image_background": "https://cdn.ag.ru/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg"
+      },
+      "released_at": "2013-09-17",
+      "requirements": {}
+    }
+  ],
+  "stores": [
+    {
+      "id": 290375,
+      "url": "",
+      "store": {
+        "id": 3,
+        "name": "PlayStation Store",
+        "slug": "playstation-store",
+        "domain": "store.playstation.com",
+        "games_count": 7790,
+        "image_background": "https://cdn.ag.ru/media/games/4a0/4a0a1316102366260e6f38fd2a9cfdce.jpg"
+      }
+    },
+    {
+      "id": 438095,
+      "url": "",
+      "store": {
+        "id": 11,
+        "name": "Epic Games",
+        "slug": "epic-games",
+        "domain": "epicgames.com",
+        "games_count": 1004,
+        "image_background": "https://cdn.ag.ru/media/games/942/9424d6bb763dc38d9378b488603c87fa.jpg"
+      }
+    },
+    {
+      "id": 290376,
+      "url": "",
+      "store": {
+        "id": 1,
+        "name": "Steam",
+        "slug": "steam",
+        "domain": "store.steampowered.com",
+        "games_count": 64407,
+        "image_background": "https://cdn.ag.ru/media/games/b7d/b7d3f1715fa8381a4e780173a197a615.jpg"
+      }
+    },
+    {
+      "id": 290377,
+      "url": "",
+      "store": {
+        "id": 7,
+        "name": "Xbox 360 Store",
+        "slug": "xbox360",
+        "domain": "marketplace.xbox.com",
+        "games_count": 1915,
+        "image_background": "https://cdn.ag.ru/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg"
+      }
+    },
+    {
+      "id": 290378,
+      "url": "",
+      "store": {
+        "id": 2,
+        "name": "Xbox Store",
+        "slug": "xbox-store",
+        "domain": "microsoft.com",
+        "games_count": 4720,
+        "image_background": "https://cdn.ag.ru/media/games/b49/b4912b5dbfc7ed8927b65f05b8507f6c.jpg"
+      }
+    }
+  ],
+  "developers": [
+    {
+      "id": 3524,
+      "name": "Rockstar North",
+      "slug": "rockstar-north",
+      "games_count": 29,
+      "image_background": "https://cdn.ag.ru/media/screenshots/b98/b98adb52b2123a14d1c88e828a6b49f3.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Rockstar Games",
+      "slug": "rockstar-games",
+      "games_count": 25,
+      "image_background": "https://cdn.ag.ru/media/games/686/686909717c3aa01518bc42ae2bf4259e.jpg"
+    }
+  ],
+  "genres": [
+    {
+      "id": 4,
+      "name": "Экшены",
+      "slug": "action",
+      "games_count": 153891,
+      "image_background": "https://cdn.ag.ru/media/games/d82/d82990b9c67ba0d2d09d4e6fa88885a7.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Приключения",
+      "slug": "adventure",
+      "games_count": 116689,
+      "image_background": "https://cdn.ag.ru/media/games/e2d/e2d3f396b16dded0f841c17c9799a882.jpg"
+    }
+  ],
+  "tags": [
+    {
+      "id": 42396,
+      "name": "Для одного игрока",
+      "slug": "dlia-odnogo-igroka",
+      "language": "rus",
+      "games_count": 25655,
+      "image_background": "https://cdn.ag.ru/media/games/562/562553814dd54e001a541e4ee83a591c.jpg"
+    },
+    {
+      "id": 42417,
+      "name": "Экшен",
+      "slug": "ekshen",
+      "language": "rus",
+      "games_count": 27410,
+      "image_background": "https://cdn.ag.ru/media/games/f87/f87457e8347484033cb34cde6101d08d.jpg"
+    },
+    {
+      "id": 42392,
+      "name": "Приключение",
+      "slug": "prikliuchenie",
+      "language": "rus",
+      "games_count": 25428,
+      "image_background": "https://cdn.ag.ru/media/games/4a0/4a0a1316102366260e6f38fd2a9cfdce.jpg"
+    },
+    {
+      "id": 42400,
+      "name": "Атмосфера",
+      "slug": "atmosfera",
+      "language": "rus",
+      "games_count": 6102,
+      "image_background": "https://cdn.ag.ru/media/games/021/021c4e21a1824d2526f925eff6324653.jpg"
+    },
+    {
+      "id": 42425,
+      "name": "Для нескольких игроков",
+      "slug": "dlia-neskolkikh-igrokov",
+      "language": "rus",
+      "games_count": 6471,
+      "image_background": "https://cdn.ag.ru/media/games/736/73619bd336c894d6941d926bfd563946.jpg"
+    },
+    {
+      "id": 42401,
+      "name": "Отличный саундтрек",
+      "slug": "otlichnyi-saundtrek",
+      "language": "rus",
+      "games_count": 4430,
+      "image_background": "https://cdn.ag.ru/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg"
+    },
+    {
+      "id": 42442,
+      "name": "Открытый мир",
+      "slug": "otkrytyi-mir",
+      "language": "rus",
+      "games_count": 3556,
+      "image_background": "https://cdn.ag.ru/media/games/13a/13a528ac9cf48bbb6be5d35fe029336d.jpg"
+    },
+    {
+      "id": 42428,
+      "name": "Шутер",
+      "slug": "shuter",
+      "language": "rus",
+      "games_count": 5204,
+      "image_background": "https://cdn.ag.ru/media/games/d69/d69810315bd7e226ea2d21f9156af629.jpg"
+    },
+    {
+      "id": 42435,
+      "name": "Шедевр",
+      "slug": "shedevr",
+      "language": "rus",
+      "games_count": 1059,
+      "image_background": "https://cdn.ag.ru/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg"
+    },
+    {
+      "id": 42429,
+      "name": "От первого лица",
+      "slug": "ot-pervogo-litsa",
+      "language": "rus",
+      "games_count": 5660,
+      "image_background": "https://cdn.ag.ru/media/games/b7b/b7b8381707152afc7d91f5d95de70e39.jpg"
+    },
+    {
+      "id": 42441,
+      "name": "От третьего лица",
+      "slug": "ot-tretego-litsa",
+      "language": "rus",
+      "games_count": 3576,
+      "image_background": "https://cdn.ag.ru/media/games/310/3106b0e012271c5ffb16497b070be739.jpg"
+    },
+    {
+      "id": 42482,
+      "name": "Смешная",
+      "slug": "smeshnaia",
+      "language": "rus",
+      "games_count": 5091,
+      "image_background": "https://cdn.ag.ru/media/games/328/3283617cb7d75d67257fc58339188742.jpg"
+    },
+    {
+      "id": 42481,
+      "name": "Юмор",
+      "slug": "iumor",
+      "language": "rus",
+      "games_count": 3303,
+      "image_background": "https://cdn.ag.ru/media/games/c6b/c6bfece1daf8d06bc0a60632ac78e5bf.jpg"
+    },
+    {
+      "id": 42444,
+      "name": "Песочница",
+      "slug": "pesochnitsa",
+      "language": "rus",
+      "games_count": 2485,
+      "image_background": "https://cdn.ag.ru/media/games/e3d/e3ddc524c6292a435d01d97cc5f42ea7.jpg"
+    },
+    {
+      "id": 42446,
+      "name": "Шутер от третьего лица",
+      "slug": "shuter-ot-tretego-litsa",
+      "language": "rus",
+      "games_count": 1156,
+      "image_background": "https://cdn.ag.ru/media/games/7ac/7aca7ccf0e70cd0974cb899ab9e5158e.jpg"
+    },
+    {
+      "id": 42438,
+      "name": "Поддержка модификаций",
+      "slug": "podderzhka-modifikatsii",
+      "language": "rus",
+      "games_count": 496,
+      "image_background": "https://cdn.ag.ru/media/games/d58/d588947d4286e7b5e0e12e1bea7d9844.jpg"
+    },
+    {
+      "id": 42529,
+      "name": "Для взрослых",
+      "slug": "dlia-vzroslykh",
+      "language": "rus",
+      "games_count": 1318,
+      "image_background": "https://cdn.ag.ru/media/games/ee3/ee3e10193aafc3230ba1cae426967d10.jpg"
+    },
+    {
+      "id": 42496,
+      "name": "Гонки",
+      "slug": "gonki",
+      "language": "rus",
+      "games_count": 2426,
+      "image_background": "https://cdn.ag.ru/media/games/78d/78dfae12fb8c5b16cd78648553071e0a.jpg"
+    },
+    {
+      "id": 42443,
+      "name": "Криминал",
+      "slug": "kriminal",
+      "language": "rus",
+      "games_count": 499,
+      "image_background": "https://cdn.ag.ru/media/games/d69/d69810315bd7e226ea2d21f9156af629.jpg"
+    }
+  ],
+  "publishers": [
+    {
+      "id": 2155,
+      "name": "Rockstar Games",
+      "slug": "rockstar-games",
+      "games_count": 74,
+      "image_background": "https://cdn.ag.ru/media/games/bcd/bcdadb5dd2be66dd4dd1f657275b3f8e.jpg"
+    }
+  ],
+  "esrb_rating": {
+    "id": 4,
+    "name": "С 17 лет",
+    "slug": "mature"
+  },
+  "clip": null,
+  "description_raw": "Вместе с легендарным Тони Принсом вы сможете открыть ночной клуб и пригласить туда диджеев с мировым именем: Solomun, Tale Of Us, Dixon и The Black Madonna. Клуб послужит прикрытием для вашего бизнеса, и из него вы будете проворачивать невероятные сделки.\nКогда молодой уличный жулик, отставной грабитель банков и опасный для общества психопат оказываются втянуты в разборки с самыми пугающими и сумасшедшими представителями криминального мира, правительства США и индустрии развлечений, им приходится выполнить серию рискованных налетов, чтобы выжить в безжалостном городе, где они не могут доверять никому – и в первую очередь друг другу.\n\nGrand Theft Auto V для PC позволяет игрокам исследовать знаменитый мир Лос-Сантоса и округа Блэйн в разрешении до 4k и выше с частотой 60 кадров в секунду.\n\nИгра предлагает множество уникальных для компьютера настроек, в том числе более 25 отдельных параметров для настройки качества текстур, шейдеров, тесселяции, сглаживания и не только, а также поддержку и настройку управления с помощью клавиатуры и мыши. Из дополнительных возможностей можно отметить ползунок населенности города, управляющий плотностью потока машин и пешеходов, поддержку двух и трех мониторов, поддержку 3D и функцию «plug-and-play» для геймпадов.\n\nА еще Grand Theft Auto V для PC включает Grand Theft Auto Online с поддержкой 30 игроков и двух зрителей. В состав Grand Theft Auto Online для PC входят все ранее выпущенные улучшения игрового процесса и созданные Rockstar материалы, в том числе недавно вышедшее обновление «Ограбления» и режим «Противоборство», которые доступны с первого дня.\n\nВ PC-версии Grand Theft Auto V и Grand Theft Auto Online представлен режим от первого лица, позволяющий еще ближе рассмотреть невероятно достоверный мир Лос-Сантоса и округа Блэйн.\n\nВ Grand Theft Auto V для PC впервые появляется редактор Rockstar – набор мощных творческих инструментов для быстрой и удобной записи, монтажа и публикации видеороликов, снятых в Grand Theft Auto V и Grand Theft Auto Online. Доступный в редакторе Rockstar режим режиссера позволяет игрокам создавать свои сцены с участием известных персонажей из сюжетного режима, пешеходов и даже животных. Помимо развитой системы управления камерой, режимов монтажа, в том числе ускоренного и замедленного воспроизведения, и ряда фильтров камеры, игроки могут добавлять музыку из фонотеки радиостанций GTA V и динамически изменять интенсивность музыкального воспроизведения игры. Готовые видеоролики можно легко загрузить прямо из редактора Rockstar в YouTube или Rockstar Games Social Club.\n\nАвторы саундтрека игры, The Alchemist и Oh No, вернулись в качестве ведущих новой радиостанции, которая называется The Lab FM и транслирует новую и эксклюзивную музыку этих авторов, созданную по мотивам оригинального саундтрека игры. Гостями станции бывают Earl Sweatshirt, Freddie Gibbs, Little Dragon, Killer Mike, Sam Herring из Future Islands и другие музыканты. Кроме того, игроки могут исследовать Лос-Сантос и округ Блэйн под выбранную ими музыку – это возможно благодаря новой радиостанции Self Radio, проигрывающей собранные игроком саундтреки.\n\nДля доступа к этим эксклюзивным материалам необходимо зарегистрироваться в Social Club. Подробности можно прочитать на сайте http://rockstargames.com/V/bonuscontent."
+}
