@@ -16,7 +16,7 @@ const parsePage = (page) => {
 };
 
 let myInfo= parsePage(gamesrequest);
-myInfo.concat(parsePage(gamesrequest2));
+// myInfo.concat(parsePage(gamesrequest2));
 
 module.exports = myInfo;
 
