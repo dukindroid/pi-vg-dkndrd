@@ -1,6 +1,6 @@
 
 const { Sequelize } = require('sequelize');
-const  db = new Sequelize( 'postgres://postgres:ccolnm01@localhost:5432/videogames', {force:false, logging:false} ); //?
+const  db = new Sequelize( 'postgres://postgres:ccolnm01@localhost:5432/videogames', {logging:false} ); //?
 module.exports = db;
 // aka conn, sequelize
 //let connection_string = 'postgres://postgres:ccolnm01@localhost:5432/simpsons_sequelize';

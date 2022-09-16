@@ -4,6 +4,13 @@ const sequelize = require('../db');
 class Videogame extends Model {};
 
 Videogame.init({
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull : false,
+    unique: true,
+    primaryKey : true
+  },
   name: {
     type: DataTypes.STRING,
     allownull: false
