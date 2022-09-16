@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db');
+const QueryByGenre = require('../controllers/genresController');
 
 class Genre extends Model {};
 
@@ -13,4 +14,7 @@ Genre.init({
   timestamps: false
 })
 
-module.exports = Genre;
+module.exports = {
+  Genre,
+  QueryByGenre
+};

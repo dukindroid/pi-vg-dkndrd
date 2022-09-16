@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+const { QueryAndCount, Query } = require('../controllers/videogameController');
 const sequelize = require('../db');
 
 class Videogame extends Model {};
@@ -36,4 +37,8 @@ Videogame.init({
   timestamps: false
 })
 
-module.exports = Videogame;
+module.exports = {
+  Videogame,
+  QueryAndCount,
+  Query
+};
