@@ -1,8 +1,8 @@
-import gamesrequest from  './games.page1.json';
-import gamesrequest2 from './games.page2.json';
-import gamesrequest3 from './games.page3.json';
-import gamesrequest4 from './games.page4.json';
-import gamesrequest5 from './games.page5.json';
+const gamesrequest = require  ('./games.page1.json');
+const gamesrequest2 = require ('./games.page2.json');
+const gamesrequest3 = require ('./games.page3.json');
+const gamesrequest4 = require ('./games.page4.json');
+const gamesrequest5 = require ('./games.page5.json');
 
 const parsePage = (page) => {
   return page.results.map((el) => { 

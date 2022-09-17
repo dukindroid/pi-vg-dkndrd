@@ -1,4 +1,6 @@
-const { Videogame, Genre } = require("../models");
+
+const Genre = require('../models/Genre');
+
 
 const QueryByGenre = async (which) => {
   let juegosPorGenero = await Genre.findByPk(which, {

@@ -1,7 +1,8 @@
-const { Videogame } = require("../models");
+// const Videogame = require("../models/index");
+const Videogame = require('../models/Videogame')
+
 const { Op } = require("sequelize");
-// const db = require("../db");
-const TAMANIO_PAGINA = 3;
+const TAMANIO_PAGINA = 15;
 
 /*----------------------------------------------------------------
       Controller: Filtering functions
@@ -80,10 +81,12 @@ const Query = async (settings) => {
     ...filtrar(settings),
     ...paginar(settings),
   }
+  
   return await Videogame.findAll( config );
 };
 
 module.exports = {
   Query,
   QueryAndCount
+
 }

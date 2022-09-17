@@ -6,21 +6,21 @@ const genresSeed = require('./models/seed/genresSeed');
 const videogamesSeed = require('./models/seed/videogamesSeed');
 // const { Query, QueryAndCount } = require('./controllers/videogameController');
 const QueryByGenre = require('./controllers/genresController');
+const db = require('./db/index');
 /*----------------------------------------------------------------
       Initial load
 ----------------------------------------------------------------*/
 ( 
-
   async () => {
-    try {
-      
-    } catch (error) {
-      
-    }
-    
+  
+  
+  console.log("Cargando datos iniciales...");
+
   await sequelize.sync({force: true});
   // consolog('Conexión a posgres exitosa!')  
   // Bulk Create 'Genres' table:
+  console.log("Cargando Generos...");
+
   await Promise.all( genresSeed.map( async (singleGenre) => 
     await Genre.create({
       name: singleGenre 
@@ -28,6 +28,8 @@ const QueryByGenre = require('./controllers/genresController');
   ));
     
   // Bulk Create 'Videogame' table:
+  console.log("Cargando Videogames...");
+  var algo = false;
   await Promise.all( videogamesSeed.map( async ( oneGame ) => {
     const {
       // id,
@@ -38,7 +40,7 @@ const QueryByGenre = require('./controllers/genresController');
       platforms, 
       genres 
     } = oneGame;
- 
+    
     const newVideogame = await Videogame.create({
       // id,
       name, 
@@ -47,10 +49,15 @@ const QueryByGenre = require('./controllers/genresController');
       rating, 
       platforms 
     });
-    console.log("Hemos creado este videogame: ")
-    console.log(newVideogame.toJSON());
+    // console.log("Hemos creado este videogame: ")
+    // console.log(newVideogame.toJSON());
 
     // Fill VideogameGenre n:n associations table:
+    if (!algo) {
+      console.log("Creando tabla intermedia...");
+      algo = true;
+    }
+
     await Promise.all( 
       genres.map( async ( genre ) => {
         await newVideogame.addGenre( genre, {
@@ -60,5 +67,7 @@ const QueryByGenre = require('./controllers/genresController');
     )
   }));
   
-
+if (parseInt(await Videogame.count()) == 100) console.log("Carga exitosa.")
+// console.log("Estos videogames tenemos: " + await Videogame.count());
+sequelize.close();
 })();

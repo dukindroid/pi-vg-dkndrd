@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -L",
-    "seed": "nodemon ./src/models/seed.js",
+    "seed": "node ./src/seed.js",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "author": "Henry",
