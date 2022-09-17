@@ -1,9 +1,13 @@
-const gamesrequest = require('./games.page1.json');
-const gamesrequest2 = require('./games.page2.json');
+import gamesrequest from  './games.page1.json';
+import gamesrequest2 from './games.page2.json';
+import gamesrequest3 from './games.page3.json';
+import gamesrequest4 from './games.page4.json';
+import gamesrequest5 from './games.page5.json';
 
 const parsePage = (page) => {
-  return page.results.map(el => { 
+  return page.results.map((el) => { 
     const buffer = {
+      id: el.id,
       name: el.name, 
       description: "%%description placeholder%%",
       released: el.released, 
@@ -15,21 +19,6 @@ const parsePage = (page) => {
   })
 };
 
-let myInfo= parsePage(gamesrequest);
-myInfo.concat(parsePage(gamesrequest2));
+let archivos = [gamesrequest,gamesrequest2,gamesrequest3,gamesrequest4,gamesrequest5];
 
-module.exports = myInfo;
-
-// .forEach(element => { element.name  }); 
-// myInfo
-// for (let key of gamesrequest.results) {
-//   console.log(key) 
-// }
-// const {name + platforms} = element;
-// const objeto = require('./gta.json');
-// console.log(objeto)
-// let {name, released, rating, genres, parent_platforms}= myInfo;
-// let  mensaje = `Nombre del juego: ${name},`
-//  Rating: ${{rating}},  Released:  ${released}\n
-// Género: ${JSON.stringify(genres)}, Plataformas ${JSON.stringify(parent_platforms)}`
-// console.log(mensaje)
+module.exports = archivos.map(el => parsePage(el)).flat();

@@ -1,6 +1,6 @@
 const { Videogame } = require("../models");
 const { Op } = require("sequelize");
-const db = require("../db");
+// const db = require("../db");
 const TAMANIO_PAGINA = 3;
 
 /*----------------------------------------------------------------
