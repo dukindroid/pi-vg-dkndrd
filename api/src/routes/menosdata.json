@@ -1,0 +1,656 @@
+[
+  {
+    "name": "action",
+    "Videogames": [
+      {
+        "name": "Grand Theft Auto V",
+        "VideogameGenre": {
+          "VideogameId": 3498,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "The Witcher 3: Wild Hunt",
+        "VideogameGenre": {
+          "VideogameId": 3328,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Tomb Raider (2013)",
+        "VideogameGenre": {
+          "VideogameId": 5286,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Counter-Strike: Global Offensive",
+        "VideogameGenre": {
+          "VideogameId": 4291,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "The Elder Scrolls V: Skyrim",
+        "VideogameGenre": {
+          "VideogameId": 5679,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Left 4 Dead 2",
+        "VideogameGenre": {
+          "VideogameId": 12020,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "BioShock Infinite",
+        "VideogameGenre": {
+          "VideogameId": 4062,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Borderlands 2",
+        "VideogameGenre": {
+          "VideogameId": 802,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Red Dead Redemption 2",
+        "VideogameGenre": {
+          "VideogameId": 28,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Half-Life 2",
+        "VideogameGenre": {
+          "VideogameId": 13537,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "BioShock",
+        "VideogameGenre": {
+          "VideogameId": 4286,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "DOOM (2016)",
+        "VideogameGenre": {
+          "VideogameId": 2454,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Fallout 4",
+        "VideogameGenre": {
+          "VideogameId": 3070,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Destiny 2",
+        "VideogameGenre": {
+          "VideogameId": 32,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "God of War",
+        "VideogameGenre": {
+          "VideogameId": 58175,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Team Fortress 2",
+        "VideogameGenre": {
+          "VideogameId": 11859,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "PAYDAY 2",
+        "VideogameGenre": {
+          "VideogameId": 3939,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Horizon Zero Dawn",
+        "VideogameGenre": {
+          "VideogameId": 278,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Grand Theft Auto IV",
+        "VideogameGenre": {
+          "VideogameId": 4459,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Dota 2",
+        "VideogameGenre": {
+          "VideogameId": 10213,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Metro 2033",
+        "VideogameGenre": {
+          "VideogameId": 29028,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Warframe",
+        "VideogameGenre": {
+          "VideogameId": 766,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Metal Gear Solid V: The Phantom Pain",
+        "VideogameGenre": {
+          "VideogameId": 3192,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Terraria",
+        "VideogameGenre": {
+          "VideogameId": 422,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Rise of the Tomb Raider",
+        "VideogameGenre": {
+          "VideogameId": 7689,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "The Walking Dead: Season 1",
+        "VideogameGenre": {
+          "VideogameId": 23027,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Cyberpunk 2077",
+        "VideogameGenre": {
+          "VideogameId": 41494,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Batman: Arkham Knight",
+        "VideogameGenre": {
+          "VideogameId": 3287,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Half-Life 2: Lost Coast",
+        "VideogameGenre": {
+          "VideogameId": 19103,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Middle-earth: Shadow of Mordor",
+        "VideogameGenre": {
+          "VideogameId": 11973,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Grand Theft Auto: San Andreas",
+        "VideogameGenre": {
+          "VideogameId": 416,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "The Witcher: Enhanced Edition Director's Cut",
+        "VideogameGenre": {
+          "VideogameId": 17822,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "BioShock 2",
+        "VideogameGenre": {
+          "VideogameId": 4427,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Half-Life 2: Episode One",
+        "VideogameGenre": {
+          "VideogameId": 19710,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Hitman",
+        "VideogameGenre": {
+          "VideogameId": 10035,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Hotline Miami",
+        "VideogameGenre": {
+          "VideogameId": 3612,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Deus Ex: Mankind Divided",
+        "VideogameGenre": {
+          "VideogameId": 1447,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Half-Life 2: Episode Two",
+        "VideogameGenre": {
+          "VideogameId": 19709,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Mirror's Edge",
+        "VideogameGenre": {
+          "VideogameId": 4252,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Dark Souls III",
+        "VideogameGenre": {
+          "VideogameId": 2551,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Hollow Knight",
+        "VideogameGenre": {
+          "VideogameId": 9767,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Outlast",
+        "VideogameGenre": {
+          "VideogameId": 3790,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Spec Ops: The Line",
+        "VideogameGenre": {
+          "VideogameId": 4332,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Apex Legends",
+        "VideogameGenre": {
+          "VideogameId": 290856,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Little Nightmares",
+        "VideogameGenre": {
+          "VideogameId": 41,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Marvel's Spider-Man",
+        "VideogameGenre": {
+          "VideogameId": 58134,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Amnesia: The Dark Descent",
+        "VideogameGenre": {
+          "VideogameId": 13668,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Far Cry 3",
+        "VideogameGenre": {
+          "VideogameId": 4161,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Saints Row: The Third",
+        "VideogameGenre": {
+          "VideogameId": 4386,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Alan Wake",
+        "VideogameGenre": {
+          "VideogameId": 19487,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Uncharted 4: A Thief’s End",
+        "VideogameGenre": {
+          "VideogameId": 2462,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Half-Life 2: Deathmatch",
+        "VideogameGenre": {
+          "VideogameId": 11936,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Borderlands",
+        "VideogameGenre": {
+          "VideogameId": 4828,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Wolfenstein: The New Order",
+        "VideogameGenre": {
+          "VideogameId": 3696,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "L.A. Noire",
+        "VideogameGenre": {
+          "VideogameId": 4514,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Half-Life",
+        "VideogameGenre": {
+          "VideogameId": 18080,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Detroit: Become Human",
+        "VideogameGenre": {
+          "VideogameId": 29177,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Injustice: Gods Among Us Ultimate Edition",
+        "VideogameGenre": {
+          "VideogameId": 17540,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Prey",
+        "VideogameGenre": {
+          "VideogameId": 39,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Path of Exile",
+        "VideogameGenre": {
+          "VideogameId": 10533,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Dead Space",
+        "VideogameGenre": {
+          "VideogameId": 4570,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "The Last Of Us Remastered",
+        "VideogameGenre": {
+          "VideogameId": 3636,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "For Honor",
+        "VideogameGenre": {
+          "VideogameId": 362,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Mass Effect 2",
+        "VideogameGenre": {
+          "VideogameId": 4806,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Garry's Mod",
+        "VideogameGenre": {
+          "VideogameId": 9721,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Hitman: Absolution",
+        "VideogameGenre": {
+          "VideogameId": 5583,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Assassin’s Creed IV: Black Flag",
+        "VideogameGenre": {
+          "VideogameId": 3841,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Hellblade: Senua's Sacrifice",
+        "VideogameGenre": {
+          "VideogameId": 12536,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Fallout: New Vegas",
+        "VideogameGenre": {
+          "VideogameId": 5563,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Dishonored",
+        "VideogameGenre": {
+          "VideogameId": 4248,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "PlayerUnknown’s Battlegrounds",
+        "VideogameGenre": {
+          "VideogameId": 10142,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "The Elder Scrolls V: Skyrim Special Edition",
+        "VideogameGenre": {
+          "VideogameId": 12447,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Metal Gear Solid V: Ground Zeroes",
+        "VideogameGenre": {
+          "VideogameId": 3747,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Death Stranding",
+        "VideogameGenre": {
+          "VideogameId": 50738,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Bloodborne",
+        "VideogameGenre": {
+          "VideogameId": 3387,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Mass Effect",
+        "VideogameGenre": {
+          "VideogameId": 4166,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Dishonored 2",
+        "VideogameGenre": {
+          "VideogameId": 864,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Don't Starve Together",
+        "VideogameGenre": {
+          "VideogameId": 9882,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Control",
+        "VideogameGenre": {
+          "VideogameId": 58812,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Bastion",
+        "VideogameGenre": {
+          "VideogameId": 613,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Mad Max",
+        "VideogameGenre": {
+          "VideogameId": 3191,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Half-Life Deathmatch: Source",
+        "VideogameGenre": {
+          "VideogameId": 11935,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Borderlands: The Pre-Sequel",
+        "VideogameGenre": {
+          "VideogameId": 3543,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Just Cause 3",
+        "VideogameGenre": {
+          "VideogameId": 3017,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Mortal Kombat X",
+        "VideogameGenre": {
+          "VideogameId": 108,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Just Cause 2",
+        "VideogameGenre": {
+          "VideogameId": 4513,
+          "GenreName": "action"
+        }
+      },
+      {
+        "name": "Grand Theft Auto: Vice City",
+        "VideogameGenre": {
+          "VideogameId": 430,
+          "GenreName": "action"
+        }
+      }
+    ]
+  },
+  {
+    "name": "puzzle",
+    "Videogames": [
+      {
+        "name": "Portal 2",
+        "VideogameGenre": {
+          "VideogameId": 4200,
+          "GenreName": "puzzle"
+        }
+      },
+      {
+        "name": "Portal",
+        "VideogameGenre": {
+          "VideogameId": 13536,
+          "GenreName": "puzzle"
+        }
+      },
+      {
+        "name": "Limbo",
+        "VideogameGenre": {
+          "VideogameId": 1030,
+          "GenreName": "puzzle"
+        }
+      },
+      {
+        "name": "Half-Life 2: Episode Two",
+        "VideogameGenre": {
+          "VideogameId": 19709,
+          "GenreName": "puzzle"
+        }
+      },
+      {
+        "name": "Half-Life",
+        "VideogameGenre": {
+          "VideogameId": 18080,
+          "GenreName": "puzzle"
+        }
+      }
+    ]
+  }
+]

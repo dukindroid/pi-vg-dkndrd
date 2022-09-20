@@ -8,6 +8,7 @@ const parsePage = (page) => {
   return page.results.map((el) => { 
     const buffer = {
       id: el.id,
+      img: el.background_image,
       name: el.name, 
       description: "%%description placeholder%%",
       released: el.released, 

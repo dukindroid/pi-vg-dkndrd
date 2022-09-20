@@ -5,11 +5,15 @@ class Videogame extends Model {};
 
 Videogame.init({
   id: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
+    type: DataTypes.INTEGER,
+    // defaultValue: DataTypes.UUIDV4,
     allowNull : false,
-    unique: true,
+    unique: 'coso',
     primaryKey : true
+  },
+  isLocal: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
   name: {
     type: DataTypes.STRING,

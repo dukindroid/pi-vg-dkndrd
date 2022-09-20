@@ -6,5 +6,6 @@ const videogame = express.Router();
 // GET /videogame/{idVideogame} Detalle de {idVideogame} 
 
 videogame.route('/')
+  .post()
 
 module.exports = videogame;

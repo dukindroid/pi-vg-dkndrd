@@ -1,12 +1,14 @@
 // const consolog = require('debug')('dev');
 const {Sequelize} = require('sequelize');
 const sequelize = require('./db/index')
+const consolog = require('debug')('dev');
 const {Videogame, Genre} = require('./models/index');
 const genresSeed = require('./models/seed/genresSeed');
 const videogamesSeed = require('./models/seed/videogamesSeed');
 // const { Query, QueryAndCount } = require('./controllers/videogameController');
 const QueryByGenre = require('./controllers/genresController');
 const db = require('./db/index');
+
 /*----------------------------------------------------------------
       Initial load
 ----------------------------------------------------------------*/
@@ -14,12 +16,12 @@ const db = require('./db/index');
   async () => {
   
   
-  console.log("Cargando datos iniciales...");
+  consolog("Cargando datos iniciales...");
 
   await sequelize.sync({force: true});
   // consolog('Conexión a posgres exitosa!')  
   // Bulk Create 'Genres' table:
-  console.log("Cargando Generos...");
+  consolog("Cargando Generos...");
 
   await Promise.all( genresSeed.map( async (singleGenre) => 
     await Genre.create({
@@ -28,11 +30,12 @@ const db = require('./db/index');
   ));
     
   // Bulk Create 'Videogame' table:
-  console.log("Cargando Videogames...");
+  consolog("Cargando Videogames...");
   var algo = false;
   await Promise.all( videogamesSeed.map( async ( oneGame ) => {
     const {
-      // id,
+      id,
+      img,
       name, 
       description, 
       released, 
@@ -42,32 +45,33 @@ const db = require('./db/index');
     } = oneGame;
     
     const newVideogame = await Videogame.create({
-      // id,
+      id,
+      img,
       name, 
       description, 
       released, 
       rating, 
       platforms 
     });
-    // console.log("Hemos creado este videogame: ")
-    // console.log(newVideogame.toJSON());
+    // consolog("Hemos creado este videogame: ")
+    // consolog(newVideogame.toJSON());
 
     // Fill VideogameGenre n:n associations table:
     if (!algo) {
-      console.log("Creando tabla intermedia...");
+      consolog("Creando tabla intermedia...");
       algo = true;
     }
 
     await Promise.all( 
       genres.map( async ( genre ) => {
-        await newVideogame.addGenre( genre, {
+        await newVideogame.addGenre( String( genre ).toLowerCase(), {
           through: 'VideogameGenre' 
         })
       })
     )
   }));
   
-if (parseInt(await Videogame.count()) == 100) console.log("Carga exitosa.")
+if (parseInt(await Videogame.count()) == 100) consolog("Carga exitosa.")
 // console.log("Estos videogames tenemos: " + await Videogame.count());
 sequelize.close();
 })();
