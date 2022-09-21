@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 // import React from 'react'
 import HomeHeader from './HomeHeader'
 // import WhiteContainer from './WhiteContainer'
@@ -6,19 +6,23 @@ import Videogames from './Videogames'
 import WhiteContainer from './WhiteContainer'
 import Paginator from './Paginator'
 const home = () => {
+  // useEffect(async () => {
+  //   const genres = await fetch('http://localhost:3001/genres');
+  // }, [])
   return (
     <>
       <h1>
         Henry PI: Videogames
       </h1>
-        <WhiteContainer title="container::HomeHeader" >
-          <p>Acá iría algún texto y los filtros. Abajo el grid de Videogames.</p>
-          <HomeHeader />
-        </WhiteContainer>
-        <WhiteContainer title="container::Videogames">
-          <Videogames />
-        </WhiteContainer>
-        <Paginator />
+      <WhiteContainer title="container::HomeHeader" >
+        <p>Acá iría algún texto y los filtros. Abajo el grid de Videogames.</p>
+        <p>Esto es genres: </p>
+        <HomeHeader />
+      </WhiteContainer>
+      <WhiteContainer title="container::Videogames">
+        <Videogames />
+      </WhiteContainer>
+      <Paginator />
     </>
   )
 }

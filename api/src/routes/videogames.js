@@ -16,12 +16,14 @@ const { Query } = require('../controllers/videogameController')
 // };
 // Le pasamos a la funcioncita Query() el req.query tal como viene...
 // Y listo, ya está! Nos devuelve búsquedas, filtrados y hasta paginado.
+
 videogames.route('/')
   .get(async (req, res) => {
     console.log(`Request GET a /videogames: ${JSON.stringify(req.query)}`)
     const resultado = await Query(req.query)
     res.status(200).json(resultado.map(el => `${el.name} ${el.rating}`))
   })
+
   // POST /videogames Crear videogame
   .post(async (req, res) => {
     console.log(`Request POST a /videogames: ${JSON.stringify(req.body)}`)

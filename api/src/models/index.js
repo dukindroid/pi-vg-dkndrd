@@ -1,10 +1,10 @@
-const Videogame = require('./Videogame');
-const Genre = require('./Genre');
-const { QueryAndCount, Query } = require('../controllers/videogameController');
-const QueryByGenre = require('../controllers/genresController');
+const Videogame = require('./Videogame')
+const Genre = require('./Genre')
+const { QueryAndCount, Query } = require('../controllers/videogameController')
+const QueryByGenre = require('../controllers/genresController')
 
-Videogame.belongsToMany( Genre, { through: 'VideogameGenre', timestamps: false })
-Genre.belongsToMany( Videogame, { through: 'VideogameGenre', timestamps: false })
+Videogame.belongsToMany(Genre, { through: 'VideogameGenre', timestamps: false })
+Genre.belongsToMany(Videogame, { through: 'VideogameGenre', timestamps: false })
 
 module.exports = {
   Videogame,

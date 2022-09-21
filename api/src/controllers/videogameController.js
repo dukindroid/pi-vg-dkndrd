@@ -31,19 +31,19 @@ const TAMANIO_PAGINA = 15
   // Tests:
   (async () => {
   db.sync();
-  const config = {
-  search: 'limbo',
-    filter: 'name',
-    order: '+',
-    page: 1
-  }
   let rows = Query(config)
   let {count, rows} = await QueryAndCount(config);
   console.log(`Se encontraron: ${count} videojuegos:`);
   console.log(await (await rows).map(el=>el.name))
-  })();
-  */
+})();
+*/
 
+const config = {
+  // search: 'limbo',
+  // filter: 'name',
+  // order: '+',
+  page: 1
+}
 const buscar = ({ search }) => {
   return search ? { where: { name: { [Op.iLike]: search } } } : null
 }

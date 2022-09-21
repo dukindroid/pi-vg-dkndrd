@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-// import React from 'react'
+// import {useEffect} from 'react'
 // import PropTypes from 'prop-types'
 
 const Videogame = (props) => {
@@ -28,4 +28,4 @@ export default Videogame
       </WhiteContainer>
         <Videogame title="1ero" subtitle="vg.name" content="eque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"/>
         <Videogame title="3ro" subtitle="vg.name" content="eque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit" />
-        */
+*/
