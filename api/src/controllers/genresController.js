@@ -1,18 +1,36 @@
-const Videogame = require('../models/Videogame')
-const Genre = require('../models/Genre')
+// const Videogame = require('../models/Videogame')
+// const Genre = require('../models/Genre')
+const { Videogame, Genre } = require('../models/index')
 // const consolog = require('debug')('dev')
 
 const QueryByGenre = async (which) => {
-  const juegosPorGenero = await Videogame.findByPk(which, {
+  const generoPorJuego = await Genre.findByPk(which, {
     include: {
-      model: Genre,
+      model: Videogame,
       attributes: ['name']
-    },
-    limit: 1
+    }
   })
   // consolog(`Desde genresController: Recibí ${which} mando: ${JSON.stringify(juegosPorGenero)}`)
-  return (await juegosPorGenero).toJSON()
+  return generoPorJuego
   // .Videogames.map(videogame => videogame.name) // .toJSON().Videogames.map(el => el.name)
 }
+// const coso = QueryByGenre('action')
 
 module.exports = QueryByGenre
+/*
+const {Country, Activity} = require('../models/index')
+
+const QueryByActivity = async (actividad) =>{
+  const actividadPorPais = await Activity.findByPk(actividad, {
+    include: { 
+      model: Country, 
+      attributes: ['name']
+    }  
+  })
+  return actividadPorPais 
+}
+// console.log(QueryByActivity('nadar')) //?
+
+module.exports = QueryByActivity
+
+*/
