@@ -7,7 +7,7 @@ const consolog = require('debug')('dev')
 const QueryByGenre = require('../controllers/genresController')
 // const { REAL } = require('sequelize')
 
-// Genre.QueryByGenre('Action');
+// Genre.QueryByGenre('Action'); 
 // Devuelve un arreglo con todos los 'genres'
 genres.route('/')
   .get(async (req, res) => {

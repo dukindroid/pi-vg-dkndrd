@@ -10,7 +10,7 @@ const Select = (props) => {
           {props.children}
         </select>
       </div>
-      <button type="button" className="nes-btn is-inline">+</button>
+      {/* <button type="button" className="nes-btn is-inline">+</button> */}
     </div>
   )
 }

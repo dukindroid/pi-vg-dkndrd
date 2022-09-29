@@ -10,12 +10,14 @@ import { getVideogames, getAllGenres } from '../redux/actions'
 // import { Link } from 'react-router-dom'
 import Videogame from './Videogame'
 import Select from './Select'
-
+import Paginator from './Paginator'
 import WhiteContainer from './WhiteContainer'
 // import genres from '../../../api/src/routes/genres'
 // import Paginator from './Paginator'
+import NavWrapper from './NavWrapper'
 
-const Home = () => {
+const Home = (props) => {
+  // const queryId = props.match.params.id
   const videogames = useSelector(state => state.videogames)
   const genresArray = useSelector(state => state.genres)
   const dispatch = useDispatch()
@@ -26,19 +28,36 @@ const Home = () => {
   }, [dispatch])
 
   return (<>
+    <NavWrapper>
+
     <h1>Henry PI: Videogames </h1>
-    <WhiteContainer title="container::HomeHeader" >
-      <p>Acá iría algún texto y los filtros. Abajo el grid de Videogames.</p>
-      <Select label="Género: ">{
-        genresArray.map((unGenero, key) => {
-          return (
-            <option className="is-inline" key={key} value={key}>
-              {unGenero}
-            </option>)
-        })
-      }</Select>
+    <WhiteContainer>
+      <div className="nes-field nes-select is-inline is-dark">
+        <Select label="Género: ">
+          <option className="is-inline" defaultValue>Elige...</option>){
+            genresArray.map((unGenero, key) => {
+              return (
+                <option className="is-inline" key={key} value={key}>
+                {unGenero}
+              </option>)
+            })
+          }</Select>
+          <button type="button" className="nes-btn is-inline">+</button>
+      </div>
+      <div className="nes-field is-inline is-dark">
+        <Select className="nes-select is-inline is-dark" label="Filtrar por: ">
+          <option className="is-inline" value='coso' defaultValue >Orden alfabético</option>)
+          <option className="is-inline" value='coso'>Rating</option>)
+          <option className="is-inline" value='coso'>Origen</option>)
+        </Select>
+        <button type="button" className="nes-btn is-inline">↗</button>
+        <button type="button" className="nes-btn is-inline">↘</button>
+      </div>
     </WhiteContainer>
-    <WhiteContainer title="container::Videogames" >
+    <Paginator />
+    <WhiteContainer >
+      <div className="basic-grid">
+
       {
         videogames && videogames.map((el) => {
           return (
@@ -48,13 +67,14 @@ const Home = () => {
               img={el.img}
               genres={el.genres}
               key= {el.id}
-            />
+              />
           )
         })
       }
+      </div>
     </WhiteContainer>
-    </>
-  )
+  </NavWrapper>
+  </>)
 }
 // }
 

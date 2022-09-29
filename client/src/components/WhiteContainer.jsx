@@ -5,7 +5,7 @@ const WhiteContainer = (props) => {
   const { title } = props
   return (<>
     <h3 className="title">{title}</h3>
-    <div className="nes-container is-dark with-title basic-grid">
+    <div className="nes-container is-dark with-title">
       {props.children}
     </div>
   </>)

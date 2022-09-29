@@ -14,7 +14,7 @@ const createVG = () => {
       <p>Estas son las instrucciones para crear un Videogame. Presiona las teclas para hacer algo y así. Despues pícale a otro botón y mueve el mouse y listo.</p>
       <p>Here be dragons:</p>
     </WhiteContainer>
-    <WhiteContainer title="controlled::Form" >
+    <WhiteContainer >
       <Input label="Nombre: " name="name" />
       <Textarea />
       <Input label="Fecha de lanzamiento: " name="release" inline="true" />

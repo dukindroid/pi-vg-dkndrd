@@ -15,9 +15,7 @@ const App = () => {
     <Route path={'/videogames/create'} >
     <NavWrapper ><CreateVG /></NavWrapper>
     </Route>
-    <Route path={'/home'} >
-    <NavWrapper><Home /></NavWrapper>
-    </Route>
+    <Route path={'/home/'} component={Home} />
     <Route path={'/'} exact component={Splash} />
   </>)
 }
