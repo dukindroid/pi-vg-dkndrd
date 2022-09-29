@@ -3,12 +3,12 @@
 
 const WhiteContainer = (props) => {
   const { title } = props
-  return (
-    <p className="nes-container is-dark with-title">
-      <h3 className="title">{title}</h3>
+  return (<>
+    <h3 className="title">{title}</h3>
+    <div className="nes-container is-dark with-title basic-grid">
       {props.children}
-    </p>
-  )
+    </div>
+  </>)
 }
 
 // WhiteContainer.PropTypes = {

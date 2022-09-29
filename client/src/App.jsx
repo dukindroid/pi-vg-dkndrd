@@ -1,27 +1,25 @@
-import './App.css'
-import Nav from './components/Nav'
+/* eslint-disable react/prop-types */
+// import './App.css'
 import { Route } from 'react-router-dom'
 import Home from './components/Home'
 import DetailVG from './components/DetailVG'
 import CreateVG from './components/CreateVG'
+import Splash from './components/Splash'
+import NavWrapper from './components/NavWrapper'
 // import WhiteContainer from './components/WhiteContainer'
 
 const App = () => {
-  return (
-    <>
-      <Nav />
-      <div className="App nes-container with-title">
-      <Route path={'/videogame'} component={DetailVG} />
-      <Route path={'/videogames/create'}>
-        <CreateVG />
-      </Route>
-      <Route path={'/'} exact>
-        <Home />
-      </Route>
-      {/* <Route path={'/videogame/create'} component={CreateVG} /> */}
-      </div>
-    </>
-  )
+  return (<>
+
+    <Route path={'/videogame/:id'} component={DetailVG} />
+    <Route path={'/videogames/create'} >
+    <NavWrapper ><CreateVG /></NavWrapper>
+    </Route>
+    <Route path={'/home'} >
+    <NavWrapper><Home /></NavWrapper>
+    </Route>
+    <Route path={'/'} exact component={Splash} />
+  </>)
 }
 
 export default App

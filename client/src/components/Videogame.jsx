@@ -1,16 +1,22 @@
 /* eslint-disable react/prop-types */
 // import {useEffect} from 'react'
 // import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const Videogame = (props) => {
-  const { title, subtitle, content } = props
+  console.dir(props)
+  const { id, name, img, key } = props
   return (
     <>
-      <div className="nes-container is-dark with-title is-primary" >
-        <h3 className="title">{title}</h3>
-        <h2>{subtitle}</h2>
-        <p className="content">{content}</p>
-      </div>
+      <Link to={'/videogame/' + id } >
+        <div className="nes-container is-dark with-title is-primary" id={key} >
+          <h3 className="title">{name}</h3>
+          {/* <p className="content">{content}</p> */}
+          <div className="gameImg">
+            <img src={img} alt="imagen de la bandera de {name}" />
+          </div>
+        </div>
+      </Link>
     </>
   )
 }

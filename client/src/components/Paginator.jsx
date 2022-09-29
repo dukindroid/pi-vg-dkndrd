@@ -7,3 +7,6 @@ const Paginator = () => {
 }
 
 export default Paginator
+/*
+<a href={'?page=' + (page - 1)}>
+*/

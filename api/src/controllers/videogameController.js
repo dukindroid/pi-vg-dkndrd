@@ -1,6 +1,7 @@
 // const Videogame = require("../models/index");
 const Videogame = require('../models/Videogame')
-
+const Genre = require('../models/Genre')
+// const db = require('../db')
 const { Op } = require('sequelize')
 const TAMANIO_PAGINA = 15
 
@@ -38,11 +39,17 @@ const TAMANIO_PAGINA = 15
 })();
 */
 
-const config = {
-  // search: 'limbo',
-  // filter: 'name',
-  // order: '+',
-  page: 1
+// const GenreByVideogame2 = async (id) => await db.models
+
+const GenreByVideogame = async (actividad) => {
+  const GeneroPorVideogame = await Genre.findByPk(actividad, {
+    include: {
+      model: Videogame,
+      attributes: ['name']
+    }
+  })
+  console.log(`La funcioncita devuelve: ${JSON.stringify(GeneroPorVideogame)}`)
+  return GeneroPorVideogame
 }
 const buscar = ({ search }) => {
   return search ? { where: { name: { [Op.iLike]: search } } } : null
@@ -65,6 +72,7 @@ const QueryAndCount = async (settings) => {
   }
   return await Videogame.findAndCountAll(config)
 }
+// LA FUNCIONCITA
 const Query = async (settings) => {
   const config = {
     ...buscar(settings),
@@ -73,6 +81,7 @@ const Query = async (settings) => {
   }
   return await Videogame.findAll(config)
 }
+/*
 const settings = {
   search: 'Bio',
   filter: 'name',
@@ -81,8 +90,9 @@ const settings = {
 }
 const consulta = Query(settings)
 console.log(consulta)
-
+*/
 module.exports = {
   Query,
-  QueryAndCount
+  QueryAndCount,
+  GenreByVideogame
 }

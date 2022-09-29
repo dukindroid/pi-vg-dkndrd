@@ -21,7 +21,15 @@ videogames.route('/')
   .get(async (req, res) => {
     console.log(`Request GET a /videogames: ${JSON.stringify(req.query)}`)
     const resultado = await Query(req.query)
-    res.status(200).json(resultado.map(el => `${el.name} ${el.rating}`))
+    res.status(200).json(resultado.map(el => {
+      const obj = {
+        id: el.id,
+        name: el.name,
+        img: el.img,
+        genres: el.genres
+      }
+      return obj
+    }))
   })
 
   // POST /videogames Crear videogame

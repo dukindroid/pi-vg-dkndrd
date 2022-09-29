@@ -1,10 +1,11 @@
-// const consolog = require('debug')('dev');
-// const {Sequelize} = require('sequelize');
+// const { Sequelize } = require('sequelize');
 const sequelize = require('./db/index')
 const consolog = require('debug')('dev')
 const { Videogame, Genre } = require('./models/index')
 const genresSeed = require('./models/seed/genresSeed')
-const videogamesSeed = require('./models/seed/videogamesSeed');
+const videogamesSeed = require('./models/seed/videogamesSeed')
+const QueryByGenre = require('./controllers/genresController');
+// const GenresArray = require('../../client/src/components/GenresArray');
 // const { Query, QueryAndCount } = require('./controllers/videogameController');
 // const QueryByGenre = require('./controllers/genresController');
 // const db = require('./db/index');
@@ -46,7 +47,8 @@ const videogamesSeed = require('./models/seed/videogamesSeed');
         description,
         released,
         rating,
-        platforms
+        platforms,
+        genres
       })
       // consolog("Hemos creado este videogame: ")
       // consolog(newVideogame.toJSON());
@@ -68,5 +70,7 @@ const videogamesSeed = require('./models/seed/videogamesSeed');
 
     if (parseInt(await Videogame.count()) === 100) consolog('Carga exitosa.')
     // console.log("Estos videogames tenemos: " + await Videogame.count());
-    sequelize.close()
+    // sequelize.close()
+
+    console.log(JSON.stringify(await QueryByGenre('puzzle')))
   })()

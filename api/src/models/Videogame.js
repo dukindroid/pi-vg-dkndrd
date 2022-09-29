@@ -7,13 +7,13 @@ Videogame.init({
   id: {
     type: DataTypes.INTEGER,
     // defaultValue: DataTypes.UUIDV4,
-    allowNull : false,
+    allowNull: false,
     unique: 'coso',
-    primaryKey : true
+    primaryKey: true
   },
   isLocal: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false,
+    defaultValue: false
   },
   name: {
     type: DataTypes.STRING,
@@ -27,17 +27,20 @@ Videogame.init({
     type: DataTypes.DATE
   },
   rating: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.FLOAT
   },
   platforms: {
+    type: DataTypes.ARRAY(DataTypes.STRING)
+  },
+  genres: {
     type: DataTypes.ARRAY(DataTypes.STRING)
   },
   img: {
     type: DataTypes.STRING
   }
-},{
+}, {
   sequelize,
   timestamps: false
 })
 
-module.exports = Videogame;
+module.exports = Videogame

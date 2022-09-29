@@ -1,42 +1,32 @@
 // import axios from 'axios'
-export const CONST = {
-  GET_ALL_GENRES: 'GET_ALL_GENRES',
-  GET_VIDEOGAME_DETAIL: 'GET_VIDEOGAME_DETAIL',
-  GET_VIDEOGAMES: 'GET_VIDEOGAMES',
-  CREATE_VIDEOGAME: 'CREATE_VIDEOGAME',
-  DELETE_VIDEOGAME: 'DELETE_VIDEOGAME'
+export const getAllGenres = () => async (dispatch) => {
+  // const res = await axios.get('localhost:3001/genres')
+  const res = await (await fetch('http://localhost:3040/genres')).json()
+  console.log('Generos desde el reducer')
+  console.dir(res)
+  dispatch({
+    type: GET_ALL_GENRES,
+    payload: res
+  })
 }
 
-export const getAllGenres = () => {
-  async (dispatch) => {
-    const res = await fetch.get('http://localhost:3001/genres')
-    dispatch({
-      type: CONST.GET_ALL_GENRES,
-      payload: res.data
-    })
-  }
+export const getVideogames = (query) => async (dispatch) => {
+  console.log(`Bueno, voy a pedir esta dirección por fetch: ${('http://localhost:3040/videogames' + query)}`)
+  const res = await (await fetch('http://localhost:3040/videogames' + query)).json()
+  // console.log(res)
+  dispatch({ type: GET_VIDEOGAMES, payload: res })
 }
 
-export const getVideogameDetail = (payload) => ({
-  type: CONST.GET_VIDEOGAME_DETAIL,
-  payload
-})
-
-export const getVideogames = async (payload) => ({
-  const res = await fetch.get('http://localhost:3001/videog')
-  type: CONST.GET_VIDEOGAMES,
-  payload
-})
-
-export const getAllVideogames = () => {
-  async (dispatch) => {
-    const res = await fetch.get('http://localhost:3001/videogames')
-    dispatch({
-      type: CONST.GET_ALL_GENRES,
-      payload: res.data
-    })
-  }
+export const getVideogameDetail = (id) => async (dispatch) => {
+  const res = await (await fetch('http://localhost:3040/videogame/' + id)).json()
+  console.log('Action: Voy a tratar de hacer un fetch de la ruta detalle del back')
+  dispatch({ type: GET_VIDEOGAME_DETAIL, payload: res })
 }
+export const GET_ALL_GENRES = 'GET_ALL_GENRES'
+export const GET_VIDEOGAME_DETAIL = 'GET_VIDEOGAME_DETAIL'
+export const GET_VIDEOGAMES = 'GET_VIDEOGAMES'
+export const CREATE_VIDEOGAME = 'CREATE_VIDEOGAME'
+// export const DELETE_VIDEOGAME = 'DELETE_VIDEOGAME'
 
 // export const getHouse = (id) => async dispatch => {
 //   const res = await axios.get(`http://localhost:3000/houses/${id}`)

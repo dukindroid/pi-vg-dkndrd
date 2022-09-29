@@ -1,17 +1,16 @@
-const rating = () => {
+/* eslint-disable react/prop-types */
+const Rating = (props) => {
+  const { size } = props
   return (
-    <div className="lists">
-      <ul className="nes-list is-circle">
-          <li>
-            <i className="nes-icon is-small star is-half"></i>
-            <i className="nes-icon is-small is-transparent star"></i>
-            <i className="nes-icon is-small is-transparent star"></i>
-            <i className="nes-icon is-small is-transparent star"></i>
-            <i className="nes-icon is-small is-transparent star"></i>
-        </li>
-      </ul>
+    <div className="genre-select nes-field is-inline">
+      <label htmlFor="inline_field">Rating:</label>
+      <i className={'nes-icon is-' + size + ' star is-half'} ></i>
+      <i className={'nes-icon is-' + size + ' is-transparent star'} ></i>
+      <i className={'nes-icon is-' + size + ' is-transparent star'} ></i>
+      <i className={'nes-icon is-' + size + ' is-transparent star'} ></i>
+      <i className={'nes-icon is-' + size + ' is-transparent star'} ></i>
     </div>
   )
 }
 
-export default rating
+export default Rating
