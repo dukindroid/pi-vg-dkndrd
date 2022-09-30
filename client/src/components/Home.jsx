@@ -1,63 +1,59 @@
 /* eslint-disable react/prop-types */
-// import { getAllVideogames } from '../redux/actions'
-// import { Component } from 'react'
-// import { connect } from 'react-redux'
 // import WhiteContainer from './WhiteContainer'
 // import HomeHeader from './HomeHeader'
-import { useEffect } from 'react'
+// import { Link } from 'react-router-dom'
+import DropDownFilters from './DropdownFilters'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getVideogames, getAllGenres } from '../redux/actions'
-// import { Link } from 'react-router-dom'
+import { useLocation, withRouter } from 'react-router-dom'
 import Videogame from './Videogame'
-import Select from './Select'
 import Paginator from './Paginator'
 import WhiteContainer from './WhiteContainer'
-// import genres from '../../../api/src/routes/genres'
-// import Paginator from './Paginator'
 import NavWrapper from './NavWrapper'
 
+function useQuery () {
+  const { search } = useLocation()
+  return React.useMemo(() => new URLSearchParams(search), [search])
+}
+
 const Home = (props) => {
-  // const queryId = props.match.params.id
+  const query = useQuery()
+  let page = query.get('page')
+  if (page === undefined) {
+    console.log('NOS ESTÁN CAGANDO, TENÉS QUE DARTE CUENTA!!!')
+    page = 1
+  }
+  console.log('La página: ' + page)
+
   const videogames = useSelector(state => state.videogames)
   const genresArray = useSelector(state => state.genres)
+
   const dispatch = useDispatch()
+
   useEffect(() => {
-    dispatch(getVideogames('?page=1'))
+    dispatch(getVideogames('?page=' + page))
     dispatch(getAllGenres())
     console.dir(genresArray)
-  }, [dispatch])
+  }, [dispatch, query])
+
+  const CosoParaLosFiltros = withRouter(DropDownFilters)
 
   return (<>
     <NavWrapper>
-
     <h1>Henry PI: Videogames </h1>
+
+    {/* Header: Selects para filtrar y así */}
     <WhiteContainer>
-      <div className="nes-field nes-select is-inline is-dark">
-        <Select label="Género: ">
-          <option className="is-inline" defaultValue>Elige...</option>){
-            genresArray.map((unGenero, key) => {
-              return (
-                <option className="is-inline" key={key} value={key}>
-                {unGenero}
-              </option>)
-            })
-          }</Select>
-          <button type="button" className="nes-btn is-inline">+</button>
-      </div>
-      <div className="nes-field is-inline is-dark">
-        <Select className="nes-select is-inline is-dark" label="Filtrar por: ">
-          <option className="is-inline" value='coso' defaultValue >Orden alfabético</option>)
-          <option className="is-inline" value='coso'>Rating</option>)
-          <option className="is-inline" value='coso'>Origen</option>)
-        </Select>
-        <button type="button" className="nes-btn is-inline">↗</button>
-        <button type="button" className="nes-btn is-inline">↘</button>
-      </div>
+      <CosoParaLosFiltros />
     </WhiteContainer>
+
+    {/* Paginador Chidito */}
     <Paginator />
+
+    {/* Sección principal: Basic Grid de Videogame(s) */}
     <WhiteContainer >
       <div className="basic-grid">
-
       {
         videogames && videogames.map((el) => {
           return (
@@ -73,16 +69,30 @@ const Home = (props) => {
       }
       </div>
     </WhiteContainer>
-  </NavWrapper>
-  </>)
-}
-// }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Home)
+  </NavWrapper></>)
+}
 
 export default Home
 
 /*
+
+      const Select = (props) => {
+        const { label } = props
+        return (
+          <div className="nes-field is-inline">
+            <label htmlFor="default_select">{label}</label>
+            <div className="nes-select is-inline is-dark">
+              <select required id="{label}">
+                <option value="" disabled selected hidden>Select...</option>
+                {props.children}
+              </select>
+            </div>
+            <button type="button" className="nes-btn is-inline">+</button>
+            </div>
+            )
+          }
+          export default Select
     <div className="lists">
       <ul className="nes-list is-disc">
         <li>
@@ -120,5 +130,17 @@ export default Home
   // }
 
   // render () {
-
+      <Dropdown />
+      <div className="nes-field nes-select is-inline is-dark">
+        <Dropdown label="Género: ">
+          <option className="is-inline" defaultValue={'DEFAULT'}>Elige...</option>){
+            genresArray.map((unGenero, key) => {
+              return (
+                <option className="is-inline" key={key} value={key}>
+                {unGenero}
+              </option>)
+            })
+          }</Dropdown>
+          <button type="button" className="nes-btn is-inline">+</button>
+      </div>
     */

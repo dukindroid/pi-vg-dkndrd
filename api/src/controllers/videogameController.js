@@ -48,7 +48,7 @@ const GenreByVideogame = async (actividad) => {
       attributes: ['name']
     }
   })
-  console.log(`La funcioncita devuelve: ${JSON.stringify(GeneroPorVideogame)}`)
+  // console.log(`La funcioncita devuelve: ${JSON.stringify(GeneroPorVideogame)}`)
   return GeneroPorVideogame
 }
 const buscar = ({ search }) => {
@@ -79,7 +79,11 @@ const Query = async (settings) => {
     ...filtrar(settings),
     ...paginar(settings)
   }
-  return await Videogame.findAll(config)
+  try {
+    return await Videogame.findAll(config)
+  } catch (error) {
+    console.log(error)
+  }
 }
 /*
 const settings = {

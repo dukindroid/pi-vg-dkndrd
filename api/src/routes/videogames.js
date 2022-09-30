@@ -19,17 +19,21 @@ const { Query } = require('../controllers/videogameController')
 
 videogames.route('/')
   .get(async (req, res) => {
-    console.log(`Request GET a /videogames: ${JSON.stringify(req.query)}`)
-    const resultado = await Query(req.query)
-    res.status(200).json(resultado.map(el => {
-      const obj = {
-        id: el.id,
-        name: el.name,
-        img: el.img,
-        genres: el.genres
-      }
-      return obj
-    }))
+    try {
+      console.log(`Request GET a /videogames: ${JSON.stringify(req.query)}`)
+      const resultado = await Query(req.query)
+      res.status(200).json(resultado.map(el => {
+        const obj = {
+          id: el.id,
+          name: el.name,
+          img: el.img,
+          genres: el.genres
+        }
+        return obj
+      }))
+    } catch (error) {
+      res.status(500).send(error)
+    }
   })
 
   // POST /videogames Crear videogame

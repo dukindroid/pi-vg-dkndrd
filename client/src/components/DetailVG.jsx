@@ -13,6 +13,7 @@ const obj = {
         img: el.img
       }
 */
+
 const detailVG = (props) => {
   const queryId = props.match.params.id
   // console.log('params? ')
@@ -28,12 +29,11 @@ const detailVG = (props) => {
   return (
   <>
     <NavWrapper >
-      <h1></h1>
       <div className="nes-container is-dark with-title">
         <p className="title">{videogameDetail.name}</p>
         <p>Fecha de lanzamiento: {videogameDetail.released}</p>
-        <p>Genero(s): <h1>😜</h1></p>
-          <p htmlFor="inline_field">Descripción: {videogameDetail.description}</p>
+        <p>Genero(s): 😜</p>
+        <p>Descripción: {videogameDetail.description}</p>
         <div className="nes-field">
         <p htmlFor="inline_field">Plataformas: {videogameDetail.platforms}</p>
           <label htmlFor="inline_field">Rating: {videogameDetail.rating}</label>

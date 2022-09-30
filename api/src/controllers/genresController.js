@@ -5,7 +5,7 @@ const QueryByGenre = async (actividad) => {
     include: {
       model: Videogame,
       attributes: ['name']
-    },
+    }
   })
   return generoPorVideogame
 }

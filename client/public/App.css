@@ -12,6 +12,7 @@ color: yellow;
   margin: 20px;
 }
 .gameImg {
+  
   width: auto;
   height: auto;
   padding: 0px;
@@ -19,6 +20,9 @@ color: yellow;
 }
 .gameImg img {
   width: 100%;
+  -webkit-box-shadow: inset 10px 12px 20px 9px rgba(97,97,97,1);
+  -moz-box-shadow: inset 10px 12px 20px 9px rgba(97,97,97,1);
+  box-shadow: 10px 12px 20px 9px rgba(85, 85, 85, 0.422);
 }
 .nav ul {
 list-style: none;

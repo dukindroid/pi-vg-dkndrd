@@ -3,8 +3,7 @@ import { GET_ALL_GENRES, GET_VIDEOGAMES, GET_VIDEOGAME_DETAIL } from '../actions
 const initialState = {
   videogames: [],
   genres: [],
-  videogameDetail: {},
-  page: null
+  videogameDetail: {}
 }
 
 const rootReducer = (state = initialState, action) => {

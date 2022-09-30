@@ -4,17 +4,18 @@
 import { Link } from 'react-router-dom'
 
 const Videogame = (props) => {
-  console.dir(props)
-  const { id, name, img, key } = props
+  // console.dir(props)
+  const { id, name, img, genres } = props
   return (
     <>
       <Link to={'/videogame/' + id } >
-        <div className="nes-container is-dark with-title is-primary" id={key} >
+        <div className="nes-container is-dark with-title is-primary" >
           <h3 className="title">{name}</h3>
           {/* <p className="content">{content}</p> */}
           <div className="gameImg">
             <img src={img} alt="imagen de la bandera de {name}" />
           </div>
+          <p>{genres.map(el => el + ' ')}</p>
         </div>
       </Link>
     </>
