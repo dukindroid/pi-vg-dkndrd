@@ -2,24 +2,29 @@
 export const getAllGenres = () => async (dispatch) => {
   // const res = await axios.get('localhost:3001/genres')
   const res = await (await fetch('http://localhost:3041/genres')).json()
-  console.log('Generos desde el reducer')
-  console.dir(res)
+  // console.log('Generos desde el reducer')
+  // console.dir(res)
   dispatch({
     type: GET_ALL_GENRES,
     payload: res
   })
 }
 
-export const getVideogames = (query) => async (dispatch) => {
-  console.log(`Bueno, voy a pedir esta dirección por fetch: ${('http://localhost:3041/videogames/' + query)}`)
-  const res = await (await fetch('http://localhost:3041/videogames/' + query)).json()
+export const getVideogames = (pagina, query) => async (dispatch) => {
+  console.log(`Bueno, voy a pedir esta dirección por fetch: ${('http://localhost:3041/videogames?page=' + pagina)}`)
+  let res = null
+  if (query) {
+    res = await (await fetch('http://localhost:3041/videogames?page=' + pagina + '&' + query)).json()
+  } else {
+    res = await (await fetch('http://localhost:3041/videogames?page=' + pagina)).json()
+  }
   // console.log(res)
   dispatch({ type: GET_VIDEOGAMES, payload: res })
 }
 
 export const getVideogameDetail = (id) => async (dispatch) => {
   const res = await (await fetch('http://localhost:3041/videogame/' + id)).json()
-  console.log('Action: Voy a tratar de hacer un fetch de la ruta detalle del back')
+  // console.log('Action: Voy a tratar de hacer un fetch de la ruta detalle del back')
   dispatch({ type: GET_VIDEOGAME_DETAIL, payload: res })
 }
 export const GET_ALL_GENRES = 'GET_ALL_GENRES'

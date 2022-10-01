@@ -7,8 +7,8 @@ const initialState = {
 }
 
 const rootReducer = (state = initialState, action) => {
-  console.log(`OYE! llamaste al reducer con ${action}`)
-  console.dir(action)
+  // console.log(`OYE! llamaste al reducer con ${action}`)
+  // console.dir(action)
 
   switch (action.type) {
     case GET_VIDEOGAMES:

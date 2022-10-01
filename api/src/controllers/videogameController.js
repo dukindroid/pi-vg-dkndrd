@@ -3,7 +3,7 @@ const Videogame = require('../models/Videogame')
 const Genre = require('../models/Genre')
 // const db = require('../db')
 const { Op } = require('sequelize')
-const TAMANIO_PAGINA = 15
+const TAMANIO_PAGINA = 9
 
 /*
       Controller: Filtering functions
@@ -80,6 +80,7 @@ const Query = async (settings) => {
     ...paginar(settings)
   }
   try {
+    console.dir(config)
     return await Videogame.findAll(config)
   } catch (error) {
     console.log(error)

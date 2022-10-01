@@ -2,11 +2,11 @@
 // import WhiteContainer from './WhiteContainer'
 // import HomeHeader from './HomeHeader'
 // import { Link } from 'react-router-dom'
-import DropDownFilters from './DropdownFilters'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getVideogames, getAllGenres } from '../redux/actions'
 import { useLocation, withRouter } from 'react-router-dom'
+import DropDownFilters from './DropdownPerrisimo'
 import Videogame from './Videogame'
 import Paginator from './Paginator'
 import WhiteContainer from './WhiteContainer'
@@ -18,63 +18,41 @@ function useQuery () {
 }
 
 const Home = (props) => {
-  const query = useQuery()
-  let page = query.get('page')
-  if (page === undefined) {
-    console.log('NOS ESTÁN CAGANDO, TENÉS QUE DARTE CUENTA!!!')
-    page = 1
-  }
-  console.log('La página: ' + page)
-
-  const videogames = useSelector(state => state.videogames)
-  const genresArray = useSelector(state => state.genres)
-
+  // const genresArray = useSelector(state => state.genres)
   const dispatch = useDispatch()
+  const query = useQuery()
+  const videogames = useSelector(state => state.videogames)
+  const total = 15
+  let pagina = props.location.pathname.split('/')[2]
+  if (pagina === undefined) pagina = 1
 
   useEffect(() => {
-    dispatch(getVideogames('?page=' + page))
+    dispatch(getVideogames(pagina, query.toString()))
     dispatch(getAllGenres())
-    console.dir(genresArray)
-  }, [dispatch, query])
+  }, [dispatch, props])
 
-  const CosoParaLosFiltros = withRouter(DropDownFilters)
+  const CosoParaLosFiltros = withRouter(DropDownFilters) // Enlaza el select con el select
 
   return (<>
-    <NavWrapper>
-    <h1>Henry PI: Videogames </h1>
+    <NavWrapper><h1>Henry PI: Videogames </h1>
 
     {/* Header: Selects para filtrar y así */}
-    <WhiteContainer>
-      <CosoParaLosFiltros />
-    </WhiteContainer>
+    <WhiteContainer><CosoParaLosFiltros /></WhiteContainer>
 
     {/* Paginador Chidito */}
-    <Paginator />
+    <Paginator pagina={pagina} total={total} query={query.toString()} />
 
     {/* Sección principal: Basic Grid de Videogame(s) */}
     <WhiteContainer >
-      <div className="basic-grid">
-      {
-        videogames && videogames.map((el) => {
-          return (
-            <Videogame
-              id={el.id}
-              name={el.name}
-              img={el.img}
-              genres={el.genres}
-              key= {el.id}
-              />
-          )
-        })
+      <div className="basic-grid"> {
+        videogames && videogames.map((el) => { return (<Videogame id={el.id} name={el.name} img={el.img} genres={el.genres} key= {el.id} />) })
       }
       </div>
     </WhiteContainer>
-
   </NavWrapper></>)
 }
 
 export default Home
-
 /*
 
       const Select = (props) => {
@@ -143,4 +121,5 @@ export default Home
           }</Dropdown>
           <button type="button" className="nes-btn is-inline">+</button>
       </div>
-    */
+console.log('useParams nos tiro esto: ' + props.location.pathname.split('/')[2])
+      */

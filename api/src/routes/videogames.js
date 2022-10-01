@@ -5,6 +5,7 @@ const express = require('express')
 const { Videogame } = require('../models/index')
 const videogames = express.Router()
 const { Query } = require('../controllers/videogameController')
+const { Router } = require('express')
 
 // GET /videogames?name= ; Búsqueda
 // GET /videogames: Listado de todos los videogames
@@ -20,7 +21,11 @@ const { Query } = require('../controllers/videogameController')
 videogames.route('/')
   .get(async (req, res) => {
     try {
-      console.log(`Request GET a /videogames: ${JSON.stringify(req.query)}`)
+      if (!req.params.page) {
+        console.log('página mis huevos')
+      }
+      // console.log(`Request GET a /videogames: ${JSON.stringify(req.query)}`)
+      console.log(`Request GET a /videogames/${req.params.page}`)
       const resultado = await Query(req.query)
       res.status(200).json(resultado.map(el => {
         const obj = {

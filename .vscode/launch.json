@@ -1,10 +1,24 @@
 {
   "configurations": [
     {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:3031",
+      "webRoot": "${workspaceFolder}"
+    },
+  {
+    "name": "Attach to Chrome",
+    "port": 9222,
+    "request": "attach",
+    "type": "chrome",
+    "webRoot": "${workspaceFolder}"
+  },
+    {
       "type": "pwa-chrome",
       "name": "localhost:3000",
       "request": "launch",
-      "url": "localhost:3000"
+      "url": "localhost:3031"
     }
   ]
 }
