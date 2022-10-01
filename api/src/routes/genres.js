@@ -3,19 +3,16 @@ const express = require('express')
 const genres = express.Router()
 const Genre = require('../models/Genre')
 // const Videogame = require('../models/Videogame')
-const consolog = require('debug')('dev')
 const QueryByGenre = require('../controllers/genresController')
 // const { REAL } = require('sequelize')
 
-// Genre.QueryByGenre('Action'); 
+// Genre.QueryByGenre('Action');
 // Devuelve un arreglo con todos los 'genres'
 genres.route('/')
   .get(async (req, res) => {
     const genresRequested = req.query.filter?.split(',')
     const generos = (await Genre.findAll()).map(el => el.name)
     if (!req.query.filter) {
-      consolog(`Recibí query: ${JSON.stringify(req.query)}`)
-      consolog(`Devuelvo: ${generos}`)
       // map(e => String(e.name[0]).toUpperCase() + e.name.slice(1)
       return res.status(200).json(generos)
     }

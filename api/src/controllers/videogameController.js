@@ -86,6 +86,7 @@ const Query = async (settings) => {
     console.log(error)
   }
 }
+
 /*
 const settings = {
   search: 'Bio',
@@ -96,6 +97,7 @@ const settings = {
 const consulta = Query(settings)
 console.log(consulta)
 */
+
 module.exports = {
   Query,
   QueryAndCount,
