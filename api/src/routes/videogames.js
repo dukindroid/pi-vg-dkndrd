@@ -4,8 +4,8 @@ const express = require('express')
 // const Videogame = require('../models/Videogame'
 const { Videogame } = require('../models/index')
 const videogames = express.Router()
-const { Query } = require('../controllers/videogameController')
-const { Router } = require('express')
+const { Query } = require('../controllers/videogameController') 
+// const { Router } = require('express')
 
 // GET /videogames?name= ; Búsqueda
 // GET /videogames: Listado de todos los videogames
@@ -18,14 +18,14 @@ const { Router } = require('express')
 // Le pasamos a la funcioncita Query() el req.query tal como viene...
 // Y listo, ya está! Nos devuelve búsquedas, filtrados y hasta paginado.
 
-videogames.route('/')
+videogames.route('/') 
   .get(async (req, res) => {
     try {
-      if (!req.params.page) {
-        console.log('página mis huevos')
-      }
+      // if (!req.params.page) {
+      //   console.log('página mis huevos')
+      // }
       // console.log(`Request GET a /videogames: ${JSON.stringify(req.query)}`)
-      console.log(`Request GET a /videogames/${req.params.page}`)
+      console.log(`Request GET a /videogames/ con ${JSON.stringify(req.query)}`)
       const resultado = await Query(req.query)
       res.status(200).json(resultado.map(el => {
         const obj = {
@@ -44,11 +44,15 @@ videogames.route('/')
   // POST /videogames Crear videogame
   .post(async (req, res) => {
     console.log(`Request POST a /videogames: ${JSON.stringify(req.body)}`)
-    const { name, description, released, rating, platforms, genres } = req.body
-    const newVideogame = await Videogame.create({ name, description, released, rating, platforms })
-    genres.map(async (genre) => {
-      await newVideogame.addGenre(genre, { through: 'VideogameGenre' })
-    })
-    res.status(200).json({ msg: `Se creó: ${newVideogame.name}` })
+    try {
+      const { name, description, released, rating, platforms, genres } = req.body
+      const newVideogame = await Videogame.create({ name, description, released, rating, platforms, genres })
+      genres.map(async (genre) => {
+        await newVideogame.addGenre(genre, { through: 'VideogameGenre' })
+      })
+      res.status(200).json({ msg: `Se creó: ${newVideogame.name}` })
+    } catch (error) {
+      console.log(`Alguien quizo crear mal un videogame: ${error} Stack call: ${error.stack} `)
+    }
   })
 module.exports = videogames

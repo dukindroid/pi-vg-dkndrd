@@ -1,4 +1,4 @@
-import { GET_ALL_GENRES, GET_VIDEOGAMES, GET_VIDEOGAME_DETAIL } from '../actions'
+import { CREATE_VIDEOGAME, GET_ALL_GENRES, GET_VIDEOGAMES, GET_VIDEOGAME_DETAIL } from '../actions'
 
 const initialState = {
   videogames: [],
@@ -26,6 +26,9 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         genres: action.payload
       }
+    case CREATE_VIDEOGAME:
+      console.log(action.payload)
+      return
     default: return state
   };
 }

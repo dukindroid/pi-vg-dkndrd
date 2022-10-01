@@ -1,9 +1,31 @@
 // import axios from 'axios'
+
+export const createVideogame = (videogame) => async (dispatch) => {
+  try {
+    const response = await fetch('http://127.0.0.1:3041/videogames', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(videogame)
+
+    })
+    console.log(response.json())
+    dispatch({
+      type: CREATE_VIDEOGAME,
+      payload: response.json()
+    })
+  } catch (error) {
+    console.log(JSON.stringify(error))
+  }
+}
+
 export const getAllGenres = () => async (dispatch) => {
   // const res = await axios.get('localhost:3001/genres')
-  const res = await (await fetch('http://localhost:3041/genres')).json()
-  // console.log('Generos desde el reducer')
-  // console.dir(res)
+  console.log('Despacharé los géneros desde las actions:')
+  const res = await (await fetch('http://127.0.0.1:3041/genres')).json()
+  console.dir(res)
   dispatch({
     type: GET_ALL_GENRES,
     payload: res
@@ -11,12 +33,12 @@ export const getAllGenres = () => async (dispatch) => {
 }
 
 export const getVideogames = (pagina, query) => async (dispatch) => {
-  console.log(`Bueno, voy a pedir esta dirección por fetch: ${('http://localhost:3041/videogames?page=' + pagina)}`)
+  console.log(`Bueno, voy a pedir esta dirección por fetch: ${('http://127.0.0.1:3041/videogames?page=' + pagina)}`)
   let res = null
   if (query) {
-    res = await (await fetch('http://localhost:3041/videogames?page=' + pagina + '&' + query)).json()
+    res = await (await fetch('http://localhost:3041/videogames?page=' + pagina + '&' + query, { mode: 'cors' })).json()
   } else {
-    res = await (await fetch('http://localhost:3041/videogames?page=' + pagina)).json()
+    res = await (await fetch('http://127.0.0.1:3041/videogames?page=' + pagina, { method: 'GET' }, { headers: { 'Content-Type': 'application/json' } })).json()
   }
   // console.log(res)
   dispatch({ type: GET_VIDEOGAMES, payload: res })

@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
 const Router = require('./routes')
-const consolog = require('debug')('dev')
+// const consolog = require('debug')('dev')
 
 app.use(function (req, res, next) {
-  consolog(new Date()`Recibí query: ${JSON.stringify(req.query)}`)
-  //consolog(`Devuelvo: ${generos}`)
+  // consolog(new Date()`Recibí query: ${JSON.stringify(req.query)}`)
+  // consolog(`Devuelvo: ${generos}`)
 
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', '*')

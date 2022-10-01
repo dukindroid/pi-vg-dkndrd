@@ -20,7 +20,7 @@ genres.route('/')
     for (const oneGenre of genresRequested) {
       const oneQuery = await QueryByGenre(oneGenre)
       const esteArrayDeGames = oneQuery.Videogames.map((videogame) => videogame.name)
-      consolog(`${JSON.stringify(oneGenre)} devolvió: ${esteArrayDeGames}`)
+      // consolog(`${JSON.stringify(oneGenre)} devolvió: ${esteArrayDeGames}`)
       const pushedElement = {}
       pushedElement[oneGenre] = esteArrayDeGames
       algo.push(pushedElement)

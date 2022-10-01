@@ -23,7 +23,7 @@ const Paginator = ({ pagina, total, query }) => {
   for (let index = 1; index < total; index++) {
     array1[index] = index
   }
-  console.log('args de pagntr: ' + pagina + ' ' + total + ' ' + query)
+  // console.log('args de pagntr: ' + pagina + ' ' + total + ' ' + query)
   return (
     <div className="nes-container is-dark is-centered card">
     {

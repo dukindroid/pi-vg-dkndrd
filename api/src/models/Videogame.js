@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../db');
+const { Model, DataTypes } = require('sequelize')
+const sequelize = require('../db')
 
 class Videogame extends Model {};
 
@@ -7,8 +7,7 @@ Videogame.init({
   id: {
     type: DataTypes.INTEGER,
     // defaultValue: DataTypes.UUIDV4,
-    allowNull: false,
-    unique: 'coso',
+    autoIncrement: true,
     primaryKey: true
   },
   isLocal: {

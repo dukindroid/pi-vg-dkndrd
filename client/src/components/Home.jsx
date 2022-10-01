@@ -27,7 +27,7 @@ const Home = (props) => {
   if (pagina === undefined) pagina = 1
 
   useEffect(() => {
-    dispatch(getVideogames(pagina, query.toString()))
+    dispatch(getVideogames(pagina, (query.toString()) ? query.toString() : null))
     dispatch(getAllGenres())
   }, [dispatch, props])
 
