@@ -13,9 +13,9 @@ const Videogame = (props) => {
           <h3 className="title">{name}</h3>
           {/* <p className="content">{content}</p> */}
           <div className="gameImg">
-            <img src={img} alt="imagen de la bandera de {name}" />
+            <img src={img} alt="imagen descriptiva del juego {name}" />
           </div>
-          <p>{genres.map(el => el + ' ')}</p>
+          <p>{genres && genres.map(el => el + ' ')}</p>
         </div>
       </Link>
     </>

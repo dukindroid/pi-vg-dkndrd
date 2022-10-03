@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.1.1",
     "axios": "^0.27.2",
     "cors": "^2.8.5",
+    "html-to-react": "^1.5.0",
     "nes.css": "^2.3.0",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",

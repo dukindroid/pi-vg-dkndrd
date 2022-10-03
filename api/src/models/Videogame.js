@@ -19,7 +19,7 @@ Videogame.init({
     allownull: false
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allownull: false
   },
   released: {

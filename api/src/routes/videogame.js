@@ -15,5 +15,10 @@ videogame.route('/:id')
       res.status(500).send(error)
     }
   })
+  .delete(async (req, res) => {
+    console.log(`Request DELETE a /videogame: ${req.params.id}`)
+    const eliminado = Videogame.findByPk(req.params.id)
+    res.status(204).send(await eliminado.destroy())
+  })
 
 module.exports = videogame

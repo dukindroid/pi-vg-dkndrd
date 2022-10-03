@@ -9,9 +9,9 @@ import { createVideogame } from '../redux/actions'
 
 const createVG = () => {
   const dispatch = useDispatch()
-
   // const [genres, setGenres] = React.useState([])
   // const [platforms, setPlatforms] = React.useState([])
+  // const [selectedFile, setSelectedFile] = React.useState(null)
   const [error, setError] = React.useState({})
   const [input, setInput] = React.useState({
     name: '',
@@ -20,6 +20,7 @@ const createVG = () => {
     rating: 0,
     genres: [],
     platforms: [],
+    img: '',
     isLocal: 'true'
   })
 
@@ -30,6 +31,10 @@ const createVG = () => {
     if (!input.description) error.description = 'El campo de descripción es obligatorio'
     if (!input.released) error.released = 'El campo de fecha original de salida es obligatorio'
     if (!input.rating) error.rating = 'El campo de rating es obligatorio'
+    // const patron = /[0-9]{2}[-/][0-9]{2}[-/][0-9]{4}/g
+    // const error.resultado = patron.test(input.released)
+    if (error.resultado) alert('La fecha esta mal!!!')
+
     return error
   }
 
@@ -47,10 +52,10 @@ const createVG = () => {
 
   const handleGenre = (evento) => {
     console.log(evento.target.name)
-    const unString = '' + evento.target.value
+    const unString = '' + evento.target.value.toLowerCase()
     setInput(prev => ({
       ...prev,
-      genres: [unString.toLowerCase]
+      genres: [unString]
     }))
   }
 
@@ -137,10 +142,7 @@ const createVG = () => {
     </div>
     <div className="nes-field is-dark is-inline">
       <label htmlFor="inline_field">Imagen para mostrar: </label>
-      <label className="nes-btn is-primary">
-        <span>Imagen...</span>
-        <input type="file" />
-      </label>
+      <input className={(error.img === undefined) ? 'nes-input is-dark' : 'nes-input is-error'} onChange={handleInputChange} label="Imagen..." name="img" value={input.img} />
     </div>
     <div className="nes-field">
       <button onClick={enviar} type="button" className="nes-btn">Enviar</button>

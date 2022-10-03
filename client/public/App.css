@@ -1,8 +1,36 @@
-* {
-  color: gray;
-}
+/* * {
+  background-color: rgba(0, 0, 0, 0.699);
+  color: rgba(255, 255, 255, 0.9);
+}*/ 
 body {
   font-weight: 100;
+  margin: 0;
+  padding: 0;
+}
+section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-attachment: fixed;
+}
+section .box {
+  position: relative;
+  max-width: 100%;
+  padding: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  color: #000;
+}
+section .box p {
+  position: relative;
+  margin: 0 0 10px;
+  padding: 0;
+  z-index: 2;
+}
+section .box::before {
+  filter: blur(4px);
+
 }
 h1 {
 color: yellow;

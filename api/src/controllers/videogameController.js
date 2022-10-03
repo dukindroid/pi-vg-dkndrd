@@ -51,8 +51,17 @@ const GenreByVideogame = async (actividad) => {
   // console.log(`La funcioncita devuelve: ${JSON.stringify(GeneroPorVideogame)}`)
   return GeneroPorVideogame
 }
+const GenreByVideogame2 = async (cual) => {
+  Videogame.findAll({
+    where: {
+      genres: {
+        [Op.substring]: cual.toLowerCase()
+      }
+    }
+  })
+}
 const buscar = ({ search }) => {
-  return search ? { where: { name: { [Op.iLike]: search } } } : null
+  return search ? { where: { name: { [Op.iLike]: '%' + search + '%' } } } : null
 }
 const filtrar = ({ filter, order }) => {
   // const orden = (order === '+') ? 'ASC' : 'DESC';
@@ -101,5 +110,6 @@ console.log(consulta)
 module.exports = {
   Query,
   QueryAndCount,
-  GenreByVideogame
+  GenreByVideogame,
+  GenreByVideogame2
 }

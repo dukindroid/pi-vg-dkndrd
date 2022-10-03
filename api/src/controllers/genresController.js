@@ -1,10 +1,10 @@
 const { Videogame, Genre } = require('../models/index')
 
-const QueryByGenre = async (actividad) => {
-  const generoPorVideogame = await Genre.findByPk(actividad, {
+const QueryByGenre = async (oneGenre) => {
+  const generoPorVideogame = await Genre.findByPk(oneGenre, {
     include: {
       model: Videogame,
-      attributes: ['name']
+      attributes: ['name', 'img', 'id', 'genres']
     }
   })
   return generoPorVideogame

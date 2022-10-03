@@ -2,11 +2,15 @@
 const express = require('express')
 // const {Videogame, Query, QueryAndCount} = require('../models/index')
 // const Videogame = require('../models/Videogame'
-const { Videogame } = require('../models/index')
+const { Videogame, Genre } = require('../models/index')
 const videogames = express.Router()
-const { Query } = require('../controllers/videogameController') 
-// const { Router } = require('express')
+const db = require('../db')
+const { Query } = require('../controllers/videogameController')
+const fetch = (url) => import('node-fetch').then(({ default: fetch }) => fetch(url))
 
+// const fetch = require('node-fetch')
+// import fetch from 'node-fetch'
+// const { Router } = require('express')
 // GET /videogames?name= ; Búsqueda
 // GET /videogames: Listado de todos los videogames
 // const settings = {
@@ -18,7 +22,35 @@ const { Query } = require('../controllers/videogameController')
 // Le pasamos a la funcioncita Query() el req.query tal como viene...
 // Y listo, ya está! Nos devuelve búsquedas, filtrados y hasta paginado.
 
-videogames.route('/') 
+const loadApiPage = async (page, misGenres) => {
+  const apiPage = await fetch(`https://api.rawg.io/api/games?key=0f8d95788d644ba9ac601311b87d302d&page_size=40&page=${page}`)
+  const pageJson = await apiPage.json()
+  const respuesta = pageJson.results.map(async (el) => {
+    const masData = await fetch(`https://api.rawg.io/api/games/${el.id}?key=0f8d95788d644ba9ac601311b87d302d`)
+    const otraRespuesta = await masData.json()
+    const nuevoRegistro = {
+      id: el.id,
+      img: el.background_image,
+      name: el.name,
+      description: otraRespuesta.description,
+      released: el.released,
+      rating: el.rating,
+      platforms: el.parent_platforms.map(e => e.platform.name),
+      genres: el.genres.map(e => e.name)
+    }
+    const newVideogame = await Videogame.create(nuevoRegistro)
+    await Promise.all(
+      misGenres.map(async (genre) => {
+        await newVideogame.addGenre(String(genre).toLowerCase(), {
+          through: 'VideogameGenre'
+        })
+      })
+    )
+    return respuesta
+  })
+}
+
+videogames.route('/')
   .get(async (req, res) => {
     try {
       // if (!req.params.page) {
@@ -37,16 +69,16 @@ videogames.route('/')
         return obj
       }))
     } catch (error) {
+      console.log(`EH CHALAO! que tienes un error al surtir videogames: ${error} ${error.stack}`)
       res.status(500).send(error)
     }
   })
-
   // POST /videogames Crear videogame
   .post(async (req, res) => {
     console.log(`Request POST a /videogames: ${JSON.stringify(req.body)}`)
     try {
-      const { name, description, released, rating, platforms, genres } = req.body
-      const newVideogame = await Videogame.create({ name, description, released, rating, platforms, genres })
+      const { name, description, released, rating, platforms, genres, isLocal } = req.body
+      const newVideogame = await Videogame.create({ name, description, released, rating, platforms, genres, isLocal })
       genres.map(async (genre) => {
         await newVideogame.addGenre(genre, { through: 'VideogameGenre' })
       })
@@ -54,5 +86,37 @@ videogames.route('/')
     } catch (error) {
       console.log(`Alguien quizo crear mal un videogame: ${error} Stack call: ${error.stack} `)
     }
+  })
+
+// console.log(`Fetcheando https://api.rawg.io/api/games?key=0f8d95788d644ba9ac601311b87d302d&page_size=${req.params.howmany}`)
+videogames.route('/reseed/:howmany')
+  .get(async (req, res) => {
+    console.log('Creando los genres: ')
+    await db.sync({ force: true })
+    require('../models/index')
+    // Carga de genres
+    const menosData = await fetch('https://api.rawg.io/api/genres?key=0f8d95788d644ba9ac601311b87d302d')
+    const cosas = await menosData.json()
+    const misGenres = cosas.results.map(unGenero => unGenero.name.toLowerCase())
+    await Promise.all(misGenres.map(async (singleGenre) =>
+      await Genre.create({
+        name: singleGenre
+      })
+    ))
+    const numeroDeRequests = Math.ceil(req.params.howmany / 40)
+    const arrayDeRequests = []
+    for (let index = 0; index < numeroDeRequests; index++) {
+      arrayDeRequests[index] = index + 1
+    }
+    const respuesta = Promise.all(arrayDeRequests.map(
+      async (pagina) => await loadApiPage(pagina, misGenres)
+    ))
+    // console.log(`Data: ${respuesta}`)
+    res.status(200).send(respuesta)
+  })
+
+videogames.route('/count')
+  .get(async (req, res) => {
+    res.status(200).json(await Videogame.count())
   })
 module.exports = videogames

@@ -4,7 +4,9 @@ const consolog = require('debug')('dev')
 const { Videogame, Genre } = require('./models/index')
 const genresSeed = require('./models/seed/genresSeed')
 const videogamesSeed = require('./models/seed/videogamesSeed')
-const QueryByGenre = require('./controllers/genresController');
+const https = require('https');
+// const fetch = require('node-fetch')
+// const QueryByGenre = require('./controllers/genresController');
 // const GenresArray = require('../../client/src/components/GenresArray');
 // const { Query, QueryAndCount } = require('./controllers/videogameController');
 // const QueryByGenre = require('./controllers/genresController');
@@ -28,7 +30,21 @@ const QueryByGenre = require('./controllers/genresController');
     // Bulk Create 'Videogame' table:
     consolog('Cargando Videogames...')
     let algo = false
+    let data = ''
     await Promise.all(videogamesSeed.map(async (oneGame) => {
+      console.log(`Trabajando con ${oneGame.name}`)
+      // oneGame.description = await (await fetch(`https://api.rawg.io/api/games/${oneGame.id}?key=0f8d95788d644ba9ac601311b87d302d`)).json()
+      const coso = https.get(`https://api.rawg.io/api/games/${oneGame.id}?key=0f8d95788d644ba9ac601311b87d302d`, res => {
+        res.on('data', chunk => {
+          data += chunk
+        })
+        res.on('end', () => {
+          data = JSON.parse(data)
+          console.log(data)
+          oneGame.description = data.description
+        })
+      }).end()
+      console.log('Datecuenta Amica: ' + JSON.stringify(coso))
       const {
         id,
         img,
@@ -72,5 +88,5 @@ const QueryByGenre = require('./controllers/genresController');
     // console.log("Estos videogames tenemos: " + await Videogame.count());
     // sequelize.close()
 
-    console.log(JSON.stringify(await QueryByGenre('puzzle')))
+    // console.log(JSON.stringify(await QueryByGenre('puzzle')))
   })()

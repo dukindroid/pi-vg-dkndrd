@@ -21,6 +21,25 @@ export const createVideogame = (videogame) => async (dispatch) => {
   }
 }
 
+export const deleteVideogame = (videogame) => async (dispatch) => {
+  try {
+    const response = await fetch(`http://127.0.0.1:3041/videogame/${videogame}`, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    console.log(response.json())
+    dispatch({
+      type: DELETE_VIDEOGAME,
+      payload: response.json()
+    })
+  } catch (error) {
+    console.log(JSON.stringify(error))
+  }
+}
+
 export const getAllGenres = () => async (dispatch) => {
   // const res = await axios.get('localhost:3001/genres')
   console.log('Despacharé los géneros desde las actions:')
@@ -30,6 +49,13 @@ export const getAllGenres = () => async (dispatch) => {
     type: GET_ALL_GENRES,
     payload: res
   })
+}
+
+export const getOneGenre = (cual) => async (dispatch) => {
+  console.log(`Bueno, voy a pedir esta dirección por fetch: ${('http://localhost:3041/genres/' + cual)}`)
+  const res = await (await fetch('http://localhost:3041/genres/' + cual, { mode: 'cors' })).json()
+  // console.log(res)
+  dispatch({ type: GET_ONE_GENRE, payload: res })
 }
 
 export const getVideogames = (pagina, query) => async (dispatch) => {
@@ -53,7 +79,8 @@ export const GET_ALL_GENRES = 'GET_ALL_GENRES'
 export const GET_VIDEOGAME_DETAIL = 'GET_VIDEOGAME_DETAIL'
 export const GET_VIDEOGAMES = 'GET_VIDEOGAMES'
 export const CREATE_VIDEOGAME = 'CREATE_VIDEOGAME'
-// export const DELETE_VIDEOGAME = 'DELETE_VIDEOGAME'
+export const DELETE_VIDEOGAME = 'DELETE_VIDEOGAME'
+export const GET_ONE_GENRE = 'GET_ONE_GENRE'
 
 // export const getHouse = (id) => async dispatch => {
 //   const res = await axios.get(`http://localhost:3000/houses/${id}`)

@@ -1,13 +1,17 @@
 // Ruta /genres.js
+// const { Op } = require('sequelize')
 const express = require('express')
+const { Genre } = require('../models')
 const genres = express.Router()
-const Genre = require('../models/Genre')
 // const Videogame = require('../models/Videogame')
-const QueryByGenre = require('../controllers/genresController')
+const { GenreByVideogame2 } = require('../controllers/videogameController')
 // const { REAL } = require('sequelize')
 
 // Genre.QueryByGenre('Action');
 // Devuelve un arreglo con todos los 'genres'
+// Esta originalmente haría un filtrado con varios géneros en orden
+// pero ocuparía más estilado en el front así que mejor no
+/*
 genres.route('/')
   .get(async (req, res) => {
     const genresRequested = req.query.filter?.split(',')
@@ -28,7 +32,38 @@ genres.route('/')
     // const algo = await Promise.all(genresRequested.map(async (el) => await QueryByGenre(el)))
     return res.status(200).json(algo)
   })
+*/
+// En su lugar haremos lo mismo pero para un solo género
+genres.route('/:genre')
+  .get(async (req, res) => {
+    try {
+      if (!req.params.genre) {
+        // Sin params devolvería toda la lista de genres
+        const generos = (await Genre.findAll()).map(el => el.name)
+        return res.status(200).json(generos)
+      }
+      // Si no, devolvemos todos los videogames de ese género
+      console.log(req.params.genre)
+      const juegosDeUnGenero = GenreByVideogame2(req.params.genre)
+      // const oneQuery = await QueryByGenre(req.params.genre)
+      // console.dir(await oneQuery.toJSON())
+      res.status(200).json(juegosDeUnGenero.map(el => {
+        const obj = {
+          id: el.id,
+          name: el.name,
+          img: el.img,
+          genres: el.genres
+        }
+        return obj
+      }))
+    } catch (error) {
+      console.error(error.message)
+      console.error(error.stack)
+    }
+  })
+
 /*
+
 // La ruta anterior no toma :params
 genres.route('/pocilga')
   .get(async (req, res) => {
