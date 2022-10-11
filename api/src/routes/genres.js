@@ -4,6 +4,7 @@ const express = require('express')
 const { Genre } = require('../models')
 const genres = express.Router()
 // const Videogame = require('../models/Videogame')
+// const { QueryByGenre } = require('../controllers/genresController')
 const { GenreByVideogame2 } = require('../controllers/videogameController')
 // const { REAL } = require('sequelize')
 
@@ -34,28 +35,38 @@ genres.route('/')
   })
 */
 // En su lugar haremos lo mismo pero para un solo género
+genres.route('/')
+  .get(async (req, res) => {
+    try {
+      // Sin params devolvería toda la lista de genres
+      const generos = (await Genre.findAll()).map(el => el.name)
+      res.status(200).json(generos)
+    } catch (error) {
+      console.error(error.message)
+      console.error(error.stack)
+    }
+  })
+
 genres.route('/:genre')
   .get(async (req, res) => {
     try {
-      if (!req.params.genre) {
-        // Sin params devolvería toda la lista de genres
-        const generos = (await Genre.findAll()).map(el => el.name)
-        return res.status(200).json(generos)
-      }
       // Si no, devolvemos todos los videogames de ese género
       console.log(req.params.genre)
-      const juegosDeUnGenero = GenreByVideogame2(req.params.genre)
+      // const juegosDeUnGenero = await GenreByVideogame2(req.params.genre)
       // const oneQuery = await QueryByGenre(req.params.genre)
-      // console.dir(await oneQuery.toJSON())
-      res.status(200).json(juegosDeUnGenero.map(el => {
-        const obj = {
-          id: el.id,
-          name: el.name,
-          img: el.img,
-          genres: el.genres
-        }
-        return obj
-      }))
+      // console.dir(await juegosDeUnGenero)
+      res.status(200).json(
+        await GenreByVideogame2(req.params.genre)
+      //   juegosDeUnGenero.map(el => {
+      //   const obj = {
+      //     id: el.id,
+      //     name: el.name,
+      //     img: el.img,
+      //     genres: el.genres
+      //   }
+      //   return obj
+      // })
+      )
     } catch (error) {
       console.error(error.message)
       console.error(error.stack)

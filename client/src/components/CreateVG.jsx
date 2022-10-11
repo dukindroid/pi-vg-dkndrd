@@ -23,7 +23,7 @@ const createVG = () => {
     img: '',
     isLocal: 'true'
   })
-
+  let unaVariable = false
   const validate = (input) => {
     console.dir(input)
     const error = {}
@@ -31,6 +31,7 @@ const createVG = () => {
     if (!input.description) error.description = 'El campo de descripción es obligatorio'
     if (!input.released) error.released = 'El campo de fecha original de salida es obligatorio'
     if (!input.rating) error.rating = 'El campo de rating es obligatorio'
+
     // const patron = /[0-9]{2}[-/][0-9]{2}[-/][0-9]{4}/g
     // const error.resultado = patron.test(input.released)
     if (error.resultado) alert('La fecha esta mal!!!')
@@ -48,6 +49,12 @@ const createVG = () => {
     const errorObj = validate({ ...input, [evento.target.name]: evento.target.value })
     setError(errorObj)
     console.log(errorObj)
+    if (errorObj !== {}) {
+      unaVariable = true
+    } else {
+      unaVariable = false
+    }
+    console.log(unaVariable)
   }
 
   const handleGenre = (evento) => {
@@ -145,7 +152,7 @@ const createVG = () => {
       <input className={(error.img === undefined) ? 'nes-input is-dark' : 'nes-input is-error'} onChange={handleInputChange} label="Imagen..." name="img" value={input.img} />
     </div>
     <div className="nes-field">
-      <button onClick={enviar} type="button" className="nes-btn">Enviar</button>
+      <button onClick={enviar} type="button" className="nes-btn" disabled={unaVariable}>Enviar</button>
     </div>
     </WhiteContainer>
   </>)

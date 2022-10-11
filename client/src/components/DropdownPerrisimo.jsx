@@ -16,6 +16,12 @@ const DropDownFilters = (props) => {
   })
   // Hook para traernos el query en /home?blablabla
   const query = useQuery()
+
+  // REFACTOR KILOMBO DE ÚLTIMO MOMENTO:
+  // Separar interacciones por aquellas que:
+  // handleEvent: solo reciben un evento y lo guardan
+  // handleSubmit: reciben un evento y hacen history.push o
+
   // Escuchaddor para el campo de búsqueda
   const handleSearchChange = (evento) => {
     setInput(prev => ({
@@ -41,16 +47,18 @@ const DropDownFilters = (props) => {
   const onSort = (e) => {
     query.set('order', e.target.value)
     query.delete('page')
+    query.delete('search')
     console.log('Al query le agregamos esto: ' + query.toString())
     props.history.push(`/home?${query.toString()}`)
   }
 
   const onSubmit = (e) => {
-    alert('buscar: ' + input.searchQuery)
-    if (query.has('search')) query.set('search', e.target.value)
-    else query.append('search', input.searchQuery)
+    // alert('buscar: ' + input.searchQuery)
+    // if (query.has('search')) query.set('search', e.target.value)
+    // else
+    query.append('search', input.searchQuery)
     console.log('Al query le agregamos esto: ' + query.toString() + input.searchQuery)
-    props.history.push(`/home?${query.toString()}${input.searchQuery}`)
+    props.history.push(`/home?${query.toString()}`)
   }
   useEffect(() => {
     if (query.has('search')) {

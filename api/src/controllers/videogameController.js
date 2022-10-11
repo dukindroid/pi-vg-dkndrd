@@ -1,6 +1,6 @@
-// const Videogame = require("../models/index");
-const Videogame = require('../models/Videogame')
-const Genre = require('../models/Genre')
+const { Videogame, Genre } = require('../models/index')
+// const Videogame = require('../models/Videogame')
+// const Genre = require('../models/Genre')
 // const db = require('../db')
 const { Op } = require('sequelize')
 const TAMANIO_PAGINA = 9
@@ -54,9 +54,7 @@ const GenreByVideogame = async (actividad) => {
 const GenreByVideogame2 = async (cual) => {
   Videogame.findAll({
     where: {
-      genres: {
-        [Op.substring]: cual.toLowerCase()
-      }
+      genres: 'action'
     }
   })
 }
