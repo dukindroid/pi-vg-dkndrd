@@ -32,6 +32,10 @@ section .box::before {
   filter: blur(4px);
 
 }
+.tinted {
+  background-color: rgba(0, 0, 0, 0.7);
+  background-blend-mode: multiply;
+}
 h1 {
 color: yellow;
 }

@@ -11,33 +11,33 @@ const rootReducer = (state = initialState, action) => {
   // console.dir(action)
 
   switch (action.type) {
-    case GET_VIDEOGAMES:
-      return {
-        ...state,
-        videogames: action.payload
-      }
-    case GET_VIDEOGAME_DETAIL:
-      return {
-        ...state,
-        videogameDetail: action.payload
-      }
-    case GET_ALL_GENRES:
-      return {
-        ...state,
-        genres: action.payload
-      }
-    case GET_ONE_GENRE:
-      return {
-        ...state,
-        videogames: action.payload
-      }
-    case CREATE_VIDEOGAME:
-      console.log(action.payload)
-      return
-    case DELETE_VIDEOGAME:
-      console.log(action.payload)
-      return
-    default: return state
+  case GET_VIDEOGAMES:
+    return {
+      ...state,
+      videogames: action.payload
+    }
+  case GET_VIDEOGAME_DETAIL:
+    return {
+      ...state,
+      videogameDetail: action.payload
+    }
+  case GET_ALL_GENRES:
+    return {
+      ...state,
+      genres: action.payload
+    }
+  case GET_ONE_GENRE:
+    return {
+      ...state,
+      videogames: action.payload
+    }
+  case CREATE_VIDEOGAME:
+    console.log(action.payload)
+    return
+  case DELETE_VIDEOGAME:
+    console.log(action.payload)
+    return
+  default: return state
   };
 }
 

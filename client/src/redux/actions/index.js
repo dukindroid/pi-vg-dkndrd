@@ -2,7 +2,7 @@
 
 export const createVideogame = (videogame) => async (dispatch) => {
   try {
-    const response = await fetch('http://127.0.0.1:3041/videogames', {
+    const response = await fetch('http://127.0.0.1:3041/videogame', {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -59,12 +59,12 @@ export const getOneGenre = (cual) => async (dispatch) => {
 }
 
 export const getVideogames = (pagina, query) => async (dispatch) => {
-  console.log(`Bueno, voy a pedir esta dirección por fetch: ${('http://127.0.0.1:3041/videogames?page=' + pagina)}`)
+  console.log(`Bueno, voy a pedir esta dirección por fetch: ${('http://127.0.0.1:3041/videogame?page=' + pagina)}`)
   let res = null
   if (query) {
-    res = await (await fetch('http://localhost:3041/videogames?page=' + pagina + '&' + query, { mode: 'cors' })).json()
+    res = await (await fetch('http://localhost:3041/videogame?page=' + pagina + '&' + query, { mode: 'cors' })).json()
   } else {
-    res = await (await fetch('http://127.0.0.1:3041/videogames?page=' + pagina, { method: 'GET' }, { headers: { 'Content-Type': 'application/json' } })).json()
+    res = await (await fetch('http://127.0.0.1:3041/videogame?page=' + pagina, { method: 'GET' }, { headers: { 'Content-Type': 'application/json' } })).json()
   }
   // console.log(res)
   dispatch({ type: GET_VIDEOGAMES, payload: res })

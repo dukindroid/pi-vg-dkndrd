@@ -1,22 +1,35 @@
 module.exports = {
-  env: {
-    browser: true,
-    commonjs: true,
-    es2021: true
+  "env": {
+    "browser": true,
+    "es2021": true
   },
-  extends: [
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'standard'
+  "extends": [
+    "plugin:react/jsx-runtime"
   ],
-  overrides: [
+  "overrides": [
   ],
-  parserOptions: {
-    ecmaVersion: 'latest'
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
-  plugins: [
-    'react'
+  "plugins": [
+    "react"
   ],
-  rules: {
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "quotes": [
+      "off",
+    ],
+    "semi": [
+      "error",
+      "never"
+    ]
   }
 }

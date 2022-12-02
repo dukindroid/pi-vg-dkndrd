@@ -1,0 +1,9 @@
+// Ruta /videogames.js
+const express = require('express')
+const Videogame = require('../models/Videogame')
+const videogame = express.Router()
+
+// GET /videogame/{idVideogame} Detalle de {idVideogame}
+
+
+module.exports = videogame

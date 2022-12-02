@@ -14,9 +14,9 @@ const App = () => {
     <Route path={'/videogames/create'} >
       <NavWrapper ><CreateVG /></NavWrapper>
     </Route>
-    <Route path={ ['/home', '/home/:pagina'] } component={Home} />
+    <Route path={['/home', '/home/:pagina']} component={Home} />
     <Route path={'/'} exact component={Splash} />
   </>)
-}
+}  
 
 export default App
