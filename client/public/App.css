@@ -50,9 +50,11 @@ color: yellow;
   padding: 0px;
   margin: 0px;
 }
-.rating i {
+
+/* .rating i {
   is-medium 
-}
+} */
+
 .gameImg img {
   width: 100%;
   -webkit-box-shadow: inset 10px 12px 20px 9px rgba(97,97,97,1);

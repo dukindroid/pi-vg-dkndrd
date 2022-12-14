@@ -1,8 +1,16 @@
 // import axios from 'axios'
 
+
+if (process.env.debug = 'dev') {
+  localStorage.debug = 'dev'
+
+}
+const consolog = require('debug')('dev')
+const url = 'http://127.0.0.1:3041'
+
 export const createVideogame = (videogame) => async (dispatch) => {
   try {
-    const response = await fetch('http://127.0.0.1:3041/videogame', {
+    const response = await fetch(`${url}/videogame`, {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -11,40 +19,40 @@ export const createVideogame = (videogame) => async (dispatch) => {
       body: JSON.stringify(videogame)
 
     })
-    console.log(response.json())
+    consolog(response.json())
     dispatch({
       type: CREATE_VIDEOGAME,
       payload: response.json()
     })
   } catch (error) {
-    console.log(JSON.stringify(error))
+    consolog(JSON.stringify(error))
   }
 }
 
 export const deleteVideogame = (videogame) => async (dispatch) => {
   try {
-    const response = await fetch(`http://127.0.0.1:3041/videogame/${videogame}`, {
+    const response = await fetch(`${url}/videogame/${videogame}`, {
       method: 'DELETE',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
       }
     })
-    console.log(response.json())
+    consolog(response.json())
     dispatch({
       type: DELETE_VIDEOGAME,
       payload: response.json()
     })
   } catch (error) {
-    console.log(JSON.stringify(error))
+    consolog(JSON.stringify(error))
   }
 }
 
 export const getAllGenres = () => async (dispatch) => {
   // const res = await axios.get('localhost:3001/genres')
-  console.log('Despacharé los géneros desde las actions:')
-  const res = await (await fetch('http://127.0.0.1:3041/genres')).json()
-  console.dir(res)
+  consolog('Despacharé los géneros desde las actions:')
+  const res = await (await fetch(`${url}/genres`)).json()
+  consolog(res)
   dispatch({
     type: GET_ALL_GENRES,
     payload: res
@@ -52,27 +60,27 @@ export const getAllGenres = () => async (dispatch) => {
 }
 
 export const getOneGenre = (cual) => async (dispatch) => {
-  console.log(`Bueno, voy a pedir esta dirección por fetch: ${('http://localhost:3041/genres/' + cual)}`)
-  const res = await (await fetch('http://localhost:3041/genres/' + cual, { mode: 'cors' })).json()
-  // console.log(res)
+  consolog(`Bueno, voy a pedir esta dirección por fetch: ${(`${url}/genres/` + cual)}`)
+  const res = await (await fetch('/genres/' + cual, { mode: 'cors' })).json()
+  consolog(res)
   dispatch({ type: GET_ONE_GENRE, payload: res })
 }
 
 export const getVideogames = (pagina, query) => async (dispatch) => {
-  console.log(`Bueno, voy a pedir esta dirección por fetch: ${('http://127.0.0.1:3041/videogame?page=' + pagina)}`)
+  consolog(`Bueno, voy a pedir esta dirección por fetch: ${(`${url}/videogame?page=` + pagina)}`)
   let res = null
   if (query) {
-    res = await (await fetch('http://localhost:3041/videogame?page=' + pagina + '&' + query, { mode: 'cors' })).json()
+    res = await (await fetch(`${url}/videogame?page=` + pagina + '&' + query, { mode: 'cors' })).json()
   } else {
-    res = await (await fetch('http://127.0.0.1:3041/videogame?page=' + pagina, { method: 'GET' }, { headers: { 'Content-Type': 'application/json' } })).json()
+    res = await (await fetch(`${url}/videogame?page=` + pagina, { method: 'GET' }, { headers: { 'Content-Type': 'application/json' } })).json()
   }
-  // console.log(res)
+  consolog(res)
   dispatch({ type: GET_VIDEOGAMES, payload: res })
 }
 
 export const getVideogameDetail = (id) => async (dispatch) => {
-  const res = await (await fetch('http://localhost:3041/videogame/' + id)).json()
-  // console.log('Action: Voy a tratar de hacer un fetch de la ruta detalle del back')
+  const res = await (await fetch(`${url}/videogame/` + id)).json()
+  // consolog('Action: Voy a tratar de hacer un fetch de la ruta detalle del back')
   dispatch({ type: GET_VIDEOGAME_DETAIL, payload: res })
 }
 export const GET_ALL_GENRES = 'GET_ALL_GENRES'

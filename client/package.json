@@ -22,6 +22,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "debug": "@powershell -Command $env:DEBUG='dev';react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -40,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "debug": "^4.3.4",
     "eslint-plugin-react": "^7.31.11"
   }
 }

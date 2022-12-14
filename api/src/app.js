@@ -1,27 +1,19 @@
 const express = require('express')
 const app = express()
 const Router = require('./routes')
-// const consolog = require('debug')('dev')
+const consolog = require('debug')('dev')
 
 app.use(function (req, res, next) {
   // consolog(new Date()`Recibí query: ${JSON.stringify(req.query)}`)
   // consolog(`Devuelvo: ${generos}`)
-
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  // Pass to next layer of middleware
-  next()
+  res.setHeader('Access-Control-Allow-Origin', '*') // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE') // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type') // Request headers you wish to allow
+  next() // Pass to next layer of middleware
 })
 
 app.use(express.json())
-
+consolog('Cargando rutas...')
 app.use(Router)
 
 module.exports = app
@@ -52,14 +44,14 @@ app.use('/api/addresses', require('./routes/addresses'));
 
 // Arrancamos el servidor
 app.listen(PORT, function () {
-    console.log(`La app ha arrancado en http://localhost:${PORT}`);
+    consolog(`La app ha arrancado en http://localhost:${PORT}`);
 
     // Conectase a la base de datos
     // Force true: DROP TABLES
     sequelize.sync({ force: false }).then(() => {
-        console.log("Nos hemos conectado a la base de datos");
+        consolog("Nos hemos conectado a la base de datos");
     }).catch(error => {
-        console.log('Se ha producido un error', error);
+        consolog('Se ha producido un error', error);
     })
 
 });

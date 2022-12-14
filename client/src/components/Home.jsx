@@ -11,6 +11,10 @@ import Videogame from './Videogame'
 import Paginator from './Paginator'
 import WhiteContainer from './WhiteContainer'
 import NavWrapper from './NavWrapper'
+if (process.env.debug = 'dev') {
+  localStorage.debug = 'dev'
+}
+const consolog = require('debug')('dev')
 
 function useQuery () {
   const { search } = useLocation()
@@ -36,20 +40,21 @@ const Home = (props) => {
   return (<>
     <NavWrapper><h1>Henry PI: Videogames </h1>
 
-    {/* Header: Selects para filtrar y así */}
-    <WhiteContainer><CosoParaLosFiltros /></WhiteContainer>
+      {/* Header: Selects para filtrar y así */}
+      <WhiteContainer><CosoParaLosFiltros /></WhiteContainer>
 
-    {/* Paginador Chidito */}
-    <Paginator pagina={pagina} total={total} query={query.toString()} />
+      {/* Paginador Chidito */}
+      <Paginator pagina={pagina} total={total} query={query.toString()} />
 
-    {/* Sección principal: Basic Grid de Videogame(s) */}
-    <WhiteContainer >
-      <div className="basic-grid"> {
-        videogames && videogames.map((el) => { return (<Videogame id={el.id} name={el.name} img={el.img} genres={el.genres} key= {el.id} />) })
-      }
-      </div>
-    </WhiteContainer>
-  </NavWrapper></>)
+      {/* Sección principal: Basic Grid de Videogame(s) */}
+      <WhiteContainer >
+        <div className="basic-grid"> {
+          videogames && videogames.map((el) => { return (<Videogame id={el.id} name={el.name} img={el.img} genres={el.genres} key= {el.id} />) })
+        }
+        </div>
+      </WhiteContainer>
+    </NavWrapper>
+  </>)
 }
 
 export default Home
@@ -121,5 +126,5 @@ export default Home
           }</Dropdown>
           <button type="button" className="nes-btn is-inline">+</button>
       </div>
-console.log('useParams nos tiro esto: ' + props.location.pathname.split('/')[2])
+consolog('useParams nos tiro esto: ' + props.location.pathname.split('/')[2])
       */

@@ -51,7 +51,7 @@ genres.route('/:genre')
   .get(async (req, res) => {
     try {
       // Si no, devolvemos todos los videogames de ese género
-      console.log(req.params.genre)
+      consolog(req.params.genre)
       // const juegosDeUnGenero = await GenreByVideogame2(req.params.genre)
       // const oneQuery = await QueryByGenre(req.params.genre)
       // console.dir(await juegosDeUnGenero)

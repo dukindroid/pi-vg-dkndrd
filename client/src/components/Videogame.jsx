@@ -5,7 +5,7 @@
 import { Link } from 'react-router-dom'
 
 const Videogame = (props) => {
-  // console.dir(props)
+  // consolog(props)
   const { id, name, img, genres } = props
   return (
     <>

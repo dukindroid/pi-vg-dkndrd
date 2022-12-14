@@ -32,7 +32,7 @@ const https = require('https');
     let algo = false
     let data = ''
     await Promise.all(videogamesSeed.map(async (oneGame) => {
-      // console.log(`Trabajando con ${oneGame.name}`)
+      // consolog(`Trabajando con ${oneGame.name}`)
       // oneGame.description = await (await fetch(`https://api.rawg.io/api/games/${oneGame.id}?key=0f8d95788d644ba9ac601311b87d302d`)).json()
       const coso = https.get(`https://api.rawg.io/api/games/${oneGame.id}?key=0f8d95788d644ba9ac601311b87d302d`, res => {
         res.on('data', chunk => {
@@ -40,11 +40,11 @@ const https = require('https');
         })
         res.on('end', () => {
           data = JSON.parse(data)
-          // console.log(data)
+          // consolog(data)
           oneGame.description = data.description
         })
       }).end()
-      // console.log('Datecuenta Amica: ' + JSON.stringify(coso))
+      // consolog('Datecuenta Amica: ' + JSON.stringify(coso))
       const {
         id,
         img,
@@ -85,8 +85,8 @@ const https = require('https');
     }))
 
     if (parseInt(await Videogame.count()) === 100) consolog('Carga exitosa.')
-    // console.log("Estos videogames tenemos: " + await Videogame.count());
+    // consolog("Estos videogames tenemos: " + await Videogame.count());
     // sequelize.close()
 
-    // console.log(JSON.stringify(await QueryByGenre('puzzle')))
+    // consolog(JSON.stringify(await QueryByGenre('puzzle')))
   })()

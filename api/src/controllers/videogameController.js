@@ -4,6 +4,7 @@ const { Videogame, Genre } = require('../models/index')
 // const db = require('../db')
 const { Op } = require('sequelize')
 const TAMANIO_PAGINA = 9
+const consolog = require('debug')('dev')
 
 /*
       Controller: Filtering functions
@@ -34,8 +35,8 @@ const TAMANIO_PAGINA = 9
   db.sync();
   let rows = Query(config)
   let {count, rows} = await QueryAndCount(config);
-  console.log(`Se encontraron: ${count} videojuegos:`);
-  console.log(await (await rows).map(el=>el.name))
+  consolog(`Se encontraron: ${count} videojuegos:`);
+  consolog(await (await rows).map(el=>el.name))
 })();
 */
 
@@ -48,7 +49,7 @@ const GenreByVideogame = async (actividad) => {
       attributes: ['name']
     }
   })
-  // console.log(`La funcioncita devuelve: ${JSON.stringify(GeneroPorVideogame)}`)
+  // consolog(`La funcioncita devuelve: ${JSON.stringify(GeneroPorVideogame)}`)
   return GeneroPorVideogame
 }
 const GenreByVideogame2 = async (cual) => {
@@ -87,10 +88,10 @@ const Query = async (settings) => {
     ...paginar(settings)
   }
   try {
-    console.dir(config)
+    consolog(config)
     return await Videogame.findAll(config)
   } catch (error) {
-    console.log(error)
+    consolog(error)
   }
 }
 
@@ -102,7 +103,7 @@ const settings = {
   page: 3
 }
 const consulta = Query(settings)
-console.log(consulta)
+consolog(consulta)
 */
 
 module.exports = {
