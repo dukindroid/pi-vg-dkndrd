@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getVideogameDetail } from '../redux/actions'
-import NavWrapper from './NavWrapper'
+import NavWrapper from '../components/NavWrapper'
 /*
 const obj = {
         id: el.id,
@@ -16,15 +16,15 @@ const obj = {
 
 const detailVG = (props) => {
   const queryId = props.match.params.id
-  // console.log('params? ')
-  // console.dir(props)
+  // consolog('params? ')
+  // consolog(props)
   const videogameDetail = useSelector(state => state.videogameDetail)
   // const page = useSelector(state => state.page)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getVideogameDetail(queryId))
-    console.log('Este detalle nos las trajo el dispatch: ')
-    console.dir(videogameDetail)
+    consolog('Este detalle nos las trajo el dispatch: ')
+    consolog(videogameDetail)
   }, [])
 
   const deleteGame = () => dispatch(deleteGame(videogameDetail.id))

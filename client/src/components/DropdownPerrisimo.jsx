@@ -4,6 +4,11 @@ import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getOneGenre } from '../redux/actions'
+if (process.env.debug = 'dev') {
+  localStorage.debug = 'dev'
+
+}
+const consolog = require('debug')('dev')
 
 function useQuery () {
   const { search } = useLocation()
@@ -28,14 +33,14 @@ const DropDownFilters = (props) => {
       ...prev,
       [evento.target.name]: evento.target.value
     }))
-    console.log(input.searchQuery)
+    consolog(input.searchQuery)
   }
   // Escuchador para el select de filtro
   const onChange = (e) => {
     if (query.has('filter')) query.set('filter', e.target.value)
     else query.append('filter', e.target.value)
-    // console.log('Al query le agregamos esto: ' + query.toString())
-    // console.dir(query.keys)
+    // consolog('Al query le agregamos esto: ' + query.toString())
+    // consolog(query.keys)
     // props.history.push(`/home?${query.toString()}`)
   }
 
@@ -48,7 +53,7 @@ const DropDownFilters = (props) => {
     query.set('order', e.target.value)
     query.delete('page')
     query.delete('search')
-    console.log('Al query le agregamos esto: ' + query.toString())
+    consolog('Al query le agregamos esto: ' + query.toString())
     props.history.push(`/home?${query.toString()}`)
   }
 
@@ -57,7 +62,7 @@ const DropDownFilters = (props) => {
     // if (query.has('search')) query.set('search', e.target.value)
     // else
     query.append('search', input.searchQuery)
-    console.log('Al query le agregamos esto: ' + query.toString() + input.searchQuery)
+    consolog('Al query le agregamos esto: ' + query.toString() + input.searchQuery)
     props.history.push(`/home?${query.toString()}`)
   }
   useEffect(() => {
@@ -68,7 +73,7 @@ const DropDownFilters = (props) => {
       }))
     }
   }, [])
-  // console.log('Desde el dropdown, page vale: ' + query.get('page'))
+  // consolog('Desde el dropdown, page vale: ' + query.get('page'))
   return (<>
     <div >
       <div className='nes-field is-inline' >
@@ -103,7 +108,7 @@ const DropDownFilters = (props) => {
                 {unGenero}
               </option>)
           })
-      }</select>
+        }</select>
     </div>
 
   </>)

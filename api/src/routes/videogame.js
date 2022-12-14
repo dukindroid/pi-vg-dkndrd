@@ -6,7 +6,9 @@ const { Videogame, Genre } = require('../models/index')
 const videogame = express.Router()
 const db = require('../db')
 const { Query } = require('../controllers/videogameController')
-const fetch = (url) => import('node-fetch').then(({ default: fetch }) => fetch(url))
+const fetch = (url) => import('node-fetch')
+  .then(({ default: fetch }) => fetch(url))
+const consolog = require('debug')('dev')
 
 // const fetch = require('node-fetch')
 // import fetch from 'node-fetch'
@@ -54,10 +56,10 @@ videogame.route('/')
   .get(async (req, res) => {
     try {
       // if (!req.params.page) {
-      //   console.log('página mis huevos')
+      //   consolog('página mis huevos')
       // }
-      // console.log(`Request GET a /videogame: ${JSON.stringify(req.query)}`)
-      console.log(`Request GET a /videogame/ con ${JSON.stringify(req.query)}`)
+      consolog('Request GET a /videogame')
+      // consolog(`Request GET a /videogame/ con ${JSON.stringify(req.query)}`)
       const resultado = await Query(req.query)
       res.status(200).json(resultado.map(el => {
         const obj = {
@@ -69,13 +71,14 @@ videogame.route('/')
         return obj
       }))
     } catch (error) {
-      console.log(`EH CHALAO! que tienes un error al surtir videogame: ${error} ${error.stack}`)
+      consolog(`EH CHALAO! que tienes un error al surtir videogame: ${error} ${error.stack}`)
       res.status(500).send(error)
     }
   })
+
   // POST /videogame Crear videogame
   .post(async (req, res) => {
-    console.log(`Request POST a /videogame: ${JSON.stringify(req.body)}`)
+    consolog(`Request POST a /videogame: ${JSON.stringify(req.body)}`)
     try {
       const { name, description, released, rating, platforms, genres, isLocal } = req.body
       const newVideogame = await Videogame.create({ name, description, released, rating, platforms, genres, isLocal })
@@ -84,14 +87,14 @@ videogame.route('/')
       })
       res.status(200).json({ msg: `Se creó: ${newVideogame.name}` })
     } catch (error) {
-      console.log(`Alguien quizo crear mal un videogame: ${error} Stack call: ${error.stack} `)
+      consolog(`Alguien quizo crear mal un videogame: ${error} Stack call: ${error.stack} `)
     }
   })
 
-// console.log(`Fetcheando https://api.rawg.io/api/games?key=0f8d95788d644ba9ac601311b87d302d&page_size=${req.params.howmany}`)
+// consolog(`Fetcheando https://api.rawg.io/api/games?key=0f8d95788d644ba9ac601311b87d302d&page_size=${req.params.howmany}`)
 videogame.route('/reseed/:howmany')
   .get(async (req, res) => {
-    console.log('Creando los genres: ')
+    consolog('Creando los genres: ')
     await db.sync({ force: true })
     require('../models/index')
     // Carga de genres
@@ -111,7 +114,7 @@ videogame.route('/reseed/:howmany')
     const respuesta = Promise.all(arrayDeRequests.map(
       async (pagina) => await loadApiPage(pagina, misGenres)
     ))
-    // console.log(`Data: ${respuesta}`)
+    // consolog(`Data: ${respuesta}`)
     res.status(200).send(respuesta)
   })
 
@@ -123,7 +126,7 @@ videogame.route('/count')
 videogame.route('/:id')
   .get(async (req, res) => {
     try {
-      console.log(`Request GET a /videogame: ${JSON.stringify(req.params.id)}`)
+      consolog(`Request GET a /videogame: ${JSON.stringify(req.params.id)}`)
       const resultado = await Videogame.findByPk(req.params.id)
       res.status(200).json(resultado)
     } catch (error) {
@@ -131,7 +134,7 @@ videogame.route('/:id')
     }
   })
   .delete(async (req, res) => {
-    console.log(`Request DELETE a /videogame: ${req.params.id}`)
+    consolog(`Request DELETE a /videogame: ${req.params.id}`)
     const eliminado = Videogame.findByPk(req.params.id)
     res.status(204).send(await eliminado.destroy())
   })

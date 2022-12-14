@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom'
+if (process.env.debug = 'dev') {
+  localStorage.debug = 'dev'
 
-// console.log(typeof query)
-// console.log('DESDE PALLA ' + query.toString())
-// console.log('pagina: ' + JSON.stringify(pagina))
-// console.log(typeof query)
-// console.log('DESDE PALLA ' + query.toString())
-// console.log('pagina: ' + JSON.stringify(pagina))
+}
+const consolog = require('debug')('dev')
+// consolog(typeof query)
+// consolog('DESDE PALLA ' + query.toString())
+// consolog('pagina: ' + JSON.stringify(pagina))
+// consolog(typeof query)
+// consolog('DESDE PALLA ' + query.toString())
+// consolog('pagina: ' + JSON.stringify(pagina))
 // const Palla = (pagina) => {
 //   if (pagina === 1) return (<Link to={'/home?page=' + pagina - 1} >&lt;&lt;&nbsp;</Link>)
 //   return <div></div>
@@ -18,23 +22,23 @@ import { Link } from 'react-router-dom'
 
 const Paginator = ({ pagina, total, query }) => {
   // const page = (query.get('page') !== null) ? query.get('page') : 1
-  // console.log(`El paginador opina que page vale ${page}`)
+  // consolog(`El paginador opina que page vale ${page}`)
   const array1 = []
   for (let index = 1; index < total; index++) {
     array1[index] = index
   }
-  // console.log('args de pagntr: ' + pagina + ' ' + total + ' ' + query)
+  // consolog('args de pagntr: ' + pagina + ' ' + total + ' ' + query)
   return (
     <div className="nes-container is-dark is-centered card">
-    {
-      array1 && array1.map((el) => {
-        return (
-          <Link key={el} to={'/home/' + el + '?' + query} >
-            {el + ' '}
-          </Link>
-        )
-      })
-    }
+      {
+        array1 && array1.map((el) => {
+          return (
+            <Link key={el} to={'/home/' + el + '?' + query} >
+              {el + ' '}
+            </Link>
+          )
+        })
+      }
     </div>
   )
 }

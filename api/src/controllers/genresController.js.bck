@@ -29,7 +29,7 @@ const QueryByActivity = async (actividad) =>{
   })
   return actividadPorPais 
 }
-// console.log(QueryByActivity('nadar')) //?
+// consolog(QueryByActivity('nadar')) //?
 
 module.exports = QueryByActivity
 
