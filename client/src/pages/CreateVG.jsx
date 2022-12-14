@@ -10,7 +10,7 @@ if (process.env.debug = 'dev') {
   localStorage.debug = 'dev'
 
 }
-const consolog = require('debug')('dev')
+// const console.log = require('debug')('dev')
 
 const createVG = () => {
   const dispatch = useDispatch()
@@ -30,7 +30,7 @@ const createVG = () => {
   })
   let unaVariable = false
   const validate = (input) => {
-    consolog(input)
+    console.log(input)
     const error = {}
     if (!input.name) error.name = 'El campo de título es obligatorio'
     if (!input.description) error.description = 'El campo de descripción es obligatorio'
@@ -45,25 +45,25 @@ const createVG = () => {
   }
 
   const handleInputChange = (evento) => {
-    // consolog(input)
-    // consolog(evento)
+    // console.log(input)
+    // console.log(evento)
     setInput(prev => ({
       ...prev,
       [evento.target.name]: evento.target.value
     }))
     const errorObj = validate({ ...input, [evento.target.name]: evento.target.value })
     setError(errorObj)
-    consolog(errorObj)
+    console.log(errorObj)
     if (errorObj !== {}) {
       unaVariable = true
     } else {
       unaVariable = false
     }
-    consolog(unaVariable)
+    console.log(unaVariable)
   }
 
   const handleGenre = (evento) => {
-    consolog(evento.target.name)
+    console.log(evento.target.name)
     const unString = '' + evento.target.value.toLowerCase()
     setInput(prev => ({
       ...prev,
@@ -72,7 +72,7 @@ const createVG = () => {
   }
 
   const handlePlatform = (evento) => {
-    consolog(evento.target.name)
+    console.log(evento.target.name)
     setInput(prev => ({
       ...prev,
       platforms: [evento.target.value]
@@ -80,7 +80,7 @@ const createVG = () => {
   }
 
   const handleRating = (evento) => {
-    consolog(evento.target.id)
+    console.log(evento.target.id)
     setInput(prev => ({
       ...prev,
       rating: Number.parseInt(evento.target.id)
@@ -89,7 +89,7 @@ const createVG = () => {
   const addPlatform = () => { alert('💩') }
   const addGenre = () => { alert('💩') }
 
-  // const changeGenre = (evento) => { consolog(evento) }
+  // const changeGenre = (evento) => { console.log(evento) }
   const enviar = () => {
     alert('Pum! ya envié un videogame, según, con esta data: ' + JSON.stringify(input))
     dispatch(createVideogame(input))

@@ -5,11 +5,11 @@
 import { Link } from 'react-router-dom'
 
 const Videogame = (props) => {
-  // consolog(props)
+  // console.log(props)
   const { id, name, img, genres } = props
   return (
     <>
-      <Link to={'/videogame/' + id } >
+      <Link to={'/videogames/' + id } >
         <div className="nes-container is-dark with-title is-primary" >
           <h3 className="title">{name}</h3>
           {/* <p className="content">{content}</p> */}

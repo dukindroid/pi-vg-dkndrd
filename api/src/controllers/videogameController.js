@@ -4,7 +4,7 @@ const { Videogame, Genre } = require('../models/index')
 // const db = require('../db')
 const { Op } = require('sequelize')
 const TAMANIO_PAGINA = 9
-const consolog = require('debug')('dev')
+// const console.log = require('debug')('dev')
 
 /*
       Controller: Filtering functions
@@ -35,8 +35,8 @@ const consolog = require('debug')('dev')
   db.sync();
   let rows = Query(config)
   let {count, rows} = await QueryAndCount(config);
-  consolog(`Se encontraron: ${count} videojuegos:`);
-  consolog(await (await rows).map(el=>el.name))
+  console.log(`Se encontraron: ${count} videojuegos:`);
+  console.log(await (await rows).map(el=>el.name))
 })();
 */
 
@@ -49,7 +49,7 @@ const GenreByVideogame = async (actividad) => {
       attributes: ['name']
     }
   })
-  // consolog(`La funcioncita devuelve: ${JSON.stringify(GeneroPorVideogame)}`)
+  // console.log(`La funcioncita devuelve: ${JSON.stringify(GeneroPorVideogame)}`)
   return GeneroPorVideogame
 }
 const GenreByVideogame2 = async (cual) => {
@@ -88,10 +88,10 @@ const Query = async (settings) => {
     ...paginar(settings)
   }
   try {
-    consolog(config)
+    console.log(config)
     return await Videogame.findAll(config)
   } catch (error) {
-    consolog(error)
+    console.log(error)
   }
 }
 
@@ -103,7 +103,7 @@ const settings = {
   page: 3
 }
 const consulta = Query(settings)
-consolog(consulta)
+console.log(consulta)
 */
 
 module.exports = {

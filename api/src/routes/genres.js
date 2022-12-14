@@ -7,7 +7,7 @@ const genres = express.Router()
 // const { QueryByGenre } = require('../controllers/genresController')
 const { GenreByVideogame2 } = require('../controllers/videogameController')
 // const { REAL } = require('sequelize')
-const consolog = require('debug')('dev')
+// const console.log = require('debug')('dev')
 
 // Genre.QueryByGenre('Action');
 // Devuelve un arreglo con todos los 'genres'
@@ -26,7 +26,7 @@ genres.route('/')
     for (const oneGenre of genresRequested) {
       const oneQuery = await QueryByGenre(oneGenre)
       const esteArrayDeGames = oneQuery.Videogames.map((videogame) => videogame.name)
-      // consolog(`${JSON.stringify(oneGenre)} devolvió: ${esteArrayDeGames}`)
+      // console.log(`${JSON.stringify(oneGenre)} devolvió: ${esteArrayDeGames}`)
       const pushedElement = {}
       pushedElement[oneGenre] = esteArrayDeGames
       algo.push(pushedElement)
@@ -52,10 +52,10 @@ genres.route('/:genre')
   .get(async (req, res) => {
     try {
       // Si no, devolvemos todos los videogames de ese género
-      consolog(req.params.genre)
+      console.log(req.params.genre)
       // const juegosDeUnGenero = await GenreByVideogame2(req.params.genre)
       // const oneQuery = await QueryByGenre(req.params.genre)
-      // consologe.dir(await juegosDeUnGenero)
+      // console.loge.dir(await juegosDeUnGenero)
       res.status(200).json(
         await GenreByVideogame2(req.params.genre)
       //   juegosDeUnGenero.map(el => {
@@ -82,7 +82,7 @@ genres.route('/pocilga')
     // const miResQuery = req.query.filter.split(',').map(el => QueryByGenre(el))
     // const genresRequested = req.query.filter.split(',').map(el => el)
     const genresRequested = req.query.filter.split(',')
-    consolog(`Recibí query: ${JSON.stringify(genresRequested)}`)
+    console.log(`Recibí query: ${JSON.stringify(genresRequested)}`)
     const oneQuery = []
     for (const oneGenre of genresRequested) {
       const oneQuery = await Videogame.findAll({
@@ -90,7 +90,7 @@ genres.route('/pocilga')
           model: Genres
         }
       })
-      consolog(`${JSON.stringify(oneGenre)} devolvió: ${esteArrayDeGames}`)
+      console.log(`${JSON.stringify(oneGenre)} devolvió: ${esteArrayDeGames}`)
       algo.push(esteArrayDeGames)
     }
     // const algo = await Promise.all(genresRequested.map(async (el) => await QueryByGenre(el)))

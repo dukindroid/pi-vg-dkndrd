@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
 const Router = require('./routes')
-const consolog = require('debug')('dev')
+// const console.log = require('debug')('dev')
 
 app.use(function (req, res, next) {
-  // consolog(new Date()`Recibí query: ${JSON.stringify(req.query)}`)
-  // consolog(`Devuelvo: ${generos}`)
+  // console.log(new Date()`Recibí query: ${JSON.stringify(req.query)}`)
+  // console.log(`Devuelvo: ${generos}`)
   res.setHeader('Access-Control-Allow-Origin', '*') // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE') // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type') // Request headers you wish to allow
@@ -13,7 +13,7 @@ app.use(function (req, res, next) {
 })
 
 app.use(express.json())
-consolog('Cargando rutas...')
+console.log('Cargando rutas...')
 app.use(Router)
 
 module.exports = app
@@ -44,14 +44,14 @@ app.use('/api/addresses', require('./routes/addresses'));
 
 // Arrancamos el servidor
 app.listen(PORT, function () {
-    consolog(`La app ha arrancado en http://localhost:${PORT}`);
+    console.log(`La app ha arrancado en http://localhost:${PORT}`);
 
     // Conectase a la base de datos
     // Force true: DROP TABLES
     sequelize.sync({ force: false }).then(() => {
-        consolog("Nos hemos conectado a la base de datos");
+        console.log("Nos hemos conectado a la base de datos");
     }).catch(error => {
-        consolog('Se ha producido un error', error);
+        console.log('Se ha producido un error', error);
     })
 
 });

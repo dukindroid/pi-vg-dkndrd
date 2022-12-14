@@ -1,6 +1,6 @@
 // const { Sequelize } = require('sequelize');
 const sequelize = require('./src/db/index')
-const consolog = require('debug')('dev')
+// const console.log = require('debug')('dev')
 const { Videogame, Genre } = require('./src/models/index')
 const genresSeed = require('./src/models/seed/genresSeed')
 const videogamesSeed = require('./src/models/seed/videogamesSeed')
@@ -14,12 +14,12 @@ const https = require('https');
 
 (
   async () => {
-    consolog('Cargando datos iniciales...')
+    console.log('Cargando datos iniciales...')
 
     await sequelize.sync({ force: true })
     // consolo g('Conexión a posgres exitosa!')
     // Bulk Create 'Genres' table:
-    consolog('Cargando Generos...')
+    console.log('Cargando Generos...')
 
     await Promise.all(genresSeed.map(async (singleGenre) =>
       await Genre.create({
@@ -28,11 +28,11 @@ const https = require('https');
     ))
 
     // Bulk Create 'Videogame' table:
-    consolog('Cargando Videogames...')
+    console.log('Cargando Videogames...')
     let algo = false
     let data = ''
     await Promise.all(videogamesSeed.map(async (oneGame) => {
-      // consolog(`Trabajando con ${oneGame.name}`)
+      // console.log(`Trabajando con ${oneGame.name}`)
       // oneGame.description = await (await fetch(`https://api.rawg.io/api/games/${oneGame.id}?key=0f8d95788d644ba9ac601311b87d302d`)).json()
       const coso = https.get(`https://api.rawg.io/api/games/${oneGame.id}?key=0f8d95788d644ba9ac601311b87d302d`, res => {
         res.on('data', chunk => {
@@ -40,11 +40,11 @@ const https = require('https');
         })
         res.on('end', () => {
           data = JSON.parse(data)
-          // consolog(data)
+          // console.log(data)
           oneGame.description = data.description
         })
       }).end()
-      // consolog('Datecuenta Amica: ' + JSON.stringify(coso))
+      // console.log('Datecuenta Amica: ' + JSON.stringify(coso))
       const {
         id,
         img,
@@ -66,12 +66,12 @@ const https = require('https');
         platforms,
         genres
       })
-      // consolog("Hemos creado este videogame: ")
-      // consolog(newVideogame.toJSON());
+      // console.log("Hemos creado este videogame: ")
+      // console.log(newVideogame.toJSON());
 
       // Fill VideogameGenre n:n associations table:
       if (!algo) {
-        consolog('Creando tabla intermedia...')
+        console.log('Creando tabla intermedia...')
         algo = true
       }
 
@@ -84,9 +84,9 @@ const https = require('https');
       )
     }))
 
-    if (parseInt(await Videogame.count()) === 100) consolog('Carga exitosa.')
-    // consolog("Estos videogames tenemos: " + await Videogame.count());
+    if (parseInt(await Videogame.count()) === 100) console.log('Carga exitosa.')
+    // console.log("Estos videogames tenemos: " + await Videogame.count());
     // sequelize.close()
 
-    // consolog(JSON.stringify(await QueryByGenre('puzzle')))
+    // console.log(JSON.stringify(await QueryByGenre('puzzle')))
   })()
