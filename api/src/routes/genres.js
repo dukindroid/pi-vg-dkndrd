@@ -7,6 +7,7 @@ const genres = express.Router()
 // const { QueryByGenre } = require('../controllers/genresController')
 const { GenreByVideogame2 } = require('../controllers/videogameController')
 // const { REAL } = require('sequelize')
+const consolog = require('debug')('dev')
 
 // Genre.QueryByGenre('Action');
 // Devuelve un arreglo con todos los 'genres'
@@ -54,7 +55,7 @@ genres.route('/:genre')
       consolog(req.params.genre)
       // const juegosDeUnGenero = await GenreByVideogame2(req.params.genre)
       // const oneQuery = await QueryByGenre(req.params.genre)
-      // console.dir(await juegosDeUnGenero)
+      // consologe.dir(await juegosDeUnGenero)
       res.status(200).json(
         await GenreByVideogame2(req.params.genre)
       //   juegosDeUnGenero.map(el => {

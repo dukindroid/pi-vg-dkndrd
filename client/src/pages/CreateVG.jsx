@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import GenresArray from './GenresArray'
-import PlatformsArray from './platformsArray'
-import WhiteContainer from './WhiteContainer'
+import GenresArray from '../components/GenresArray'
+import PlatformsArray from '../components/platformsArray'
+import WhiteContainer from '../components/WhiteContainer'
 import { useDispatch } from 'react-redux'
 import { createVideogame } from '../redux/actions'
 // import DropdownFilters from './DropdownFilters'
@@ -30,7 +30,7 @@ const createVG = () => {
   })
   let unaVariable = false
   const validate = (input) => {
-    console.dir(input)
+    consolog(input)
     const error = {}
     if (!input.name) error.name = 'El campo de título es obligatorio'
     if (!input.description) error.description = 'El campo de descripción es obligatorio'
@@ -89,7 +89,7 @@ const createVG = () => {
   const addPlatform = () => { alert('💩') }
   const addGenre = () => { alert('💩') }
 
-  const changeGenre = (evento) => { console.dir(evento) }
+  // const changeGenre = (evento) => { consolog(evento) }
   const enviar = () => {
     alert('Pum! ya envié un videogame, según, con esta data: ' + JSON.stringify(input))
     dispatch(createVideogame(input))

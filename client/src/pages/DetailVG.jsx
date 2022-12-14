@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getVideogameDetail } from '../redux/actions'
-import NavWrapper from './NavWrapper'
+import NavWrapper from '../components/NavWrapper'
 /*
 const obj = {
         id: el.id,
