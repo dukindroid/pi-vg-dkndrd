@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.31d6cfe0.css",
-    "main.js": "/static/js/main.762b5447.js",
-    "index.html": "/index.html",
-    "main.762b5447.js.map": "/static/js/main.762b5447.js.map"
+    "main.css": "/pi-videogames/static/css/main.31d6cfe0.css",
+    "main.js": "/pi-videogames/static/js/main.cc2285a0.js",
+    "index.html": "/pi-videogames/index.html",
+    "main.cc2285a0.js.map": "/pi-videogames/static/js/main.cc2285a0.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.762b5447.js"
+    "static/js/main.cc2285a0.js"
   ]
 }
