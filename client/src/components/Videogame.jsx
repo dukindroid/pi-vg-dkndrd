@@ -10,7 +10,7 @@ const Videogame = (props) => {
   return (
     <>
       <Link to={'/videogames/' + id } >
-        <div className="nes-container is-dark with-title is-primary" >
+        <div className="nes-container is-dark with-title is-primary same-height" >
           <h3 className="title">{name}</h3>
           {/* <p className="content">{content}</p> */}
           <div className="gameImg">

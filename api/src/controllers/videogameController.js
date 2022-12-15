@@ -80,6 +80,14 @@ const QueryAndCount = async (settings) => {
   }
   return await Videogame.findAndCountAll(config)
 }
+
+const CountQuery = async (settings) => {
+  const config = {
+    ...buscar(settings),
+    ...filtrar(settings)
+  }
+  return await Videogame.count(config)
+}
 // LA FUNCIONCITA
 const Query = async (settings) => {
   const config = {
@@ -110,5 +118,6 @@ module.exports = {
   Query,
   QueryAndCount,
   GenreByVideogame,
-  GenreByVideogame2
+  GenreByVideogame2,
+  CountQuery
 }

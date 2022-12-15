@@ -6,7 +6,8 @@ if (process.env.debug = 'dev') {
 
 }
 // const console.log = require('debug')('dev')
-const url = 'http://127.0.0.1:3041'
+// const url = 'https://henryhealthy.shop/pi-vg-dkndrd/api/'
+const url = 'http://localhost:3041'
 
 export const createVideogame = (videogame) => async (dispatch) => {
   try {
@@ -75,7 +76,7 @@ export const getCount = () => async (dispatch) => {
 
 export const getVideogames = (query) => async (dispatch) => {
   // console.log('Recibí: ' + query)
-  // console.log(`getVideogames -->: ${(`${url}/videogame?${query}`)}`)
+  console.log(`⤵: ${(`${url}/videogame?${query}`)}`)
   let res = await (await fetch(`${url}/videogame?${query}`, { mode: 'cors' })).json()
   // if (query) {
   // res = 

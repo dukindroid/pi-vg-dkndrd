@@ -136,6 +136,12 @@ transition: .3s background-color;
   transform: scale(20);
 }
 
+.same-height {
+  align-self: center;
+  justify-self: center;
+  height:100%
+
+}
 .center {
   position: absolute;
   margin: auto;

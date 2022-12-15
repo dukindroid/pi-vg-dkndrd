@@ -1,14 +1,10 @@
 /* eslint-disable react/prop-types */
-// import WhiteContainer from './WhiteContainer'
-// import HomeHeader from './HomeHeader'
-// import { Link } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getVideogames, getAllGenres } from '../redux/actions'
-import DropDownFilters from '../components/DropdownPerrisimo'
+import Filters from '../components/FiltersNew'
 import Videogame from '../components/Videogame'
 import WhiteContainer from '../components/WhiteContainer'
-import NavWrapper from '../components/NavWrapper'
 if (process.env.debug = 'dev') {
   localStorage.debug = 'dev'
 }
@@ -44,13 +40,11 @@ function useQuery () {
 
 const Home = (props) => {
   const { search } = useLocation()
-  // const genresArray = useSelector(state => state.genres)
   const dispatch = useDispatch()
   const query = useQuery()
   let [searchParams, setSearchParams] = useSearchParams()
   const videogames = useSelector(state => state.videogames)
   const page = searchParams.get('page') // props.location.pathname.split('/')[2]
-  const total = 15
 
   useEffect(() => {
     if (!page) {
@@ -64,10 +58,11 @@ const Home = (props) => {
     dispatch(getAllGenres())
   }, [query])
 
-  const FilterContainer = withRouter(DropDownFilters) // Enlaza el DropDownFilters con el Router
+  const FilterContainer = withRouter(Filters) // Enlaza el Filters con el Router
 
   return (<>
-    <h1>Henry PI: Videogames - {search}</h1>
+    <h1>Henry PI: Videogames</h1>
+    <p>{search}</p>
     {/* Header: Búsqueda y filtros */}
     <WhiteContainer>
       <FilterContainer />

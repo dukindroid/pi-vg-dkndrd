@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCount } from '../redux/actions'
 // import { Link, useNavigate } from 'react-router-dom'
 if (process.env.debug = 'dev') {
   localStorage.debug = 'dev'
@@ -38,7 +40,12 @@ const useNavigateParams = () => {
     navigate(path)
   }
 }
-const Paginator = ({ pagina, total, query }) => {
+const Paginator = ({ pagina, query }) => {
+  // const dispatch = useDispatch()
+  const count = useSelector(state => state.count)
+  // useEffect(() => {
+  //   dispatch(getCount())
+  // }, [])
   const navigate = useNavigateParams()
   
   const navigateHandler = (onePage) => {
@@ -48,7 +55,7 @@ const Paginator = ({ pagina, total, query }) => {
   
   // console.log('args de pagntr --> + query:' + query + ' pagina: ' + pagina + ' total:' + total )
   const array1 = []
-  for (let index = 1; index < total; index++) {
+  for (let index = 1; index < Math.ceil(count/9); index++) {
     array1[index] = index
   }
   return (

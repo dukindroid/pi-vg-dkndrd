@@ -5,7 +5,7 @@ const express = require('express')
 const { Videogame, Genre } = require('../models/index')
 const videogame = express.Router()
 const db = require('../db')
-const { Query } = require('../controllers/videogameController')
+const { Query, CountQuery } = require('../controllers/videogameController')
 const fetch = (url) => import('node-fetch')
   .then(({ default: fetch }) => fetch(url))
 // const console.log = require('debug')('dev')
@@ -61,15 +61,19 @@ videogame.route('/')
       console.log('Request GET a /videogame')
       // console.log(`Request GET a /videogame/ con ${JSON.stringify(req.query)}`)
       const resultado = await Query(req.query)
-      res.status(200).json(resultado.map(el => {
-        const obj = {
-          id: el.id,
-          name: el.name,
-          img: el.img,
-          genres: el.genres
-        }
-        return obj
-      }))
+      const count = await CountQuery(req.query)
+      res.status(200).json({
+        count,
+        items: resultado.map(el => {
+          const obj = {
+            id: el.id,
+            name: el.name,
+            img: el.img,
+            genres: el.genres
+          }
+          return obj
+        })
+      })
     } catch (error) {
       console.log(`EH CHALAO! que tienes un error al surtir videogame: ${error} ${error.stack}`)
       res.status(500).send(error)
