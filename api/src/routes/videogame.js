@@ -5,7 +5,7 @@ const express = require('express')
 const { Videogame, Genre } = require('../models/index')
 const videogame = express.Router()
 const db = require('../db')
-const { Query, CountQuery } = require('../controllers/videogameController')
+const { QueryAndCount } = require('../controllers/videogameController')
 const fetch = (url) => import('node-fetch')
   .then(({ default: fetch }) => fetch(url))
 // const console.log = require('debug')('dev')
@@ -58,13 +58,14 @@ videogame.route('/')
       // if (!req.params.page) {
       //   console.log('página mis huevos')
       // }
-      console.log('Request GET a /videogame')
-      // console.log(`Request GET a /videogame/ con ${JSON.stringify(req.query)}`)
-      const resultado = await Query(req.query)
-      const count = await CountQuery(req.query)
+      // console.log('Request GET a /videogame')
+      console.log(`Request GET a /videogame/ con ${JSON.stringify(req.query)}`)
+      // const resultado = await Query(req.query)
+      const { count, rows } = await QueryAndCount(req.query)
+      // console.log(`Data de /videogame/ con ${JSON.stringify(rows)}`)
       res.status(200).json({
         count,
-        items: resultado.map(el => {
+        items: rows && rows.map(el => {
           const obj = {
             id: el.id,
             name: el.name,

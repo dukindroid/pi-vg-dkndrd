@@ -1,16 +1,12 @@
 // const { Sequelize } = require('sequelize');
+const { Op } = require('sequelize')
 const sequelize = require('./src/db/index')
 // const console.log = require('debug')('dev')
 const { Videogame, Genre } = require('./src/models/index')
 const genresSeed = require('./src/models/seed/genresSeed')
 const videogamesSeed = require('./src/models/seed/videogamesSeed')
-const https = require('https');
-// const fetch = require('node-fetch')
-// const QueryByGenre = require('./controllers/genresController');
-// const GenresArray = require('../../client/src/components/GenresArray');
-// const { Query, QueryAndCount } = require('./controllers/videogameController');
-// const QueryByGenre = require('./controllers/genresController');
-// const db = require('./db/index');
+const https = require('https')
+const { QueryAndCount } = require('./src/controllers/videogameController');
 
 (
   async () => {
@@ -34,7 +30,7 @@ const https = require('https');
     await Promise.all(videogamesSeed.map(async (oneGame) => {
       // console.log(`Trabajando con ${oneGame.name}`)
       // oneGame.description = await (await fetch(`https://api.rawg.io/api/games/${oneGame.id}?key=0f8d95788d644ba9ac601311b87d302d`)).json()
-      const coso = https.get(`https://api.rawg.io/api/games/${oneGame.id}?key=0f8d95788d644ba9ac601311b87d302d`, res => {
+      https.get(`https://api.rawg.io/api/games/${oneGame.id}?key=0f8d95788d644ba9ac601311b87d302d`, res => {
         res.on('data', chunk => {
           data += chunk
         })
@@ -89,4 +85,6 @@ const https = require('https');
     // sequelize.close()
 
     // console.log(JSON.stringify(await QueryByGenre('puzzle')))
+    const records = await QueryAndCount({ where: { genres: { [Op.includes]: ['Adventure'] } } })
+    console.log(`Así pues las cosas: ${JSON.stringify(records)} y ${await Videogame.count()}`)
   })()

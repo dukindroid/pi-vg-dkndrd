@@ -1,3 +1,5 @@
+const sequelize = require('sequelize')
+// const sequelize = new Sequelize()
 const { Videogame, Genre } = require('../models/index')
 // const Videogame = require('../models/Videogame')
 // const Genre = require('../models/Genre')
@@ -49,22 +51,20 @@ const GenreByVideogame = async (actividad) => {
       attributes: ['name']
     }
   })
-  // console.log(`La funcioncita devuelve: ${JSON.stringify(GeneroPorVideogame)}`)
+  console.log(`La funcioncita devuelve: ${JSON.stringify(GeneroPorVideogame)}`)
   return GeneroPorVideogame
 }
-const GenreByVideogame2 = async (cual) => {
-  Videogame.findAll({
-    where: {
-      genres: 'action'
-    }
-  })
-}
-const buscar = ({ search }) => {
-  return search ? { where: { name: { [Op.iLike]: '%' + search + '%' } } } : null
+const buscar = ({ search, genres }) => {
+  if (!search && !genres) return null
+  const queryString = { where: null }
+  if (search) queryString.where = { name: { [Op.iLike]: '%' + search + '%' } }
+  if (genres) queryString.where = { ...queryString.where, genres: { [Op.contains]: [genres] } }
+  return queryString
 }
 const filtrar = ({ filter, order }) => {
+  // console.log('Si llega el género: ' + genres)
   // const orden = (order === '+') ? 'ASC' : 'DESC';
-  return filter ? { order: [[filter, order]] } : null
+  return filter ? { order: [filter, order] } : null
 }
 const paginar = ({ page }) => {
   const offset = (page - 1) * TAMANIO_PAGINA
@@ -78,6 +78,8 @@ const QueryAndCount = async (settings) => {
     ...filtrar(settings),
     ...paginar(settings)
   }
+  // sequelize.getQueryInterface().queryGenerator()
+  console.log('QueryAndCount busca: ' + JSON.stringify(config))
   return await Videogame.findAndCountAll(config)
 }
 
@@ -96,7 +98,7 @@ const Query = async (settings) => {
     ...paginar(settings)
   }
   try {
-    console.log(config)
+    console.log('La funcioncita busca: ' + JSON.stringify(config))
     return await Videogame.findAll(config)
   } catch (error) {
     console.log(error)
@@ -118,6 +120,5 @@ module.exports = {
   Query,
   QueryAndCount,
   GenreByVideogame,
-  GenreByVideogame2,
   CountQuery
 }

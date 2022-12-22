@@ -1,8 +1,16 @@
 /* eslint-disable react/prop-types */
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCount } from '../redux/actions'
-// import { Link, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+
+
+function useQuery () {
+  const { search } = useLocation()
+  return React.useMemo(() => new URLSearchParams(search), [search])
+}
+
+
 if (process.env.debug = 'dev') {
   localStorage.debug = 'dev'
 
@@ -40,7 +48,10 @@ const useNavigateParams = () => {
     navigate(path)
   }
 }
-const Paginator = ({ pagina, query }) => {
+const Paginator = ({ pagina }) => {
+  const query = useQuery()
+  query.delete('page')
+  // console.log('args de pagntr --> query:' + query + ' pagina: ' + pagina )
   // const dispatch = useDispatch()
   const count = useSelector(state => state.count)
   // useEffect(() => {
@@ -49,13 +60,13 @@ const Paginator = ({ pagina, query }) => {
   const navigate = useNavigateParams()
   
   const navigateHandler = (onePage) => {
-    console.dir(onePage)
-    navigate(".", { page: onePage })
+    // console.dir(onePage)
+    query.set('page',onePage)
+    navigate(".", query)
   }
   
-  // console.log('args de pagntr --> + query:' + query + ' pagina: ' + pagina + ' total:' + total )
   const array1 = []
-  for (let index = 1; index < Math.ceil(count/9); index++) {
+  for (let index = 1; index < Math.ceil(count/9) + 1; index++) {
     array1[index] = index
   }
   return (
@@ -63,12 +74,19 @@ const Paginator = ({ pagina, query }) => {
       {
         array1 && array1.map((el) => {
           // const renderTo = '/videogames?page=' + el
-          return (<div key={el} className='paginatorDiv' >
-            <button type='button' onClick={() => navigateHandler(el)} >
-              {el}
-            </button>
-          </div>
-          )
+          // console.log(`coso: ${el} ${pagina}`)
+          {
+            return (
+              <div key={el} className='paginatorDiv' >
+                <button 
+                  type='button' 
+                  onClick={() => navigateHandler(el)}
+                  disabled={(el != pagina) ? false: true} >
+                  {el}
+                </button>
+              </div>
+            )
+          }
         })
       }
     </div>

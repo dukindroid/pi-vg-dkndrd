@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 import GenresArray from './GenresArray'
 import React, { useEffect } from 'react'
-import { createSearchParams, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { getOneGenre } from '../redux/actions'
+import { createSearchParams, useLocation, useNavigate} from 'react-router-dom'
 if (process.env.debug = 'dev') {
   localStorage.debug = 'dev'
 
@@ -16,31 +14,22 @@ function useQuery () {
   return React.useMemo(() => new URLSearchParams(search), [search])
 }
 
-/*
-  Componente DropDownFilters
-*/
 const Filters = (props) => {
-  const dispatch = useDispatch()
   const query = useQuery()
-
   const [input, setInput] = React.useState({
     searchQuery: '',
     filterOrder: ''
   })
   const [select, setSelect] = React.useState({
-    filter: ''
+    filter: '',
+    genres: ''
   })
-  
-  let [searchParams, setSearchParams] = useSearchParams()
-  
+
   const handleSearchChange = (evento) => {
     setInput(prev => ({
       ...prev,
       [evento.target.name]: evento.target.value
     }))
-    console.log('Filtros tiene estos params: ' + searchParams)
-    console.log(input.searchQuery)
-    
   }
   // Escuchador para el select de filtro
   const onChange = (evento) => {
@@ -49,24 +38,6 @@ const Filters = (props) => {
       [evento.target.name]: evento.target.value
     }))
     query.set('filter',evento.target.value)
-    console.log('query:' + query)
-    console.log('select:' + JSON.stringify(select))
-    // console.dir({query, input, select})
-    // const newparams = createSearchParams({
-    //   ...searchParams,
-    //   filter: e.target.value 
-    // })
-
-    // console.dir(newparams)
-    // if (query.has('filter')) query.set('filter', e.target.value)
-    // else query.append('filter', e.target.value)
-    // console.log('Al query le agregamos esto: ' + query.toString())
-    // props.history.push(`/home?${query.toString()}`)
-  }
-
-  const handleGenre = (evento) => {
-    console.log(evento.target.value)
-    dispatch(getOneGenre(evento.target.value))
   }
   // Escuchador para elegir en qué orden se desplegará el filtro
   const onSort = (e) => {
@@ -77,34 +48,20 @@ const Filters = (props) => {
     query.set('order',e.target.value)
     console.log('query:' + query.toString())
     navigateHandler(query.toString())
-    // setSearchParams(
-    //   ...searchParams,
-    //   createSearchParams({order: e.target.value })
-    // )
-    // console.log('Los params ahora: ' + searchParams)
-    // query.set('order', e.target.value)
-    // query.delete('page')
-    // query.delete('search')
-    // console.log('Al query le agregamos esto: ' + query.toString())
-    // props.history.push(`/home?${query.toString()}`)
   }
-  const useNavigateParams = () => {
-    const navigate = useNavigate()
-  
-    return (pathname, params) => {
-      const path = {
-        pathname,
-        search: createSearchParams(params).toString()
-      }
-      navigate(path)
-    }
+  const handleGenre = (e) => {
+    // console.log(evento.target.value)
+    setSelect(prev => ({
+      ...prev,
+      genres: query.get( e.target.value)
+    }))
+    // Deletes de query TEMPORALES
+    // query.delete('order')
+    // query.delete('filter')
+    query.set('genres', e.target.value)
+    navigateHandler(query.toString())
   }
-  const navigate = useNavigateParams()
 
-  const navigateHandler = (where) => {
-    console.dir(where)
-    navigate(".", where)
-  }
   const onSubmit = (e) => {
     // alert('buscar: ' + input.searchQuery)
     // if (query.has('search')) query.set('search', e.target.value)
@@ -117,8 +74,24 @@ const Filters = (props) => {
     console.log('Al query le agregamos esto: ' + query.toString() + input.searchQuery)
     navigateHandler(query.toString())
   }
+  const useNavigateParams = () => {
+    const navigate = useNavigate()
+    return (pathname, params) => {
+      const path = {
+        pathname,
+        search: createSearchParams(params).toString()
+      }
+      navigate(path)
+    }
+  }
+  const navigate = useNavigateParams()
+  const navigateHandler = (where) => {
+    // console.dir(where)
+    navigate(".", where)
+  }
+  
   useEffect(() => {
-    console.dir({query, input, select})
+    // console.dir({query, input, select})
     // console.dir(params)
     if (query.has('search')) {
       setInput(prev => ({
@@ -136,8 +109,14 @@ const Filters = (props) => {
         filterOrder: query.get('order')
       }))
     }
+    if (query.has('genres')) {
+      setSelect(prev => ({
+        ...prev,
+        genres: query.get('genres')
+      }))
+    }
   }, [query])
-  // console.log('Desde el dropdown, page vale: ' + query.get('page'))
+  // console.log('Desde el dropdown, select vale: ' + select.genres)
   return (<>
     <div >
       <div className='nes-field is-inline' >
@@ -163,8 +142,8 @@ const Filters = (props) => {
       </label>
     </div>
     <div className="nes-field nes-select is-dark is-inline" >
-      <select id="myGenre" label="Género: " onChange={handleGenre}>
-        <option value={'NULL'} >Por genero...</option>
+      <select value={select.genres} id="myGenre" label="Género: " onChange={handleGenre} name="genres">
+        <option  >Por genero...</option>
         {
           GenresArray.map((unGenero, key) => {
             return (
@@ -176,7 +155,7 @@ const Filters = (props) => {
       </select>
     </div>
     {/* Paginador */}
-    <Paginator pagina={query.get('page')} total={15} query={query.toString()} />
+    <Paginator pagina={query.get('page')} />
   </>)
 }
 

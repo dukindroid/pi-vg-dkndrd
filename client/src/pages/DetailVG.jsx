@@ -47,7 +47,7 @@ const detailVG = () => {
 
           <p className="title">{videogameDetail.name} <span style={{ display: videogameDetail.isLocal ? 'inline' : 'none' }} onClick={deleteGame} >❌</span></p>
           <p>Fecha de lanzamiento: {videogameDetail.released}</p>
-          <p>Genero(s): {videogameDetail.genres}</p>
+          <p>Genero(s): {videogameDetail.genres ? videogameDetail.genres.map( (e) => e + ' ') : undefined}</p>
           <p>Descripción: {videogameDetail.description}</p>
           <div className="genre-select nes-field is-inline rating">
             <label htmlFor="inline_field">Rating: {videogameDetail.rating}</label>

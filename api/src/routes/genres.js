@@ -5,7 +5,8 @@ const { Genre } = require('../models')
 const genres = express.Router()
 // const Videogame = require('../models/Videogame')
 // const { QueryByGenre } = require('../controllers/genresController')
-const { GenreByVideogame2 } = require('../controllers/videogameController')
+const { Query, QueryAndCount } = require('../controllers/videogameController')
+// const { GenreByVideogame2 } = require('../controllers/videogameController')
 // const { REAL } = require('sequelize')
 // const console.log = require('debug')('dev')
 
@@ -39,6 +40,8 @@ genres.route('/')
 genres.route('/')
   .get(async (req, res) => {
     try {
+      console.log('Request GET a /genres')
+
       // Sin params devolvería toda la lista de genres
       const generos = (await Genre.findAll()).map(el => el.name)
       res.status(200).json(generos)
@@ -51,24 +54,10 @@ genres.route('/')
 genres.route('/:genre')
   .get(async (req, res) => {
     try {
-      // Si no, devolvemos todos los videogames de ese género
-      console.log(req.params.genre)
-      // const juegosDeUnGenero = await GenreByVideogame2(req.params.genre)
-      // const oneQuery = await QueryByGenre(req.params.genre)
-      // console.loge.dir(await juegosDeUnGenero)
-      res.status(200).json(
-        await GenreByVideogame2(req.params.genre)
-      //   juegosDeUnGenero.map(el => {
-      //   const obj = {
-      //     id: el.id,
-      //     name: el.name,
-      //     img: el.img,
-      //     genres: el.genres
-      //   }
-      //   return obj
-      // })
-      )
+      console.log('Request GET a /genres/:id - ' + req.params.genre)
+      res.status(200).json(await QueryAndCount(req.params.genre))
     } catch (error) {
+      console.log('valió madres tilín')
       console.error(error.message)
       console.error(error.stack)
     }

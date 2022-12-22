@@ -61,9 +61,9 @@ export const getAllGenres = () => async (dispatch) => {
 }
 
 export const getOneGenre = (cual) => async (dispatch) => {
-  // console.log(`Bueno, voy a pedir esta dirección por fetch: ${(`${url}/genres/` + cual)}`)
-  const res = await (await fetch('/genres/' + cual, { mode: 'cors' })).json()
-  // console.log(res)
+  console.log(`Bueno, voy a pedir esta dirección por fetch: ${url}/genres/${cual}`)
+  const res = await (await fetch(`${url}/genres/${cual}`, { mode: 'cors' })).json()
+  console.log(res)
   dispatch({ type: GET_ONE_GENRE, payload: res })
 }
 
@@ -76,7 +76,7 @@ export const getCount = () => async (dispatch) => {
 
 export const getVideogames = (query) => async (dispatch) => {
   // console.log('Recibí: ' + query)
-  console.log(`⤵: ${(`${url}/videogame?${query}`)}`)
+  // console.log(`⤵: ${(`${url}/videogame?${query}`)}`)
   let res = await (await fetch(`${url}/videogame?${query}`, { mode: 'cors' })).json()
   // if (query) {
   // res = 
