@@ -59,7 +59,7 @@ videogame.route('/')
       //   console.log('página mis huevos')
       // }
       // console.log('Request GET a /videogame')
-      console.log(`Request GET a /videogame/ con ${JSON.stringify(req.query)}`)
+      console.log(`GET /videogame -> ${JSON.stringify(req.query)}`)
       // const resultado = await Query(req.query)
       const { count, rows } = await QueryAndCount(req.query)
       // console.log(`Data de /videogame/ con ${JSON.stringify(rows)}`)
@@ -85,11 +85,11 @@ videogame.route('/')
   .post(async (req, res) => {
     console.log(`Request POST a /videogame: ${JSON.stringify(req.body)}`)
     try {
-      const { name, description, released, rating, platforms, genres, isLocal } = req.body
-      const newVideogame = await Videogame.create({ name, description, released, rating, platforms, genres, isLocal })
-      genres.map(async (genre) => {
-        await newVideogame.addGenre(genre, { through: 'VideogameGenre' })
-      })
+      const { name, description, released, rating, platforms, genres, isLocal, img } = req.body
+      const newVideogame = await Videogame.create({ name, img, description, released, rating, platforms, genres, isLocal })
+      // genres.map(async (genre) => {
+      await newVideogame.addGenre(String(genres).toLowerCase(), { through: 'VideogameGenre' })
+      // })
       res.status(200).json({ msg: `Se creó: ${newVideogame.name}` })
     } catch (error) {
       console.log(`Alguien quizo crear mal un videogame: ${error} Stack call: ${error.stack} `)
@@ -133,7 +133,7 @@ videogame.route('/count')
 videogame.route('/:id')
   .get(async (req, res) => {
     try {
-      console.log(`Request GET a /videogame: ${JSON.stringify(req.params.id)}`)
+      console.log(`GET /vg: ${JSON.stringify(req.params.id)}`)
       const resultado = await Videogame.findByPk(req.params.id)
       res.status(200).json(resultado)
     } catch (error) {
@@ -141,9 +141,10 @@ videogame.route('/:id')
     }
   })
   .delete(async (req, res) => {
-    console.log(`Request DELETE a /videogame: ${req.params.id}`)
-    const eliminado = Videogame.findByPk(req.params.id)
-    res.status(204).send(await eliminado.destroy())
+    console.log(`DELETE /vg: ${JSON.stringify(req.params.id)}`)
+    const eliminado = await Videogame.findByPk(req.params.id)
+    console.log(`Eliminado: ${JSON.stringify(eliminado)}`)
+    res.status(204).json(await eliminado.destroy())
   })
 
 module.exports = videogame

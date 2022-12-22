@@ -6,8 +6,8 @@ if (process.env.debug = 'dev') {
 
 }
 // const console.log = require('debug')('dev')
-const url = 'https://henryhealthy.shop/pi-vg-dkndrd/api/'
-// const url = 'http://localhost:3041'
+// const url = 'https://henryhealthy.shop/pi-vg-dkndrd/api/'
+const url = 'http://localhost:3041'
 
 export const createVideogame = (videogame) => async (dispatch) => {
   try {
@@ -18,12 +18,9 @@ export const createVideogame = (videogame) => async (dispatch) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(videogame)
-
     })
-    console.log(response.json())
-    dispatch({
-      type: CREATE_VIDEOGAME,
-      payload: response.json()
+    console.log(`Creando: ${JSON.stringify(response)}`)
+    dispatch({ type: CREATE_VIDEOGAME, payload: response
     })
   } catch (error) {
     console.log(JSON.stringify(error))
@@ -39,7 +36,7 @@ export const deleteVideogame = (videogame) => async (dispatch) => {
         'Content-Type': 'application/json'
       }
     })
-    console.log(response.json())
+    console.log(await response.json())
     dispatch({
       type: DELETE_VIDEOGAME,
       payload: response.json()
@@ -50,14 +47,10 @@ export const deleteVideogame = (videogame) => async (dispatch) => {
 }
 
 export const getAllGenres = () => async (dispatch) => {
-  // const res = await axios.get('localhost:3001/genres')
   // console.log('Despacharé los géneros desde las actions:')
   const res = await (await fetch(`${url}/genres`)).json()
   // console.log(res)
-  dispatch({
-    type: GET_ALL_GENRES,
-    payload: res
-  })
+  dispatch({ type: GET_ALL_GENRES, payload: res })
 }
 
 export const getOneGenre = (cual) => async (dispatch) => {
@@ -67,23 +60,9 @@ export const getOneGenre = (cual) => async (dispatch) => {
   dispatch({ type: GET_ONE_GENRE, payload: res })
 }
 
-export const getCount = () => async (dispatch) => {
-  // console.log(`getCount fetch --> : ${url}/videogame/count`)
-  const res = await (await fetch(`${url}/videogame/count`, { mode: 'cors' })).json()
-  // console.log(res)
-  dispatch({ type: GET_COUNT, payload: res })
-}
-
 export const getVideogames = (query) => async (dispatch) => {
-  // console.log('Recibí: ' + query)
   console.log(`⤵: ${(`${url}/videogame?${query}`)}`)
   let res = await (await fetch(`${url}/videogame?${query}`, { mode: 'cors' })).json()
-  // if (query) {
-  // res = 
-  // } else {
-  // res = await (await fetch(`${url}/videogame?page=` + pagina, { method: 'GET' }, { headers: { 'Content-Type': 'application/json' } })).json()
-  // }
-  // console.log(res)
   dispatch({ type: GET_VIDEOGAMES, payload: res })
 }
 
@@ -98,7 +77,6 @@ export const GET_VIDEOGAMES = 'GET_VIDEOGAMES'
 export const CREATE_VIDEOGAME = 'CREATE_VIDEOGAME'
 export const DELETE_VIDEOGAME = 'DELETE_VIDEOGAME'
 export const GET_ONE_GENRE = 'GET_ONE_GENRE'
-export const GET_COUNT = 'GET_COUNT'
 
 // export const getHouse = (id) => async dispatch => {
 //   const res = await axios.get(`http://localhost:3000/houses/${id}`)

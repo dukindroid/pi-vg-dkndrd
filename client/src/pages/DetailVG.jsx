@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getVideogameDetail } from '../redux/actions'
-import NavWrapper from '../components/NavWrapper'
-import { useLoaderData, useParams } from 'react-router-dom'
+import { getVideogameDetail, deleteVideogame } from '../redux/actions'
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
+
 /*
 const obj = {
         id: el.id,
@@ -25,14 +26,39 @@ const detailVG = () => {
   const videogameDetail = useSelector(state => state.videogameDetail)
   // const page = useSelector(state => state.page)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   useEffect(() => {
     dispatch(getVideogameDetail(params.id))
     // console.log('Este detalle nos las trajo el dispatch: ')
     // console.log(videogameDetail)
   }, [])
 
-  const deleteGame = () => dispatch(deleteGame(videogameDetail.id))
-
+  const miSwal = Swal.mixin({
+    background: "#212529",
+    color: "#CCC",
+  })
+  
+  
+  const handleDeleteGame = () => {
+    miSwal.fire({
+      icon: 'warning',
+      title: 'Borrar?',
+      text: `Estás  seguro de que quieres borrar ${videogameDetail.name}`,
+      showDenyButton: true,
+      confirmButtonText: 'Mejor no...',
+      denyButtonText: `Borrar`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        miSwal.fire('Ok!', '', 'success')
+      } else if (result.isDenied) {
+        miSwal.fire(`${videogameDetail.name} borrado!`, '', 'info')
+        dispatch(deleteVideogame(videogameDetail.id))
+        navigate(-2)
+        // location.reload()
+      }
+    })
+  }
   return (
     <>
       <div className="nes-container tinted is-dark bkgnd_detail" style={{
@@ -45,7 +71,7 @@ const detailVG = () => {
       }} >
         <div >
 
-          <p className="title">{videogameDetail.name} <span style={{ display: videogameDetail.isLocal ? 'inline' : 'none' }} onClick={deleteGame} >❌</span></p>
+          <p className="title">{videogameDetail.name} <span style={{ display: videogameDetail.isLocal ? 'inline' : 'none' }} onClick={handleDeleteGame} >❌</span></p>
           <p>Fecha de lanzamiento: {videogameDetail.released}</p>
           <p>Genero(s): {videogameDetail.genres ? videogameDetail.genres.map( (e) => e + ' ') : undefined}</p>
           <p>Descripción: {videogameDetail.description}</p>

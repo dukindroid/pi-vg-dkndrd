@@ -69,28 +69,28 @@ const Paginator = ({ pagina }) => {
   for (let index = 1; index < Math.ceil(count/9) + 1; index++) {
     array1[index] = index
   }
-  return (
-    <div className="nes-container is-dark is-centered card">
+  return (<>
+    <div className='paginatorDiv'>
       {
         array1 && array1.map((el) => {
           // const renderTo = '/videogames?page=' + el
           // console.log(`coso: ${el} ${pagina}`)
           {
             return (
-              <div key={el} className='paginatorDiv' >
-                <button 
-                  type='button' 
-                  onClick={() => navigateHandler(el)}
-                  disabled={(el != pagina) ? false: true} >
-                  {el}
-                </button>
-              </div>
+              
+              <button key={el}
+                type='button' 
+                onClick={() => navigateHandler(el)}
+                disabled={(el != pagina) ? false: true} >
+                {el}
+              </button>
+            
             )
           }
         })
       }
     </div>
-  )
+  </>)
 }
 
 export default Paginator

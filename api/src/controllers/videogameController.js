@@ -1,4 +1,4 @@
-const sequelize = require('sequelize')
+// const sequelize = require('sequelize')
 // const sequelize = new Sequelize()
 const { Videogame, Genre } = require('../models/index')
 // const Videogame = require('../models/Videogame')
@@ -64,7 +64,7 @@ const buscar = ({ search, genres }) => {
 const filtrar = ({ filter, order }) => {
   // console.log('Si llega el género: ' + genres)
   // const orden = (order === '+') ? 'ASC' : 'DESC';
-  return filter ? { order: [filter, order] } : null
+  return filter ? { order: [[filter, order]] } : null
 }
 const paginar = ({ page }) => {
   const offset = (page - 1) * TAMANIO_PAGINA
@@ -74,8 +74,8 @@ const paginar = ({ page }) => {
 }
 const QueryAndCount = async (settings) => {
   const config = {
-    ...buscar(settings),
     ...filtrar(settings),
+    ...buscar(settings),
     ...paginar(settings)
   }
   // sequelize.getQueryInterface().queryGenerator()

@@ -62,11 +62,10 @@ const Home = (props) => {
 
   return (<>
     <h1>Henry PI: Videogames</h1>
-    <p>{search}</p>
     {/* Header: Búsqueda y filtros */}
-    <WhiteContainer>
-      <FilterContainer />
-    </WhiteContainer>
+    
+    <FilterContainer />
+    
 
     {/* Sección principal: Basic Grid de Videogame(s) */}
     <WhiteContainer >

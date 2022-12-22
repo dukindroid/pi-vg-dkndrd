@@ -16,12 +16,6 @@ const rootReducer = (state = initialState, action) => {
   // console.log(action)
 
   switch (action.type) {
-  case GET_COUNT: 
-    console.log('Desde el reducer (count): ' + JSON.stringify(action.payload))
-    return {
-      ...state,
-      count: action.payload
-    }
   case GET_VIDEOGAMES:
     return {
       ...state,
@@ -44,7 +38,7 @@ const rootReducer = (state = initialState, action) => {
       videogames: action.payload
     }
   case CREATE_VIDEOGAME:
-    console.log(action.payload)
+    console.log("Creando videojuego: " + JSON.stringify(action.payload))
     return
   case DELETE_VIDEOGAME:
     console.log(action.payload)
