@@ -13,13 +13,13 @@ let descripcion = '';
       })
       res.on('end', () => {
         data = JSON.parse(data)
-        consolog(data)
+        console.log(data)
         descripcion = data.description
       })
     }).on('error', err => {
-      consolog(err.message)
+      console.log(err.message)
     })
-    consolog(`La descripción es: ${descripcion}`)
+    console.log(`La descripción es: ${descripcion}`)
   }
 )()
 */

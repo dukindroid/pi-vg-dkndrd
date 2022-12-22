@@ -1,16 +1,34 @@
 /* eslint-disable react/prop-types */
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCount } from '../redux/actions'
+import { useLocation } from 'react-router-dom'
+
+
+function useQuery () {
+  const { search } = useLocation()
+  return React.useMemo(() => new URLSearchParams(search), [search])
+}
+
+
 if (process.env.debug = 'dev') {
   localStorage.debug = 'dev'
 
 }
-const consolog = require('debug')('dev')
-// consolog(typeof query)
-// consolog('DESDE PALLA ' + query.toString())
-// consolog('pagina: ' + JSON.stringify(pagina))
-// consolog(typeof query)
-// consolog('DESDE PALLA ' + query.toString())
-// consolog('pagina: ' + JSON.stringify(pagina))
+import {
+  // useLocation,
+  useNavigate,
+  // useParams,
+  // useSearchParams,
+  createSearchParams
+} from "react-router-dom"
+// const console.log = require('debug')('dev')
+// console.log(typeof query)
+// console.log('DESDE PALLA ' + query.toString())
+// console.log('pagina: ' + JSON.stringify(pagina))
+// console.log(typeof query)
+// console.log('DESDE PALLA ' + query.toString())
+// console.log('pagina: ' + JSON.stringify(pagina))
 // const Palla = (pagina) => {
 //   if (pagina === 1) return (<Link to={'/home?page=' + pagina - 1} >&lt;&lt;&nbsp;</Link>)
 //   return <div></div>
@@ -19,28 +37,60 @@ const consolog = require('debug')('dev')
 //   if (pagina < 6) return (<Link to={'/home?'} >&gt;&gt;</Link>)
 //   return <div></div>
 // }
+const useNavigateParams = () => {
+  const navigate = useNavigate()
 
-const Paginator = ({ pagina, total, query }) => {
-  // const page = (query.get('page') !== null) ? query.get('page') : 1
-  // consolog(`El paginador opina que page vale ${page}`)
+  return (pathname, params) => {
+    const path = {
+      pathname,
+      search: createSearchParams(params).toString()
+    }
+    navigate(path)
+  }
+}
+const Paginator = ({ pagina }) => {
+  const query = useQuery()
+  query.delete('page')
+  // console.log('args de pagntr --> query:' + query + ' pagina: ' + pagina )
+  // const dispatch = useDispatch()
+  const count = useSelector(state => state.count)
+  // useEffect(() => {
+  //   dispatch(getCount())
+  // }, [])
+  const navigate = useNavigateParams()
+  
+  const navigateHandler = (onePage) => {
+    // console.dir(onePage)
+    query.set('page',onePage)
+    navigate(".", query)
+  }
+  
   const array1 = []
-  for (let index = 1; index < total; index++) {
+  for (let index = 1; index < Math.ceil(count/9) + 1; index++) {
     array1[index] = index
   }
-  // consolog('args de pagntr: ' + pagina + ' ' + total + ' ' + query)
-  return (
-    <div className="nes-container is-dark is-centered card">
+  return (<>
+    <div className='paginatorDiv'>
       {
         array1 && array1.map((el) => {
-          return (
-            <Link key={el} to={'/home/' + el + '?' + query} >
-              {el + ' '}
-            </Link>
-          )
+          // const renderTo = '/videogames?page=' + el
+          // console.log(`coso: ${el} ${pagina}`)
+          {
+            return (
+              
+              <button key={el}
+                type='button' 
+                onClick={() => navigateHandler(el)}
+                disabled={(el != pagina) ? false: true} >
+                {el}
+              </button>
+            
+            )
+          }
         })
       }
     </div>
-  )
+  </>)
 }
 
 export default Paginator

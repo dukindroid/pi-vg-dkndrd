@@ -8,12 +8,17 @@ if (process.env.debug = 'dev') {
   localStorage.debug = 'dev'
 
 }
-const consolog = require('debug')('dev')
+// const console.log = require('debug')('dev')
+import Paginator from './Paginator'
 
 function useQuery () {
   const { search } = useLocation()
   return React.useMemo(() => new URLSearchParams(search), [search])
 }
+
+/*
+  Componente DropDownFilters
+*/
 const DropDownFilters = (props) => {
   const dispatch = useDispatch()
   const [input, setInput] = React.useState({
@@ -26,21 +31,20 @@ const DropDownFilters = (props) => {
   // Separar interacciones por aquellas que:
   // handleEvent: solo reciben un evento y lo guardan
   // handleSubmit: reciben un evento y hacen history.push o
-
   // Escuchaddor para el campo de búsqueda
   const handleSearchChange = (evento) => {
     setInput(prev => ({
       ...prev,
       [evento.target.name]: evento.target.value
     }))
-    consolog(input.searchQuery)
+    console.log(input.searchQuery)
   }
   // Escuchador para el select de filtro
   const onChange = (e) => {
     if (query.has('filter')) query.set('filter', e.target.value)
     else query.append('filter', e.target.value)
-    // consolog('Al query le agregamos esto: ' + query.toString())
-    // consolog(query.keys)
+    // console.log('Al query le agregamos esto: ' + query.toString())
+    // console.log(query.keys)
     // props.history.push(`/home?${query.toString()}`)
   }
 
@@ -53,7 +57,7 @@ const DropDownFilters = (props) => {
     query.set('order', e.target.value)
     query.delete('page')
     query.delete('search')
-    consolog('Al query le agregamos esto: ' + query.toString())
+    console.log('Al query le agregamos esto: ' + query.toString())
     props.history.push(`/home?${query.toString()}`)
   }
 
@@ -62,7 +66,7 @@ const DropDownFilters = (props) => {
     // if (query.has('search')) query.set('search', e.target.value)
     // else
     query.append('search', input.searchQuery)
-    consolog('Al query le agregamos esto: ' + query.toString() + input.searchQuery)
+    console.log('Al query le agregamos esto: ' + query.toString() + input.searchQuery)
     props.history.push(`/home?${query.toString()}`)
   }
   useEffect(() => {
@@ -73,7 +77,7 @@ const DropDownFilters = (props) => {
       }))
     }
   }, [])
-  // consolog('Desde el dropdown, page vale: ' + query.get('page'))
+  // console.log('Desde el dropdown, page vale: ' + query.get('page'))
   return (<>
     <div >
       <div className='nes-field is-inline' >
@@ -108,9 +112,11 @@ const DropDownFilters = (props) => {
                 {unGenero}
               </option>)
           })
-        }</select>
+        }
+      </select>
     </div>
-
+    {/* Paginador */}
+    <Paginator pagina={query.get('page')} total={15} query={query.toString()} />
   </>)
 }
 

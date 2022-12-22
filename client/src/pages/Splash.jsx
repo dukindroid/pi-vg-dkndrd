@@ -7,7 +7,7 @@ const Splash = () => {
       <div className="icon-list">
         <i className="nes-mario"></i>
       </div>
-      <Link to='/home'>
+      <Link to='/videogames?page=1'>
         <button >GO!</button>
       </Link>
     </div>

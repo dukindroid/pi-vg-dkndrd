@@ -6,12 +6,29 @@ import WhiteContainer from '../components/WhiteContainer'
 import { useDispatch } from 'react-redux'
 import { createVideogame } from '../redux/actions'
 // import DropdownFilters from './DropdownFilters'
+import Swal from 'sweetalert2'
+const miSwal = Swal.mixin({
+  background: "#212529",
+  color: "#CCC",
+})
 if (process.env.debug = 'dev') {
   localStorage.debug = 'dev'
 
 }
-const consolog = require('debug')('dev')
+// const console.log = require('debug')('dev')
+const alertaDulce = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
 
+let validado = false
 const createVG = () => {
   const dispatch = useDispatch()
   // const [genres, setGenres] = React.useState([])
@@ -28,9 +45,8 @@ const createVG = () => {
     img: '',
     isLocal: 'true'
   })
-  let unaVariable = false
   const validate = (input) => {
-    consolog(input)
+    console.log(input)
     const error = {}
     if (!input.name) error.name = 'El campo de título es obligatorio'
     if (!input.description) error.description = 'El campo de descripción es obligatorio'
@@ -40,30 +56,23 @@ const createVG = () => {
     // const patron = /[0-9]{2}[-/][0-9]{2}[-/][0-9]{4}/g
     // const error.resultado = patron.test(input.released)
     if (error.resultado) alert('La fecha esta mal!!!')
-
+    console.log("El error: " + JSON.stringify(error))
+    if (Object.keys(error).length === 0) validado = true
+    console.log("Valido?" + validado)
     return error
   }
 
   const handleInputChange = (evento) => {
-    // consolog(input)
-    // consolog(evento)
     setInput(prev => ({
       ...prev,
       [evento.target.name]: evento.target.value
     }))
     const errorObj = validate({ ...input, [evento.target.name]: evento.target.value })
     setError(errorObj)
-    consolog(errorObj)
-    if (errorObj !== {}) {
-      unaVariable = true
-    } else {
-      unaVariable = false
-    }
-    consolog(unaVariable)
   }
 
   const handleGenre = (evento) => {
-    consolog(evento.target.name)
+    console.log(evento.target.name)
     const unString = '' + evento.target.value.toLowerCase()
     setInput(prev => ({
       ...prev,
@@ -72,7 +81,7 @@ const createVG = () => {
   }
 
   const handlePlatform = (evento) => {
-    consolog(evento.target.name)
+    console.log(evento.target.name)
     setInput(prev => ({
       ...prev,
       platforms: [evento.target.value]
@@ -80,7 +89,7 @@ const createVG = () => {
   }
 
   const handleRating = (evento) => {
-    consolog(evento.target.id)
+    console.log(evento.target.id)
     setInput(prev => ({
       ...prev,
       rating: Number.parseInt(evento.target.id)
@@ -89,9 +98,25 @@ const createVG = () => {
   const addPlatform = () => { alert('💩') }
   const addGenre = () => { alert('💩') }
 
-  // const changeGenre = (evento) => { consolog(evento) }
+  // const changeGenre = (evento) => { console.log(evento) }
   const enviar = () => {
-    alert('Pum! ya envié un videogame, según, con esta data: ' + JSON.stringify(input))
+    validate(input)
+    console.log("Validado? en enviar: " + validado)
+    if (validado === false) {
+      miSwal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: `Falta validar: ${JSON.stringify(error)}`,
+      })
+      return
+    }
+
+    miSwal.fire({
+      icon: 'success',
+      title: 'Listo',
+      text: `Registro de videojuego creado! -- ${JSON.stringify(input)}`,
+      background: "#212529"
+    })
     dispatch(createVideogame(input))
   }
 
@@ -157,7 +182,7 @@ const createVG = () => {
         <input className={(error.img === undefined) ? 'nes-input is-dark' : 'nes-input is-error'} onChange={handleInputChange} label="Imagen..." name="img" value={input.img} />
       </div>
       <div className="nes-field">
-        <button onClick={enviar} type="button" className="nes-btn" disabled={unaVariable}>Enviar</button>
+        <button onClick={enviar} type="button" className="nes-btn" disabled={validado}>Enviar</button>
       </div>
     </WhiteContainer>
   </>)

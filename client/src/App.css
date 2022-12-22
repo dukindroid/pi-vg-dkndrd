@@ -1,11 +1,18 @@
 /* * {
-  background-color: rgba(0, 0, 0, 0.699);
   color: rgba(255, 255, 255, 0.9);
 }*/ 
 body {
+  background-color: #000;
   font-weight: 100;
   margin: 0;
   padding: 0;
+}
+.bkg {
+  background-image: url(image.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  background-color: #000;
 }
 section {
   position: relative;
@@ -38,6 +45,8 @@ section .box::before {
 }
 h1 {
 color: yellow;
+background-color: #000;
+text-shadow: 5px 1px 4px hsl(69deg 87% 70% / 36%);
 }
 .nes-container {
   padding: 0px;
@@ -50,7 +59,16 @@ color: yellow;
   padding: 0px;
   margin: 0px;
 }
-
+.paginatorContainer {
+  box-sizing: content-box;
+  text-align: center;
+}
+.paginatorDiv {
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  display: inline;
+}
 /* .rating i {
   is-medium 
 } */
@@ -73,9 +91,11 @@ background-color: #005f5f;
 }
 
 .nav a.active {
-background-color: #fff;
-color: #444;
+background-color: #000;
+color: #aaa;
 cursor: default;
+text-shadow: 3px 1px 3px hsl(69deg 100% 70% / 56%);
+
 }
 .nav li {
 font-size: 16px;
@@ -107,6 +127,14 @@ transition: .3s background-color;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
 }
+.two-columns {
+  grid-column: span 2;
+}
+.basic-grid2 {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(340px, 1fr));
+}
 .pixel {
   background: transparent;
   height: 1px;
@@ -123,6 +151,12 @@ transition: .3s background-color;
   transform: scale(20);
 }
 
+.same-height {
+  align-self: center;
+  justify-self: center;
+  height:100%
+
+}
 .center {
   position: absolute;
   margin: auto;
