@@ -1,13 +1,7 @@
-// import axios from 'axios'
 
+// const url = `${process.env.API_HOST}:${process.env.API_PORT}`
+const url = `http://localhost:3041`
 
-if (process.env.debug = 'dev') {
-  localStorage.debug = 'dev'
-
-}
-// const console.log = require('debug')('dev')
-// const url = 'https://henryhealthy.shop/pi-vg-dkndrd/api/'
-const url = 'http://localhost:3041'
 
 export const createVideogame = (videogame) => async (dispatch) => {
   try {

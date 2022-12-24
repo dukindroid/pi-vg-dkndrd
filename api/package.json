@@ -9,6 +9,7 @@
     "seed": "@powershell -Command $env:DEBUG='dev';node ./src/seed.js",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
+  "homepage": "/pi-videogames"
   "author": "Henry",
   "license": "ISC",
   "engines": {

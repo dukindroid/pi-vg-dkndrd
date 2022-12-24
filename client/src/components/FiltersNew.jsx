@@ -91,7 +91,7 @@ const Filters = (props) => {
       navigateHandler(query.toString())
     }
     return (
-      <div className="paginatorDiv  ">
+      <div className="paginatorDiv">
         <label >
           <input onClick={onSort}
             type="checkbox"
@@ -145,8 +145,8 @@ const Filters = (props) => {
   }, [query])
   // console.log('Desde el dropdown, select vale: ' + select.genres)
   return (<>
-    <div className='nes-container is-dark basic-grid2 ' >
-      <div className='nes-field is-inline two-columns basic-grid2' >
+    <div className='nes-container is-dark basic-grid' >
+      <div className='nes-field is-inline' >
         <input onChange={handleSearchChange} onSubmit={onSubmit} type="text" name="searchQuery" id="inline_field" className='nes-input is-dark nes-input' value={input.searchQuery} />
         <button onClick={onSubmit} type="button" name='botonEnviar' className="nes-btn inline-field"> Buscar </button>
       </div>
@@ -163,7 +163,7 @@ const Filters = (props) => {
           }
         </select>
       </div>
-      <div className="nes-field nes-select is-dark two-columns is-inline" >
+      <div className="nes-field nes-select is-dark is-inline" >
         <select onChange={onChange} name='filter' value={select.filter} title="Filtrar...:">
           <option className="is-inline" value={''} >Filtrar...</option>
           <option className="is-inline" value={'name'} >Por nombre</option>
