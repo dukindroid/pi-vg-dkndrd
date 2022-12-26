@@ -1,6 +1,6 @@
 
 // const url = `${process.env.API_HOST}:${process.env.API_PORT}`
-const url = `http://localhost:3041`
+const url = `https://henryhealthy.shop/pi-videogames`
 
 
 export const createVideogame = (videogame) => async (dispatch) => {
