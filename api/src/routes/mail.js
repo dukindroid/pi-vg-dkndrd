@@ -29,7 +29,7 @@ router.post('/', async (req,res)=>{
 
     console.log('Message sent', info.messageId)
 
-    res.send('received')
+    res.status(200).send('received')
 })
 
 module.exports = router;
